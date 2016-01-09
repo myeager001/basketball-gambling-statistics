@@ -3,4 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  a(href='/')
+  if authenticated
+    a(href='/logout') logout
+  else
+    a(href='/auth/google') login with google

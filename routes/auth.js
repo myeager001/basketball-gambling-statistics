@@ -39,7 +39,7 @@ router.get('/auth/google/callback',
 
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/');
+  res.redirect('/login');
 });
 
 module.exports={
