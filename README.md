@@ -12,6 +12,7 @@ Visual representation, of not so easily digested data, in a simplified visual in
 Teams that the user wants to compare.
 Preferences for which statistics are important to the user.
 User information necessary for sign up.
+
 ##What technologies do you plan to use?
 ```
 - Jade
