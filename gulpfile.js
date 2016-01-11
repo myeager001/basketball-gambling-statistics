@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var jshint = require('gulp-jshint');
 var sourcemaps = require('gulp-sourcemaps');
 var plumber = require('gulp-plumber');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('default', ['watch']);
 
@@ -20,12 +21,14 @@ gulp.task('build-css', function () {
   .pipe(sourcemaps.init()) // Process the original sources
     .pipe(sass()) // Using gulp-sass
   .pipe(sourcemaps.write()) // Add the map to modified source
+  .pipe(autoprefixer('last 2 versions')) // adds prefixes for previous 2 version support
   .pipe(gulp.dest('./public/stylesheets'));
 });
 
 // minify into public/javascript/bundle.js from source/javascript
 gulp.task('build-js', function () {
   return gulp.src('src/javascript/**/*.js')
+    .pipe(plumber())
     .pipe(sourcemaps.init())
       .pipe(concat('bundle.js'))
     .pipe(sourcemaps.write())
