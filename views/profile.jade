@@ -6,39 +6,39 @@ html
   body
     block content
     header
-      img //application icon
-      h1 //application name
+      //img application icon
+      //h1 application name
     section.userInfo
       h1 #{user.displayName}
-      img //user picture
+      //img user picture
       a(href='/logout') logout
     section.statPreferences
       h1
       h2 Statistical Preferences:
       //unordered list with li of category with stats radio buttons in them
         ul.statPreferences
-          li.category1
-            radio.stat1
-            radio.stat2
-            radio.stat3
-          li.category2
-            radio.stat4
-            radio.stat5 
-            radio.stat6
-          li.category3
-            radio.stat7
-            radio.stat8
-            radio.stat9
-          li.category4
-            radio.stat10
-            radio.stat11
-            radio.stat12
-          li.category5
-            radio.stat13
-            radio.stat14
-            radio.stat15
-          li.category6
-            radio.stat16
+          li.category1 Category 1
+            input.stat1(type='radio' name='stat1')
+            input.stat2(type='radio' name='stat2') 
+            input.stat3(type='radio' name='stat3')   
+          li.category2 Category 2
+            input.stat4(type='radio' name='stat4') 
+            input.stat5(type='radio' name='stat5') 
+            input.stat6(type='radio' name='stat6')
+          li.category3 Category 3
+            input.stat7(type='radio' name='stat7') 
+            input.stat8(type='radio' name='stat8') 
+            input.stat9(type='radio'name='stat9') 
+          li.category4 Category 4
+            input.stat10(type='radio' name='stat10')
+            input.stat11(type='radio' name='stat11') 
+            input.stat12(type='radio' name='stat12')    
+          li.category5 Category 5
+            input.stat13(type='radio' name='stat13') 
+            input.stat14(type='radio' name='stat14') 
+            input.stat15(type='radio'name='stat15') 
+          li.category6 Category 6
+            input.stat16(type='radio' name='stat16') 
         button(type='submit') Set Preferences
     section.betHistory
       h1
