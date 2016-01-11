@@ -5,16 +5,19 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block content
-    h1 #{user.displayName}
-    a(href='/logout') logout
+    header
+      img //application icon
+      h1 //application name
+      h1 #{user.displayName}
+      a(href='/logout') logout
 
     section.userInfo
       h1
       h2 Statistical Preferences:
-      //unordered list with li of category with stats in them
+      //unordered list with li of category with stats radio buttons in them
         ul.statPreferences
           li.category1
-            radio.stat1
+            radio.stat1 
             radio.stat2
             radio.stat3
           li.category2
