@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    h1 #{title}
+    a(href='/auth/google') login with google
+    p
+    a(href='/auth/facebook') login with facebook
+    form(action='/auth/login' method='post')
+      h2 login
+      input(type='text', placeholder='username', name='username')
+      input(type='password', placeholder='password', name='password')
+      button(type='submit') submit
+    form(action='auth/signup', method='post')
+      h2 signup
+      input(type='text', placeholder='username', name='username')
+      input(type='password', placeholder='password', name='password')
+      button(type='submit') signup
