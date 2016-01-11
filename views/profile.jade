@@ -13,11 +13,13 @@ html
 
     section.userInfo
       h1
+      img //user picture
+
       h2 Statistical Preferences:
       //unordered list with li of category with stats radio buttons in them
         ul.statPreferences
           li.category1
-            radio.stat1 
+            radio.stat1
             radio.stat2
             radio.stat3
           li.category2
@@ -38,6 +40,7 @@ html
             radio.stat15
           li.category6
             radio.stat16
+        button(type='submit') Set Preferences
       h2 Betting History:
       //unordered list with li for individual bets,
         ul.betHistory
