@@ -1,38 +1,44 @@
-extends layout
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+    extends layout
 
-block content
-  h1
-  h1 #{user.displayName}
-  a(href='/logout') logout
-
-  section.userInfo
     h1
-    h2 Statistical Preferences:
-    //unordered list with li of category with stats in them
-      ul.statPreferences
-        li.category1
-          p.stat1
-        li.category2
-          p.stat2
-        li.category3
-          p.stat3
-        li.category4
-          p.stat4
-        li.category5
-          p.stat5
-        li.category6
-          p.stat6
-    h2 Betting History:
-    //unordered list with li for individual bets,
-      ul.betHistory
-        li.bet1
-        li.bet2
-        li.bet3
-        li.bet4
-        li.bet5
-        li.bet6
-        li.bet7
-        li.bet8
-    h2 Account Balance:
-      p.userBalance
-      //user balance object could go here #{user.balance}
+    h1 #{user.displayName}
+    a(href='/logout') logout
+
+    section.userInfo
+      h1
+      h2 Statistical Preferences:
+      //unordered list with li of category with stats in them
+        ul.statPreferences
+          li.category1
+            span.stat1
+          li.category2
+            span.stat2
+          li.category3
+            span.stat3
+          li.category4
+            span.stat4
+          li.category5
+            span.stat5
+          li.category6
+            span.stat6
+      h2 Betting History:
+      //unordered list with li for individual bets,
+        ul.betHistory
+          li.bet1
+          li.bet2
+          li.bet3
+          li.bet4
+          li.bet5
+          li.bet6
+          li.bet7
+          li.bet8
+      h2 Account Balance:
+        p.userBalance
+        //user balance object could go here #{user.balance}
