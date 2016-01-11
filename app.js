@@ -8,8 +8,9 @@ var bodyParser = require('body-parser');
 require('dotenv').load();
 
 var auth = require('./routes/auth');
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var routes = require('./routes/landing');
+var users = require('./routes/profile');
+var serach = require('./routes/search');
 
 var app = express();
 
@@ -30,7 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', auth.router);
 app.use('/', routes);
-app.use('/users', ensureAuthenticated, users);
+app.use('/search', serach);
+app.use('/profile', ensureAuthenticated, users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
