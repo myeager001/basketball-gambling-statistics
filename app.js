@@ -4,13 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var knex = require('./db/knex');
 
 require('dotenv').load();
 
 var auth = require('./routes/auth');
-var routes = require('./routes/landing');
-var users = require('./routes/profile');
-var serach = require('./routes/search');
+var landing = require('./routes/landing');
+var profile = require('./routes/profile');
+var search = require('./routes/search');
+var preferences = require('./routes/preferences');
 
 var app = express();
 
@@ -30,9 +32,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', auth.router);
-app.use('/', routes);
-app.use('/search', serach);
-app.use('/profile', ensureAuthenticated, users);
+app.use('/', landing);
+app.use('/preferences', ensureAuthenticated, preferences)
+app.use('/search', ensureAuthenticated, hasPreferences, search);
+app.use('/profile', ensureAuthenticated, profile);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -66,8 +69,19 @@ app.use(function(err, req, res, next) {
 });
 
 function ensureAuthenticated(req, res, next) {
+  console.log('in ensureAuthenticated');
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/');
+}
+
+function hasPreferences(req, res, next){
+  knex('users').select('preferences').where('username', req.user.username).first().then(function(result){
+    console.log('in has prefereces');
+    if(result.preferences){
+      return next();
+    }
+    res.render('preferences');
+  });
 }
 
 module.exports = app;

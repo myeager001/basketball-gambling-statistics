@@ -23,14 +23,11 @@ router.use(passport.session());
 
 //local strategy
 passport.use(new LocalStrategy(function(username, password, done){
-  console.log(password);
   knex('users').select().where('username', username).first()
   .then(function(user){
-    console.log(user);
     if(user && bcrypt.compareSync(password, user.hash)){
       return done(null, user);
     }else{
-      console.log('here')
       return done(null, false, {message: 'invalid username or password'});
     }
   })
