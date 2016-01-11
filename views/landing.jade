@@ -6,6 +6,8 @@ html
   body
     h1 #{title}
     a(href='/auth/google') login with google
+    p
+    a(href='/auth/facebook') login with facebook
     form(action='/auth/login' method='post')
       h2 login
       input(type='text', placeholder='username', name='username')

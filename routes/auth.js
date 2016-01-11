@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt');
 var knex = require('../db/knex');
 LocalStrategy = require('passport-local');
 GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+FacebookStrategy = require('passport-facebook').Strategy;
 require('dotenv').load();
 
 passport.serializeUser(function(user, done) {
@@ -43,12 +44,25 @@ passport.use(new LocalStrategy(function(username, password, done){
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CONSUMER_KEY,
     clientSecret: process.env.GOOGLE_CONSUMER_SECRET,
-    callbackURL: process.env.HOST +"/auth/google/callback"
+    callbackURL: process.env.HOST + "/auth/google/callback"
   },
   function(token, tokenSecret, profile, done) {
     return done(null, profile);
   })
 );
+
+//facebook strategy
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: process.env.HOST + "/auth/facebook/callback",
+    enableProof: false
+  },
+  function(accessToken, refreshToken, profile, done) {
+      return done(null, profile);
+  })
+);
+
 //localstratgey routes
 router.post('/auth/login',
  passport.authenticate('local', {failureRedirect: '/login'}),
@@ -77,7 +91,6 @@ router.post('/auth/signup', function(req, res){
 });
 
 
-
 //routes for google with callback
 router.get('/auth/google',
   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
@@ -88,6 +101,18 @@ router.get('/auth/google/callback',
     // Successful authentication, redirect home.
     res.redirect('/search');
   });
+
+
+//routes for facebook with callback
+router.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/search');
+  });
+
 
 //all strategies logout
 router.get('/logout', function(req, res){
