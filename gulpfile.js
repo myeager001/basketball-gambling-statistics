@@ -4,8 +4,7 @@ var jshint = require('gulp-jshint');
 var sourcemaps = require('gulp-sourcemaps');
 var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
-
-gulp.task('default', ['watch']);
+var concat = require('gulp-concat')
 
 // lint js files
 gulp.task('jshint', function () {
@@ -38,7 +37,9 @@ gulp.task('build-js', function () {
 
 // watch changes in sass and js
 gulp.task('watch', function () {
-  gulp.watch('./src/scss/*.scss', ['build-js']);
+  gulp.watch('./src/javascript/*.js', ['build-js']);
   gulp.watch('/src/javascript/**/*.js', ['jshint']);
   gulp.watch('src/scss/**/*.scss', ['build-css']);
 });
+
+gulp.task('default', ['jshint', 'build-js', 'build-css', 'watch'])
