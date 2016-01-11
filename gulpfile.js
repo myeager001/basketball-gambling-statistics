@@ -5,6 +5,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat')
+var uglify = require('gulp-uglify')
 
 // lint js files
 gulp.task('jshint', function () {
@@ -30,6 +31,8 @@ gulp.task('build-js', function () {
     .pipe(plumber())
     .pipe(sourcemaps.init())
       .pipe(concat('bundle.js'))
+      // only uglify if gulp is ran with '--type production'
+      .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./public/javascript'));
 })
