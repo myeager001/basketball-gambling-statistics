@@ -6,6 +6,7 @@ var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat')
 var uglify = require('gulp-uglify')
+var gutil = require('gulp-util')
 
 // lint js files
 gulp.task('jshint', function () {
