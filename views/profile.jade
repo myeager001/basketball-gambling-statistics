@@ -8,13 +8,12 @@ html
     header
       img //application icon
       h1 //application name
-      h1 #{user.displayName}
-      a(href='/logout') logout
-
     section.userInfo
-      h1
+      h1 #{user.displayName}
       img //user picture
-
+      a(href='/logout') logout
+    section.statPreferences
+      h1
       h2 Statistical Preferences:
       //unordered list with li of category with stats radio buttons in them
         ul.statPreferences
@@ -41,6 +40,8 @@ html
           li.category6
             radio.stat16
         button(type='submit') Set Preferences
+    section.betHistory
+      h1
       h2 Betting History:
       //unordered list with li for individual bets,
         ul.betHistory
@@ -52,6 +53,8 @@ html
           li.bet6
           li.bet7
           li.bet8
+    section.accountBalance
+      h1
       h2 Account Balance:
         p.userBalance
         //user balance object could go here #{user.balance}
