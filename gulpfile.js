@@ -2,8 +2,9 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var jshint = require('gulp-jshint');
 var sourcemaps = require('gulp-sourcemaps');
+var plumber = require('gulp-plumber');
 
-gulp.task('default', ['watch'])
+gulp.task('default', ['watch']);
 
 // lint js files
 gulp.task('jshint', function () {
@@ -15,6 +16,7 @@ gulp.task('jshint', function () {
 // build css from source/sass
 gulp.task('build-css', function () {
   return gulp.src('./src/scss/**/*.scss')
+  .pipe(plumber())
   .pipe(sourcemaps.init()) // Process the original sources
     .pipe(sass()) // Using gulp-sass
   .pipe(sourcemaps.write()) // Add the map to modified source
@@ -27,7 +29,7 @@ gulp.task('build-js', function () {
     .pipe(sourcemaps.init())
       .pipe(concat('bundle.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./public/javascript'))
+    .pipe(gulp.dest('./public/javascript'));
 })
 
 
@@ -35,5 +37,5 @@ gulp.task('build-js', function () {
 gulp.task('watch', function () {
   gulp.watch('./src/scss/*.scss', ['build-js']);
   gulp.watch('/src/javascript/**/*.js', ['jshint']);
-  gulp.watch('src/scss/**/*.scss', ['build-css'])
+  gulp.watch('src/scss/**/*.scss', ['build-css']);
 });
