@@ -34,7 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', auth.router);
 app.use('/', landing);
 app.use('/preferences', ensureAuthenticated, preferences)
-app.use('/search', ensureAuthenticated, hasPreferences, search);
+// app.use('/search', ensureAuthenticated, hasPreferences, search);
+app.use('/search', search);
 app.use('/profile', ensureAuthenticated, profile);
 
 // catch 404 and forward to error handler

@@ -1,7 +1,35 @@
 
 // API
 // https://probasketballapi.com/docs/v2
+
+var request = require('request');
 require('dotenv').load();
+
+
+var first = document.getElementById('searchName').value;
+var request=require('request');
+request(, callback);
+
+
+var options = {
+  method: 'POST',
+  uri: "https://probasketballapi.com/stats/players&first_name=Mike",
+  form: {
+    field1: 'data'
+  }
+}
+
+
+
+  function callback(err, res, body) {
+  if (!err && res.statusCode == 200) {
+    console.log(body);
+  } else {
+    console.log(res.statusCode);
+    console.log(err);
+  }
+}
+
 
 
 var $url_playerStats = 'https://probasketballapi.com/stats/players';
@@ -15,11 +43,14 @@ var $api_key = process.env.API_KEY;
 
 //player search by first name (example test)
 function searchPlayer(){
-  var first = document.getElementById('recipeSearch').value;
+  var first = document.getElementById('searchName').value;
   $.post($url_players + "?api_key=" + $api_key + '&first_name=' + first, function(player) {
     console.log(player);
   })
 }
+
+var playerSearch = document.getElementById('playerSearchButton');
+playerSearch.addEventListener('click', searchPlayer);
 
 
 //team search by team name
@@ -37,5 +68,3 @@ function searchPlayer(){
       console.log(match);
     })
   }
-
-getPlayer();
