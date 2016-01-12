@@ -9,8 +9,8 @@ html
       //img application icon
       //h1 application name
     section.userInfo
-      h1 #{user.displayName} user.displayName will go here!
-      img 
+      h1 #{user.displayName} this is where {user.displayName} will be
+      //img
     section.statPreferences
       h1
       h2 Statistical Preferences:
@@ -84,4 +84,4 @@ html
       h2 Current Account Balance:
         p.userBalance $ Currently...you are totally broke
         //user balance object could go here #{user.balance}
-      a(href='/logout') logout
+    a(href='/logout') logout
