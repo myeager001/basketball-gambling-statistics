@@ -5,6 +5,8 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     
   body
+    if error
+      h2 #{error}
     h1 #{title}
     a(href='/auth/google') login with google
     p
