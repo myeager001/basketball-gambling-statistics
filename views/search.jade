@@ -3,14 +3,6 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  
-  
-  form(name="searchtest", method="post")
-    div.input
-      span.label Search For Player
-      input(type="text", name="searchName", id="searchName")
-    div.actions
-      input(type="submit", value="Search", id="playerSearchButton")
   a(href='/logout') logout
   section.teamChoice
     div
@@ -86,4 +78,3 @@ block content
       div.team2Display
     div
       button(type='submit') GO
-      
