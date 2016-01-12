@@ -69,15 +69,13 @@ app.use(function(err, req, res, next) {
 });
 
 function ensureAuthenticated(req, res, next) {
-  
+
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/');
 }
 
 function hasPreferences(req, res, next){
-  console.log(req.user);
   knex('users').select('preferences').where('username', req.user.username).first().then(function(result){
-    console.log('in has prefereces');
     if(result.preferences){
       return next();
     }

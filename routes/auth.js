@@ -58,7 +58,7 @@ passport.use(new GoogleStrategy({
           }else{
             knex('users').insert({username: username, is_local: false}, 'id')
             .then(function(id){
-              knex('users').select().where('id', id).first().then(function(user){
+              knex('users').select().where('id', id[0]).first().then(function(user){
                 console.log('user not found')
                 return done(null, user);
               })
