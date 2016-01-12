@@ -12,3 +12,78 @@ block content
     div.actions
       input(type="submit", value="Search", id="playerSearchButton")
   a(href='/logout') logout
+  section.teamChoice
+    div
+      h1.searchMessage= Choose two teams to display a comparison, choose one team to view stats only
+    form
+      menulist.searchTeam1
+        menupop
+          menuitem(label="Atlanta Hawks")
+          menuitem(label="Boston Celtics")
+          menuitem(label="Brooklyn Nets")
+          menuitem(label="Charlotte Hornets")
+          menuitem(label="Chicago Bulls")
+          menuitem(label="Cleveland Cavaliers")
+          menuitem(label="Dallas Mavericks")
+          menuitem(label="Denver Nuggets")
+          menuitem(label="Detroit Pistons")
+          menuitem(label="Golden State Warriors")
+          menuitem(label="Houston Rockets")
+          menuitem(label="Indiana Pacers")
+          menuitem(label="Los Angeles Clippers")
+          menuitem(label="Los Angles Lakers")
+          menuitem(label="Memphis Grizzlies")
+          menuitem(label="Miami Heat")
+          menuitem(label="Milwaukee Bucks")
+          menuitem(label="Minnesota Timberwolves")
+          menuitem(label="New Orleans Pelicans")
+          menuitem(label="New York Knicks")
+          menuitem(label="Oklahoma City Thunder")
+          menuitem(label="Orlando Magic")
+          menuitem(label="Philadelphia 76ers")
+          menuitem(label="Phoenix Suns")
+          menuitem(label="Portland Trailblazers")
+          menuitem(label="Sacramento Kings")
+          menuitem(label="San Antonio Spurs")
+          menuitem(label="Toronto Raptors")
+          menuitem(label="Utah Jazz")
+          menuitem(label="Whashington Wizards")
+      menulist.searchTeam2
+        menupop
+          menuitem(label="Atlanta Hawks")
+          menuitem(label="Boston Celtics")
+          menuitem(label="Brooklyn Nets")
+          menuitem(label="Charlotte Hornets")
+          menuitem(label="Chicago Bulls")
+          menuitem(label="Cleveland Cavaliers")
+          menuitem(label="Dallas Mavericks")
+          menuitem(label="Denver Nuggets")
+          menuitem(label="Detroit Pistons")
+          menuitem(label="Golden State Warriors")
+          menuitem(label="Houston Rockets")
+          menuitem(label="Indiana Pacers")
+          menuitem(label="Los Angeles Clippers")
+          menuitem(label="Los Angles Lakers")
+          menuitem(label="Memphis Grizzlies")
+          menuitem(label="Miami Heat")
+          menuitem(label="Milwaukee Bucks")
+          menuitem(label="Minnesota Timberwolves")
+          menuitem(label="New Orleans Pelicans")
+          menuitem(label="New York Knicks"  )
+          menuitem(label="Oklahoma City Thunder")
+          menuitem(label="Orlando Magic")
+          menuitem(label="Philadelphia 76ers")
+          menuitem(label="Phoenix Suns")
+          menuitem(label="Portland Trailblazers")
+          menuitem(label="Sacramento Kings")
+          menuitem(label="San Antonio Spurs")
+          menuitem(label="Toronto Raptors")
+          menuitem(label="Utah Jazz")
+          menuitem(label="Whashington Wizards")
+  section.teamDisplay
+    div
+      div.team1Display
+      div.team2Display
+    div
+      button(type='submit') GO
+      

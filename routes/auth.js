@@ -46,25 +46,21 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.HOST + "/auth/google/callback"
   },
   function(token, tokenSecret, profile, done) {
-    var person;
     for(var i =0; i<profile.emails.length; i++){
       if(profile.emails[i].type==='account'){
         var username = profile.emails[i].value;
         knex('users').select().where('username', username).first().then(function(user){
           if(user){
-            console.log(user)
-            console.log('user found')
             return done(null, user);
           }else{
             knex('users').insert({username: username, is_local: false}, 'id')
             .then(function(id){
               knex('users').select().where('id', id[0]).first().then(function(user){
-                console.log('user not found')
                 return done(null, user);
-              })
+              });
             });
           }
-        })
+        });
       }
     };
   })
@@ -75,10 +71,23 @@ passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
     callbackURL: process.env.HOST + "/auth/facebook/callback",
-    enableProof: false
+    enableProof: false,
+    profileFields: ['email']
   },
   function(accessToken, refreshToken, profile, done) {
-      return done(null, profile);
+      var username = profile.emails[0].value;
+      knex('users').select().where('username', username).first().then(function(user){
+        if(user){
+          return done(null, user);
+        }else{
+          knex('users').insert({username: username, is_local: false}, 'id')
+          .then(function(id){
+            knex('users').select().where('id', id[0]).first().then(function(user){
+              return done(null, user);
+            });
+          });
+        }
+      });
   })
 );
 
@@ -95,17 +104,17 @@ router.post('/auth/signup', function(req, res){
       knex('users').insert({username: req.body.username, hash: bcrypt.hashSync(req.body.password, 10), is_local: true})
       .then(function(){
         res.redirect('/');
-      }).catch(function(error){
-        console.error('could not enter user');
-        return done(error);
+      }).catch(function(){
+        var error = "Can't add user to database";
+        res.render('landing', {error: error});
       });
     }else{
-      console.error('username already exits');
-      res.redirect('/');
+      var error = 'Username already exits. Try loging in with Facebook of Google';
+      res.render('landing', {error: error});
     }
-    }).catch(function(error){
-      console.error('could not serach databse');
-      return done(error);
+    }).catch(function(){
+      var error = "Can't add user to database";
+      res.render('landing', {error: error});
     });
 });
 
@@ -124,7 +133,7 @@ router.get('/auth/google/callback',
 
 //routes for facebook with callback
 router.get('/auth/facebook',
-  passport.authenticate('facebook'));
+  passport.authenticate('facebook', {scope: ['email', 'user_friends']}));
 
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/' }),

@@ -3,7 +3,10 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    
   body
+    if error
+      h2 #{error}
     h1 #{title}
     a(href='/auth/google') login with google
     p
@@ -18,3 +21,6 @@ html
       input(type='text', placeholder='username', name='username')
       input(type='password', placeholder='password', name='password')
       button(type='submit') signup
+    
+
+    

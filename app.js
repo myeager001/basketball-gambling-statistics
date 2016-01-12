@@ -33,9 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', auth.router);
 app.use('/', landing);
-app.use('/preferences', ensureAuthenticated, preferences)
-// app.use('/search', ensureAuthenticated, hasPreferences, search);
-app.use('/search', search);
+app.use('/preferences', ensureAuthenticated, preferences);
+app.use('/search', ensureAuthenticated, hasPreferences, search);
 app.use('/profile', ensureAuthenticated, profile);
 
 // catch 404 and forward to error handler
@@ -76,11 +75,11 @@ function ensureAuthenticated(req, res, next) {
 }
 
 function hasPreferences(req, res, next){
-  knex('users').select('preferences').where('username', req.user.username).first().then(function(result){
-    if(result.preferences){
+  knex('user_stats_preferences').select().where('user', req.user.id).first().then(function(result){
+    if(result){
       return next();
     }
-    res.render('preferences');
+    res.redirect('preferences');
   });
 }
 

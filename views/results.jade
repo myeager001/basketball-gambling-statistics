@@ -1,10 +1,24 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
-
+doctype html
+html
+  head
+    title=preferences
+    link(rel='stylesheet', href='/stylesheets/style.css')
   
-  
-  
-  a(href='/logout') logout
+  body
+    header
+      h1=versus
+      h2=Basketball Stats
+      img.icon
+      img.team1logo
+      img.team2logo
+      img.userAvatar
+    section.statContainer
+      div.statVisualization
+  section.predictionContainer
+      img.predictionElement
+    section.betContainer
+      div.betElement1
+      div.betElement2
+      div.betElement3
+      button.submitBet(action='/submit' type='submit') Submit Bet
+    
