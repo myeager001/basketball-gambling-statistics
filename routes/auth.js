@@ -25,13 +25,15 @@ router.use(passport.session());
 passport.use(new LocalStrategy(function(username, password, done){
   knex('users').select().where('username', username).first()
   .then(function(user){
-    if(user && bcrypt.compareSync(password, user.hash)){
-      return done(null, user);
-    }else{
-      return done(null, false, {message: 'invalid username or password'});
-    }
-  })
-  .catch(function(error){
+    if(user.is_local){
+        if(user && bcrypt.compareSync(password, user.hash)){
+          return done(null, user);
+        }else{
+          return done(null, false, {message: 'invalid username or password'});
+        }
+      }return done(null, false, {message: 'please log in using facebook or google'})
+    })
+    .catch(function(error){
     console.log(error);
     return done(error);
   });
@@ -44,7 +46,27 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.HOST + "/auth/google/callback"
   },
   function(token, tokenSecret, profile, done) {
-    return done(null, profile);
+    var person;
+    for(var i =0; i<profile.emails.length; i++){
+      if(profile.emails[i].type==='account'){
+        var username = profile.emails[i].value;
+        knex('users').select().where('username', username).first().then(function(user){
+          if(user){
+            console.log(user)
+            console.log('user found')
+            return done(null, user);
+          }else{
+            knex('users').insert({username: username, is_local: false}, 'id')
+            .then(function(id){
+              knex('users').select().where('id', id).first().then(function(user){
+                console.log('user not found')
+                return done(null, user);
+              })
+            });
+          }
+        })
+      }
+    };
   })
 );
 
@@ -70,7 +92,7 @@ router.post('/auth/login',
 router.post('/auth/signup', function(req, res){
   knex('users').select().where('username', req.body.username).first().then(function(user){
     if(!user){
-      knex('users').insert({username: req.body.username, hash: bcrypt.hashSync(req.body.password, 10)})
+      knex('users').insert({username: req.body.username, hash: bcrypt.hashSync(req.body.password, 10), is_local: true})
       .then(function(){
         res.redirect('/');
       }).catch(function(error){
@@ -90,7 +112,7 @@ router.post('/auth/signup', function(req, res){
 
 //routes for google with callback
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.profile.emails.read'] }));
 
 router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
