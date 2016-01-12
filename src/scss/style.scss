@@ -1,0 +1,29 @@
+header{
+  display: flex;
+  background-color: hsla(360, .4, .4, .7);
+  flex-direction: row;
+}
+
+.user-icon{
+  border-radius: 50%;
+}
+
+.logo{
+  flex-grow: 1;
+}
+
+.banner{
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  align-items: center;
+  height: 300px;
+}
+
+.nameHolder{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%
+}

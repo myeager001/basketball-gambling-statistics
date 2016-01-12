@@ -3,8 +3,13 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    
   body
+    div.banner
+      div.nameHolder
+        img(src='/assets/sample_user_pic.png')
+        h1 basketball stats
+      div.tagline
+        h1 we have all of you statistical needs for basketball
     if error
       h2 #{error}
     h1 #{title}

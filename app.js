@@ -13,6 +13,7 @@ var landing = require('./routes/landing');
 var profile = require('./routes/profile');
 var search = require('./routes/search');
 var preferences = require('./routes/preferences');
+var results = require('./routes/results');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/', landing);
 app.use('/preferences', ensureAuthenticated, preferences);
 app.use('/search', ensureAuthenticated, hasPreferences, search);
 app.use('/profile', ensureAuthenticated, profile);
+app.use('/results', ensureAuthenticated, hasPreferences, results);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
