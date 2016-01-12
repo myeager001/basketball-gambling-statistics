@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    h1 please set you preferences
+    form(method='post', action='/preferences')
+      br
+      label Category 1:
+      radiogroup.category1 
+        label  statistic 1
+        input.stat1(type='radio' name='stat1')
+        label  statistic 2
+        input.stat2(type='radio' name='stat2') 
+        label  statistic 3
+        input.stat3(type='radio' name='stat3')
+      br 
+      label Category 2: 
+      radiogroup.category2 
+        label  statistic 4 
+        input.stat4(type='radio' name='stat4') 
+        label  statistic 5
+        input.stat5(type='radio' name='stat5') 
+        label  statistic 6
+        input.stat6(type='radio' name='stat6')
+      br
+      label Category 3:
+      radiogroup.category3
+        label  statistic 7
+        input.stat7(type='radio' name='stat7') 
+        label  statistic 8
+        input.stat8(type='radio' name='stat8') 
+        label  statistic 9
+        input.stat9(type='radio' name='stat9') 
+      br
+      label Category 4:
+      radiogroup.category4
+        label  statistic 10
+        input.stat10(type='radio' name='stat10')
+        label  statistic 11
+        input.stat11(type='radio' name='stat11')             
+        label  statistic 12
+        input.stat12(type='radio' name='stat12') 
+      br
+      label Category 5:
+      radiogroup.category5  
+        label  statistic 13
+        input.stat13(type='radio' name='stat13') 
+        label  statistic 14
+        input.stat14(type='radio' name='stat14')
+      br
+      label Category 6:
+      radiogroup.category6
+        label  statistic 15
+        input.stat15(type='radio' name='stat15') 
+        label  statistic 16
+        input.stat16(type='radio' name='stat16') 
+      br
+      button(type='submit') Set Stat Preferences
