@@ -1,4 +1,25 @@
+
 extends layout
 
 block content
-  h1 show results here
+
+    header
+      h1=versus
+      h2=Basketball Stats
+      img.icon
+      img.team1logo
+      img.team2logo
+      img.userAvatar
+    section.statContainer
+      div.statVisualization
+  section.predictionContainer
+      img.predictionElement
+    section.betContainer
+      div.betElement1
+      div.betElement2
+      div.betElement3
+      button.submitBet(action='/submit' type='submit') Submit Bet
+    
+    
+      
+  
