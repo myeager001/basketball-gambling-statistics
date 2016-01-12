@@ -15,30 +15,45 @@ html
     section.statPreferences
       h1
       h2 Statistical Preferences:
-      //unordered list with li of category with stats radio buttons in them
-        ul.statPreferences
-          li.category1 Category 1
-            input.stat1(type='radio' name='stat1')
-            input.stat2(type='radio' name='stat2') 
-            input.stat3(type='radio' name='stat3')   
-          li.category2 Category 2
-            input.stat4(type='radio' name='stat4') 
-            input.stat5(type='radio' name='stat5') 
-            input.stat6(type='radio' name='stat6')
-          li.category3 Category 3
-            input.stat7(type='radio' name='stat7') 
-            input.stat8(type='radio' name='stat8') 
-            input.stat9(type='radio'name='stat9') 
-          li.category4 Category 4
-            input.stat10(type='radio' name='stat10')
-            input.stat11(type='radio' name='stat11') 
-            input.stat12(type='radio' name='stat12')    
-          li.category5 Category 5
-            input.stat13(type='radio' name='stat13') 
-            input.stat14(type='radio' name='stat14') 
-            input.stat15(type='radio'name='stat15') 
-          li.category6 Category 6
-            input.stat16(type='radio' name='stat16') 
+        label Stat Category 1
+        radiogroup.category1 
+          label stat 1
+          input.stat1(type='radio' name='stat1')
+          label stat 2
+          input.stat2(type='radio' name='stat2') 
+          label stat 3
+          input.stat3(type='radio' name='stat3') 
+        radiogroup.category2 
+          label stat 4 
+          input.stat4(type='radio' name='stat4') 
+          label stat 5
+          input.stat5(type='radio' name='stat5') 
+          label stat 6
+          input.stat6(type='radio' name='stat6')
+        radiogroup.category3
+          label stat 7
+          input.stat7(type='radio' name='stat7') 
+          label stat 8
+          input.stat8(type='radio' name='stat8') 
+          label stat 9
+          input.stat9(type='radio' name='stat9') 
+        radiogroup.category4
+          label stat 10
+          input.stat10(type='radio' name='stat10')
+          label stat 11
+          input.stat11(type='radio' name='stat11')             
+          label stat 12
+          input.stat12(type='radio' name='stat12')  
+        radiogroup.category5  
+          label stat 13
+          input.stat13(type='radio' name='stat13') 
+          label stat 14
+          input.stat14(type='radio' name='stat14')
+        radiogroup.category6
+          label stat 15
+          input.stat15(type='radio' name='stat15') 
+          label stat 16
+          input.stat16(type='radio' name='stat16') 
         button(type='submit') Set Preferences
     section.betHistory
       h1
