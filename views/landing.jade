@@ -13,9 +13,9 @@ html
     if error
       h2 #{error}
     h1 #{title}
-    a(href='/auth/google') login with google
+    a.google(href='/auth/google') login with google
     p
-    a(href='/auth/facebook') login with facebook
+    a.facebook(href='/auth/facebook') login with facebook
     form(action='/auth/login' method='post')
       h2 login
       input(type='text', placeholder='username', name='username')
