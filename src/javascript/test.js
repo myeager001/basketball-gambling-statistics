@@ -6,15 +6,4 @@ $(document).ready(function(){
     $(tag).toggleClass('active');
   })
 
-  $('.user-icon').on('click', function(e){
-    var selector = $('.dropDownMenu1');
-    var hasClass = selector.hasClass('active');
-    console.log(hasClass)
-    if(hasClass){
-      console.log('here')
-      selector.removeClass('active');
-    }else{
-      selector.addClass('active');
-    }
-  })
 })
