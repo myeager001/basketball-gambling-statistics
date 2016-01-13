@@ -7,8 +7,10 @@ router.get('/', function(req, res, next) {
   res.render('search', {user: req.user});
 });
 
+var apiKey = "?api_key=" + process.env.API_KEY;
+var url_team = 'http://api.probasketballapi.com/team';
+var url_teamAdv 'http://api.probasketballapi.com/advanced/team';
 
-var url_team = 'http://api.probasketballapi.com/team?api_key='+ process.env.API_KEY;
 
 router.post('/', function(req,res){
   var team1 = req.body.firstTeam;
