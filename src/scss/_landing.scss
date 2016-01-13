@@ -91,8 +91,9 @@ header {
 
 }
 
-.icon {
-  width:8vw
+.appName{
+  margin-top: 3vw;
+  padding-left: 2vw;
 }
 
 .iconContainer {
@@ -100,4 +101,9 @@ header {
   justify-content:space-around;
   width: 100%;
   margin-bottom: 1vw;
+}
+
+input {
+  margin: 1vw;
+  height: 2vw;
 }
