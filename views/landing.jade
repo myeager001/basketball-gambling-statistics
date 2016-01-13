@@ -3,6 +3,8 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
+    script(type='text/javascript', src='/javascript/bundle.js')
   body
     div.banner
       div.nameHolder
@@ -10,20 +12,37 @@ html
         h1 basketball stats
       div.tagline
         h1 we have all of you statistical needs for basketball
-    if error
-      h2 #{error}
-    h1 #{title}
-    a(href='/auth/google') login with google
-    p
-    a(href='/auth/facebook') login with facebook
-    form(action='/auth/login' method='post')
-      h2 login
-      input(type='text', placeholder='username', name='username')
-      input(type='password', placeholder='password', name='password')
-      button(type='submit') submit
-    form(action='auth/signup', method='post')
-      h2 signup
-      input(type='text', placeholder='username', name='username')
-      input(type='password', placeholder='password', name='password')
-      button(type='submit') signup
-    
+
+    div.btnHolders
+      button.action signup
+      button.action login
+      button.action more-info
+    div.holders
+      form(action='/auth/login' method='post' class="login startAction active")
+        h2 login
+        if error
+          h2 #{error}
+        input(type='text', placeholder='username', name='username')
+        input(type='password', placeholder='password', name='password')
+        a(href='/auth/google') login with google
+        a(href='/auth/facebook') login with facebook
+        button(type='submit') submit
+      form(action='auth/signup', method='post' class="signup startAction")
+        h2 signup
+        if error
+          h2 #{error}
+        input(type='text', placeholder='username', name='username')
+        input(type='password', placeholder='password', name='password')
+        a(href='/auth/google') signup with google
+        a(href='/auth/facebook') signup with facebook
+        button(type='submit') signup
+      div(class='more-info startAction')
+        div.infoTip
+          h2 useful stat for serious gamblers
+          p A enim consequat imperdiet habitasse facilisi a et tortor consectetur adipiscing in convallis amet condimentum sapien suscipit phasellus imperdiet.Ut himenaeos a tempor laoreet ut condimentum sed mi ante urna interdum dapibus a praesent.
+        div.infoTip
+          h2 Make bets and see histoy
+          p A enim consequat imperdiet habitasse facilisi a et tortor consectetur adipiscing in convallis amet condimentum sapien suscipit phasellus imperdiet.Ut himenaeos a tempor laoreet ut condimentum sed mi ante urna interdum dapibus a praesent.
+        div.infoTip
+          h2 use data better
+          p A enim consequat imperdiet habitasse facilisi a et tortor consectetur adipiscing in convallis amet condimentum sapien suscipit phasellus imperdiet.Ut himenaeos a tempor laoreet ut condimentum sed mi ante urna interdum dapibus a praesent.

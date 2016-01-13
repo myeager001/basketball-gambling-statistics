@@ -15,6 +15,7 @@ router.post('/', function(req,res){
   var team2 = req.body.secondTeam;
 
   console.log(req.body);
+
   var options1 = {
     url: url_team + "&team_abbrv=" + team1,
     json: true
