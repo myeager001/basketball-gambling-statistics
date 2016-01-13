@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var efficiency = require('../algorithems/compareEff');
-var team4factor = require('../algorithems/team4factor');
+var efficiency = require('../algorithms/compareEff');
+var team4factor = require('../algorithms/team4factor');
 
 
 /* GET users listing. */
