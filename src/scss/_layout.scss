@@ -4,12 +4,21 @@
 	padding: 0;
 	margin: 0;
 	border: 0;
+<<<<<<< HEAD
 }
+=======
+	font-family:'Exo 2', sans-serif;
+	}
+>>>>>>> 928c48a2b61929fddb727d15715c27108ce414e8
 
 header{
   display: flex;
-  background: $white;
+	color: $green;
   flex-direction: row;
+}
+
+body{
+	background-color: $darkgray;
 }
 
 .user-icon{
@@ -24,12 +33,16 @@ header{
   display: flex;
   flex-direction: column;
 <<<<<<< HEAD
+<<<<<<< HEAD
   background-color: #444343;
 =======
   background-color: $darkgray;
 >>>>>>> 05232d6587d1393e17e7494bb394f487c899e998
+=======
+  background-color: #000;
+>>>>>>> 928c48a2b61929fddb727d15715c27108ce414e8
   align-items: center;
-  height: 300px;
+  height: 40vh;
 }
 
 .nameHolder{
@@ -40,10 +53,15 @@ header{
   width: 100%
 }
 
+.taglineContainer{
+	height:4vw;
+}
+
 .btnHolders{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+	margin:5vw;
 }
 
 .startAction{
