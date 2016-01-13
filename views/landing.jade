@@ -2,14 +2,18 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
     script(type='text/javascript', src='/javascript/bundle.js')
   body
     div.banner
       div.nameHolder
-        img(src='/assets/sample_user_pic.png')
+        img.icon(src='/assets/icon_basketball.png')
         h1 basketball stats
+        div.iconContainer
+          img.chart(src='/assets/icon_chart.png')
+          img.bball(src='/assets/icon_basketball.png')
+          img.money(src='/assets/icon_money.png')
       div.tagline
         h1 we have all of you statistical needs for basketball
 
