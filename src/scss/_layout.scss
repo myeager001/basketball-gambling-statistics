@@ -66,11 +66,7 @@ body{
 
 
 
-.more-info{
-  flex-direction: row;
-  justify-content: space-around;
-  width: 800px;
-}
+
 
 .holders{
   display: flex;
@@ -78,9 +74,6 @@ body{
   width: 100%
 }
 
-.infoTip{
-  width: 30%;
-}
 
 .active{
   display: flex;
