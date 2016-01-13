@@ -16,10 +16,10 @@ router.post('/', function(req,res){
   var team2 = req.body.secondTeam;
 
 
-  // Promise.resolve(efficiency(team1, team2)).then(function(results){
-  //   carray(results);
-  // });
-  // team4factor(team1, team2);
+  Promise.resolve(efficiency(team1, team2)).then(function(results){
+    carray(results);
+  });
+  team4factor(team1, team2);
   shotCharts(team1, team2);
 
 
