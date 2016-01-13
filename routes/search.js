@@ -17,10 +17,14 @@ router.post('/', function(req,res){
 
 
   Promise.resolve(efficiency(team1, team2)).then(function(results){
-    carray(results);
+    // carray(results);
   });
-  team4factor(team1, team2);
-  shotCharts(team1, team2);
+  Promise.resolve(team4factor(team1, team2)).then(function(results){
+    // nothing
+  });
+  Promise.resolve(shotCharts(team1, team2)).then(function(results){
+    // nothing
+  });
 
 
 
