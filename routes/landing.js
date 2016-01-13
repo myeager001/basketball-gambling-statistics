@@ -1,10 +1,15 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
 
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
   if(req.isAuthenticated()){
+    fs.unlink('./public/assets/data.js', (err) => {
+      if (err) throw err;
+      console.log('successfully deleted data.js');
+    })
     res.redirect('/search')
   }
   res.render('landing', { title: 'Express', authenticated: req.isAuthenticated()});
