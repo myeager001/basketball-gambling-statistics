@@ -21,35 +21,13 @@ module.exports = function(firstTeam, secondTeam){
     json: true
   }
 
-  // request.post(options1, function(err, response, body) {
-  //   if (!err && response.statusCode == 200) {
-  //     console.log(body);
-  //     var options1adv = {
-  //       url: url_team4factor + "&team_id=" + body[0].id,
-  //       json: true
-  //     }
-  //     request.post(options1adv, function(err, response, body2) {
-  //       if (!err && response.statusCode == 200) {
-  //         console.log("found");
-  //       } else {
-  //         console.log(response.statusCode);
-  //         console.log(err);
-  //       }
-  //     })
-  //   } else {
-  //     console.log(response.statusCode);
-  //     console.log(err);
-  //   }
-  // })
+  var fourFactor = {
+    fta_holder: 0,
+    efg_holder: 0,
+    tr_holder: 0,
+    oreb_holder: 0
 
-var fourFactor = {
-  fta_holder: 0,
-  efg_holder: 0,
-  tr_holder: 0,
-  oreb_holder: 0
-
-}
-
+  }
 
   request.post(options2, function(err, response, body) {
     if (!err && response.statusCode == 200) {

@@ -21,7 +21,7 @@ router.post('/', function(req,res){
 
 
   Promise.resolve(efficiency(team1, team2)).then(function(results){
-    console.log(results);
+    carray(results);
   });
   team4factor(team1, team2);
 
