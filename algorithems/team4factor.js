@@ -21,13 +21,58 @@ module.exports = function(firstTeam, secondTeam){
     json: true
   }
 
-  var fourFactor = {
+  var fourFactor1 = {
     fta_holder: 0,
     efg_holder: 0,
     tr_holder: 0,
     oreb_holder: 0
 
   }
+
+  var fourFactor2 = {
+    fta_holder: 0,
+    efg_holder: 0,
+    tr_holder: 0,
+    oreb_holder: 0
+
+  }
+
+  request.post(options1, function(err, response, body) {
+    if (!err && response.statusCode == 200) {
+      console.log(body);
+      var options1adv = {
+        url: url_team4factor + "&team_id=" + body[0].id,
+        json: true
+      }
+      request.post(options1adv, function(err, response, body2) {
+        if (!err && response.statusCode == 200) {
+          var count = 0;
+
+          for (i=0;i<body2.length;i++) {
+            if (body2[i].season === '2015') {
+              count++;
+              fourFactor1.fta_holder += JSON.parse(body2[i].fta_rate);
+              fourFactor1.efg_holder += JSON.parse(body2[i].efg_pct);
+              fourFactor1.oreb_holder += JSON.parse(body2[i].oreb_pct);
+              fourFactor1.tr_holder += JSON.parse(body2[i].tm_tov_pct);
+
+            }
+          }
+          fourFactor1.fta_holder = fourFactor1.fta_holder / count;
+          fourFactor1.efg_holder = fourFactor1.efg_holder / count;
+          fourFactor1.oreb_holder = fourFactor1.oreb_holder / count;
+          fourFactor1.tr_holder = fourFactor1.tr_holder / count;
+          console.log(fourFactor1);
+        } else {
+          console.log(response.statusCode);
+          console.log(err);
+        }
+      })
+    } else {
+      console.log(response.statusCode);
+      console.log(err);
+    }
+  })
 
   request.post(options2, function(err, response, body) {
     if (!err && response.statusCode == 200) {
@@ -43,18 +88,18 @@ module.exports = function(firstTeam, secondTeam){
           for (i=0;i<body2.length;i++) {
             if (body2[i].season === '2015') {
               count++;
-              fourFactor.fta_holder += JSON.parse(body2[i].fta_rate);
-              fourFactor.efg_holder += JSON.parse(body2[i].efg_pct);
-              fourFactor.oreb_holder += JSON.parse(body2[i].oreb_pct);
-              fourFactor.tr_holder += JSON.parse(body2[i].tm_tov_pct);
+              fourFactor2.fta_holder += JSON.parse(body2[i].fta_rate);
+              fourFactor2.efg_holder += JSON.parse(body2[i].efg_pct);
+              fourFactor2.oreb_holder += JSON.parse(body2[i].oreb_pct);
+              fourFactor2.tr_holder += JSON.parse(body2[i].tm_tov_pct);
 
             }
           }
-          fourFactor.fta_holder = fourFactor.fta_holder / count;
-          fourFactor.efg_holder = fourFactor.efg_holder / count;
-          fourFactor.oreb_holder = fourFactor.oreb_holder / count;
-          fourFactor.tr_holder = fourFactor.tr_holder / count;
-          console.log(fourFactor);
+          fourFactor2.fta_holder = fourFactor2.fta_holder / count;
+          fourFactor2.efg_holder = fourFactor2.efg_holder / count;
+          fourFactor2.oreb_holder = fourFactor2.oreb_holder / count;
+          fourFactor2.tr_holder = fourFactor2.tr_holder / count;
+          console.log(fourFactor2);
         } else {
           console.log(response.statusCode);
           console.log(err);
