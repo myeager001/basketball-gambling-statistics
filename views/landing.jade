@@ -27,7 +27,7 @@ html
         a(href='/auth/google') login with google
         a(href='/auth/facebook') login with facebook
         button(type='submit') submit
-      form(action='auth/signup', method='post' class="signup startAction")
+      form(action='/auth/signup', method='post' class="signup startAction")
         h2 signup
         if error
           h2 #{error}
