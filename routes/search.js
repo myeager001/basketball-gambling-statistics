@@ -5,8 +5,6 @@ var request = require('request');
 var efficiency = require('../algorithems/effincency');
 var team4factor = require('../algorithems/team4factor');
 
-var fs = require('fs');
-
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.render('search', {user: req.user});
