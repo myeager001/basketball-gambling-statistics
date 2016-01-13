@@ -2,8 +2,13 @@
     margin: 2vw;
 }
 
-form {
-  display: flex;
-  background-color: $black;
+.teamChoice{
+  display:flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.searchButton{
+  width: 8vw;
+
 }
