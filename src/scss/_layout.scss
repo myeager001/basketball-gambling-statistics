@@ -42,6 +42,17 @@ body{
 	height:4vw;
 }
 
+.appName{
+	font-size: 3vw;
+	margin-top: 2vw;
+	padding-left: 2vw;
+	color: $green;
+}
+
+.tagline{
+	font-size: 2.5vw;
+}
+
 .btnHolders{
   display: flex;
   flex-direction: row;
