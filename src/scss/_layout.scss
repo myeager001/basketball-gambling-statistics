@@ -17,6 +17,7 @@ body{
 	background-color: $darkgray;
 }
 
+
 .user-icon{
   border-radius: 50%;
 }
@@ -38,26 +39,11 @@ body{
   width: 100%
 }
 
-.taglineContainer{
-	height:4vw;
-}
-
 .appName{
 	font-size: 3vw;
 	margin-top: 2vw;
 	padding-left: 2vw;
 	color: $green;
-}
-
-.tagline{
-	font-size: 2.5vw;
-}
-
-.btnHolders{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-	margin:4vw;
 }
 
 .startAction{
@@ -66,28 +52,10 @@ body{
   align-items: center;
 }
 
-.action{
-	width: 6vw;
-	height: 3vw;
-	color: $darkgray;
-	background-color: $green;
-	border-radius: 15%;
-}
-
-.more-info{
-  flex-direction: row;
-  justify-content: space-around;
-  width: 800px;
-}
-
 .holders{
   display: flex;
   justify-content: center;
   width: 100%
-}
-
-.infoTip{
-  width: 30%;
 }
 
 .active{
