@@ -1,17 +1,10 @@
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
 
-header {
+.banner{
   display: flex;
-  background: white;
-  flex-direction: row;
-}
-
-.name, .slogan {
-  font-family: 'Lato', sans-serif;
+  flex-direction: column;
+	background-color: $black;
+  align-items: center;
+	height:30vw;
 }
 
 .user-icon {
@@ -20,14 +13,6 @@ header {
 
 .logo {
   flex-grow: 1;
-}
-
-.banner {
-  display: flex;
-  flex-direction: column;
-  background-color: #444343;
-  align-items: center;
-  height: 300px;
 }
 
 .nameHolder {
@@ -54,14 +39,13 @@ header {
 
 .startAction {
   display: none;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
 .more-info {
   flex-direction: row;
   justify-content: space-around;
-  width: 800px;
 }
 
 .holders {
@@ -94,14 +78,8 @@ header {
    margin:0;
  }
 
-.tagline, .appName{
+.tagline{
   color:$green
-
-}
-
-.appName{
-  margin-top: 3vw;
-  padding-left: 2vw;
 }
 
 .iconContainer {
@@ -114,4 +92,15 @@ header {
 input {
   margin: 1vw;
   height: 1vw;
+}
+
+.more-info {
+  color: $lightgray;
+  width: 90vw;
+
+}
+
+.infoTip{
+  width: 30%;
+  margin: 1vw;
 }
