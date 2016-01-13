@@ -7,25 +7,26 @@ router.get('/', function(req, res, next) {
   res.render('search', {user: req.user});
 });
 
-var apiKey = process.env.API_KEY;
-var url_team = 'https://cors-anywhere.herokuapp.com/http://api.probasketballapi.com/team?api_key='+apiKey;
+
+var url_team = 'http://api.probasketballapi.com/team?api_key='+ process.env.API_KEY;
 
 router.post('/', function(req,res){
-  var team1 = req.body.searchTeam1;
-  var team2 = req.body.searchTeam2;
+  var team1 = req.body.firstTeam;
+  var team2 = req.body.secondTeam;
+
+  console.log(req.body);
   var options1 = {
-    url: url_team + "&team_name=" + team1,
+    url: url_team + "&team_abbrv=" + team1,
     json: true
   }
   console.log(options1);
   var options2 = {
-    url: url_team + "&team_name=" + team2,
+    url: url_team + "&team_abbrv=" + team2,
     json: true
   }
   request.post(options1, function(err, response, body) {
     if (!err && response.statusCode == 200) {
       console.log(body);
-      res.render('index')
     } else {
       console.log(response.statusCode);
       console.log(err);
@@ -34,7 +35,6 @@ router.post('/', function(req,res){
   request.post(options2, function(err, response, body) {
     if (!err && response.statusCode == 200) {
       console.log(body);
-      res.render('index')
     } else {
       console.log(response.statusCode);
       console.log(err);
