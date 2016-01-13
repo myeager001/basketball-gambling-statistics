@@ -22,7 +22,7 @@ html
       button.action more-info
     div.holders
       form(action='/auth/login' method='post' class="login startAction active")
-        h2.login, login
+        h2.login login
         if error
           h2 #{error}
         input(type='text', placeholder='username', name='username')
