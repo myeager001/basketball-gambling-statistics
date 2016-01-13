@@ -4,13 +4,13 @@ block content
     //img application icon
     //h1 application name
     section.userInfo
-      h1 #{user.username} 
+      h1 Username: #{user.username} 
     //img
     section.statPreferences
       h1
       h2.title Statistical Preferences:
-      form
-        br
+      form.stats
+        
         label Category 1:
         radiogroup.category1 
           label  statistic 1
@@ -19,7 +19,7 @@ block content
           input.stat2(type='radio' name='stat2') 
           label  statistic 3
           input.stat3(type='radio' name='stat3')
-        br 
+        
         label Category 2: 
         radiogroup.category2 
           label  statistic 4 
@@ -28,7 +28,7 @@ block content
           input.stat5(type='radio' name='stat5') 
           label  statistic 6
           input.stat6(type='radio' name='stat6')
-        br
+        
         label Category 3:
         radiogroup.category3
           label  statistic 7
@@ -37,7 +37,7 @@ block content
           input.stat8(type='radio' name='stat8') 
           label  statistic 9
           input.stat9(type='radio' name='stat9') 
-        br
+        
         label Category 4:
         radiogroup.category4
           label  statistic 10
@@ -46,22 +46,22 @@ block content
           input.stat11(type='radio' name='stat11')             
           label  statistic 12
           input.stat12(type='radio' name='stat12') 
-        br
+        
         label Category 5:
         radiogroup.category5  
           label  statistic 13
           input.stat13(type='radio' name='stat13') 
           label  statistic 14
           input.stat14(type='radio' name='stat14')
-        br
+        
         label Category 6:
         radiogroup.category6
           label  statistic 15
           input.stat15(type='radio' name='stat15') 
           label  statistic 16
           input.stat16(type='radio' name='stat16') 
-        br
-        button(type='submit') Set Stat Preferences
+        
+        button(type='submit') Set New Preferences
       section.betHistory
         h1
         h2 Betting History:
