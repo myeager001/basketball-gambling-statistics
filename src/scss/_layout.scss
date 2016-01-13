@@ -1,3 +1,5 @@
+
+
 * {
 	padding: 0;
 	margin: 0;
@@ -6,7 +8,7 @@
 
 header{
   display: flex;
-  background-color: hsla(360, .4, .4, .7);
+  background: $white;
   flex-direction: row;
 }
 
@@ -71,6 +73,11 @@ header{
 }
 
 
+<<<<<<< HEAD:src/scss/style.scss
+=======
+
+
+>>>>>>> f1e96fb8d90c08dd3c9d6c9d83c3ac829b5dcd22:src/scss/_layout.scss
 /*
 ===================
 NAV BAR
