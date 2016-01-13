@@ -3,6 +3,7 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
     script(type='text/javascript', src='/javascript/bundle.js')
   body
@@ -18,7 +19,7 @@ html
       button.action more-info
     div.holders
       form(action='/auth/login' method='post' class="login startAction active")
-        h2 login
+        h2.login, login
         if error
           h2 #{error}
         input(type='text', placeholder='username', name='username')
@@ -27,7 +28,7 @@ html
         a(href='/auth/facebook') login with facebook
         button(type='submit') submit
       form(action='auth/signup', method='post' class="signup startAction")
-        h2 signup
+        h2.signUp signup
         if error
           h2 #{error}
         input(type='text', placeholder='username', name='username')

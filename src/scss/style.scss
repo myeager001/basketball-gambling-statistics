@@ -2,7 +2,8 @@
 	padding: 0;
 	margin: 0;
 	border: 0;
-	}
+}
+
 header{
   display: flex;
   background-color: hsla(360, .4, .4, .7);
@@ -20,7 +21,7 @@ header{
 .banner{
   display: flex;
   flex-direction: column;
-  background-color: red;
+  background-color: #444343;
   align-items: center;
   height: 300px;
 }
@@ -72,4 +73,11 @@ header{
 
 .active1{
   display: inline;
+}
+
+.action{
+	height: 50px;
+	width:100px;
+	border-radius: 20%;
+	background-color: #1fb24f;
 }
