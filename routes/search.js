@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 var apiKey = "?api_key=" + process.env.API_KEY;
 var url_team = 'http://api.probasketballapi.com/team';
-var url_teamAdv 'http://api.probasketballapi.com/advanced/team';
+var url_teamAdv = 'http://api.probasketballapi.com/advanced/team';
 
 
 router.post('/', function(req,res){
