@@ -1,5 +1,5 @@
 
-#Group App
+#G15 - Group Project 
 =======
 # basketball-gambling-statistics
 ##Project Description
