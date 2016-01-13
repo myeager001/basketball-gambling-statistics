@@ -23,7 +23,11 @@ header{
 .banner{
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   background-color: #444343;
+=======
+  background-color: $darkgray;
+>>>>>>> 05232d6587d1393e17e7494bb394f487c899e998
   align-items: center;
   height: 300px;
 }

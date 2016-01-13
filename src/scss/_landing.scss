@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   padding: 0;
   margin: 0;
@@ -72,4 +73,19 @@ header {
 
 .active1 {
   display: inline;
+=======
+.chart, .bball, .money {
+  width:2vw;
+  margin:2vw
+}
+
+.icon {
+  width:8vw
+}
+
+.iconContainer {
+  display:block;
+  margin: 3vw;
+  flex: auto;
+>>>>>>> 05232d6587d1393e17e7494bb394f487c899e998
 }
