@@ -33,6 +33,7 @@ body{
 }
 
 .nameHolder{
+	flex-grow: .5;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
