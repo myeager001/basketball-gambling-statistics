@@ -1,5 +1,4 @@
 
-
 * {
 	padding: 0;
 	margin: 0;
@@ -32,14 +31,6 @@ body{
 	height: 3vw;
 }
 
-.banner{
-  display: flex;
-  flex-direction: column;
-	background-color: $black;
-  align-items: center;
-	height:30vw;
-}
-
 .nameHolder{
   display: flex;
   flex-direction: row;
@@ -49,6 +40,17 @@ body{
 
 .taglineContainer{
 	height:4vw;
+}
+
+.appName{
+	font-size: 3vw;
+	margin-top: 2vw;
+	padding-left: 2vw;
+	color: $green;
+}
+
+.tagline{
+	font-size: 2.5vw;
 }
 
 .btnHolders{

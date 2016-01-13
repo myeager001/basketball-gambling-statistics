@@ -1,17 +1,10 @@
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
 
-header {
+.banner{
   display: flex;
-  background: white;
-  flex-direction: row;
-}
-
-.name, .slogan {
-  font-family: 'Lato', sans-serif;
+  flex-direction: column;
+	background-color: $black;
+  align-items: center;
+	height:30vw;
 }
 
 .user-icon {
@@ -85,14 +78,8 @@ header {
    margin:0;
  }
 
-.tagline, .appName{
+.tagline{
   color:$green
-
-}
-
-.appName{
-  margin-top: 3vw;
-  padding-left: 2vw;
 }
 
 .iconContainer {
