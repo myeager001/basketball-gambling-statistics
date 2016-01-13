@@ -9,9 +9,18 @@ html
   body
     header
       h2.logo basketball stats app
-      img(src='/assets/sample_user_pic.png', class='user-icon')
-    div.dropDownMenu1
-      a(href='/logout') logout
-      p
-      a(href='/profile') profile
+      nav
+        ul
+          li(class="drop")
+            a(href="#") Menu
+            div(class="dropdownContain")
+              div(class="dropOut")
+                ul
+                  li
+                    span Search
+                  li
+                    span Profile
+                  li
+                    span Log Out
+      img(src='/assets/sample_user_pic.png', class='user-icon')         						
     block content
