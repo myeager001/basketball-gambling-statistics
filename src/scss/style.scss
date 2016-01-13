@@ -46,10 +46,6 @@ header{
   width: 800px;
 }
 
-.active{
-  display: flex;
-}
-
 .holders{
   display: flex;
   justify-content: center;
@@ -58,4 +54,17 @@ header{
 
 .infoTip{
   width: 30%;
+}
+
+.dropDownMenu1{
+  display:none;
+  background-color: red;
+}
+
+.active{
+  display: flex;
+}
+
+.active1{
+  display: inline;
 }
