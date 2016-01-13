@@ -8,6 +8,8 @@ LocalStrategy = require('passport-local');
 GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 FacebookStrategy = require('passport-facebook').Strategy;
 require('dotenv').load();
+var error
+
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -23,22 +25,33 @@ router.use(passport.session());
 
 //local strategy
 passport.use(new LocalStrategy(function(username, password, done){
-  knex('users').select().where('username', username).first()
-  .then(function(user){
-    if(user){
-      if(user.is_local){
-          if(user && bcrypt.compareSync(password, user.hash)){
-            return done(null, user);
+  console.log(username);
+  console.log(password);
+  if(username && password){
+    knex('users').select().where('username', username).first()
+    .then(function(user){
+      if(user){
+        if(user.is_local){
+            if(user && bcrypt.compareSync(password, user.hash)){
+              return done(null, user);
+            }else {
+              return done("Invalid username or password", false)
+            }
+          }else{
+            console.log
+            return done("please log in with Facebook of Google", false)
           }
         }
-      }
-      else{
-        return done(null, false, {message: 'invalid username or password'});
-      }
-    }).catch(function(error){
-      console.log(error);
-      return done(error);
-    });
+        else{
+          return done("Invalid username or password", false)
+        }
+      }).catch(function(error){
+        console.log(error);
+        return done(error);
+      });
+  }else{
+    return done("please fill in both username and password", false)
+  }
 }));
 
 //google strategy
@@ -94,30 +107,45 @@ passport.use(new FacebookStrategy({
 );
 
 //localstratgey routes
-router.post('/auth/login',
- passport.authenticate('local', {failureRedirect: '/login'}),
- function(req, res){
-   res.redirect('/search');
+router.post('/auth/login', function(req, res, next){
+ passport.authenticate('local', function(err, user, info){
+   console.log(err);
+   console.log(user)
+   if(user){
+      req.logIn(user, function(err) {
+          if (err) { return next(err); }
+          return res.redirect('/search');
+     })
+   }else{
+
+     return res.render('landing', {error: err});
+   }
+ })(req, res, next);
 });
 
 router.post('/auth/signup', function(req, res){
-  knex('users').select().where('username', req.body.username).first().then(function(user){
-    if(!user){
-      knex('users').insert({username: req.body.username, hash: bcrypt.hashSync(req.body.password, 10), is_local: true})
-      .then(function(){
-        res.redirect('/');
+  if(req.body.username && req.body.password){
+    knex('users').select().where('username', req.body.username).first().then(function(user){
+      if(!user){
+        knex('users').insert({username: req.body.username, hash: bcrypt.hashSync(req.body.password, 10), is_local: true})
+        .then(function(){
+          res.redirect('/');
+        }).catch(function(){
+          error = "Can't add user to database";
+          res.render('landing', {error: error});
+        });
+      }else{
+        error = 'Username already exits. Try loging in with Facebook of Google';
+        res.render('landing', {error: error});
+      }
       }).catch(function(){
-        var error = "Can't add user to database";
+        error = "Can't add user to database";
         res.render('landing', {error: error});
       });
-    }else{
-      var error = 'Username already exits. Try loging in with Facebook of Google';
-      res.render('landing', {error: error});
-    }
-    }).catch(function(){
-      var error = "Can't add user to database";
-      res.render('landing', {error: error});
-    });
+  }else{
+    error = "please fill in both username and password"
+    res.render('landing', {error: error})
+  }
 });
 
 
