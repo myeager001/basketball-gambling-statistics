@@ -44,6 +44,14 @@ header {
   justify-content: space-between;
 }
 
+.action{
+	width: 6vw;
+	height: 3vw;
+	color: $darkgray;
+	background-color: $green;
+	border-radius: 15%;
+}
+
 .startAction {
   display: none;
   flex-direction: column;
@@ -105,5 +113,5 @@ header {
 
 input {
   margin: 1vw;
-  height: 2vw;
+  height: 1vw;
 }
