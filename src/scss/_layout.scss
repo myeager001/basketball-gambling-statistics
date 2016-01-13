@@ -4,11 +4,17 @@
 	padding: 0;
 	margin: 0;
 	border: 0;
+	font-family:'Exo 2', sans-serif;
 	}
+
 header{
   display: flex;
-  background: $white;
+	color: $green;
   flex-direction: row;
+}
+
+body{
+	background-color: $darkgray;
 }
 
 .user-icon{
@@ -22,9 +28,9 @@ header{
 .banner{
   display: flex;
   flex-direction: column;
-  background-color: $darkgray;
+  background-color: #000;
   align-items: center;
-  height: 300px;
+  height: 40vh;
 }
 
 .nameHolder{
@@ -35,10 +41,15 @@ header{
   width: 100%
 }
 
+.taglineContainer{
+	height:4vw;
+}
+
 .btnHolders{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+	margin:5vw;
 }
 
 .startAction{

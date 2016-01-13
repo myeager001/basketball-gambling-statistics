@@ -1,6 +1,17 @@
-.chart, .bball, .money {
-  width:2vw;
-  margin:2vw
+.chart, .bball{
+  width:12vw;
+  height:12vw;
+  margin:0;
+}
+
+ .money {
+   width:10vw;
+   height:12vw;
+   margin:0;
+ }
+
+.tagline, .appName{
+  color:$green
 }
 
 .icon {
@@ -8,7 +19,8 @@
 }
 
 .iconContainer {
-  display:block;
-  margin: 3vw;
-  flex: auto;
+  display: flex;
+  justify-content:space-around;
+  width: 100%;
+  margin-bottom: 1vw;
 }
