@@ -2,24 +2,27 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
     script(type='text/javascript', src='/javascript/bundle.js')
   body
     div.banner
       div.nameHolder
-        img(src='/assets/sample_user_pic.png')
-        h1 basketball stats
-      div.tagline
-        h1 we have all of you statistical needs for basketball
-
+        img.iconBig(src='/assets/icon_basketball.png')
+        h1.appName basketball stats
+      div.iconContainer
+          img.chart(src='/assets/icon_chart.png')
+          img.bball(src='/assets/icon_basketball.png')
+          img.money(src='/assets/icon_money.png')
+      div.taglineContainer
+        h1.tagline we have all of you statistical needs for basketball
     div.btnHolders
       button.action signup
       button.action login
       button.action more-info
     div.holders
       form(action='/auth/login' method='post' class="login startAction active")
-        h2 login
+        h2.login, login
         if error
           h2 #{error}
         input(type='text', placeholder='username', name='username')
@@ -27,8 +30,10 @@ html
         a(href='/auth/google') login with google
         a(href='/auth/facebook') login with facebook
         button(type='submit') submit
-      form(action='/auth/signup', method='post' class="signup startAction")
-        h2 signup
+
+      form(action='auth/signup', method='post' class="signup startAction")
+        h2.signUp signup
+
         if error
           h2 #{error}
         input(type='text', placeholder='username', name='username')
