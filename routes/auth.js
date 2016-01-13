@@ -25,18 +25,20 @@ router.use(passport.session());
 passport.use(new LocalStrategy(function(username, password, done){
   knex('users').select().where('username', username).first()
   .then(function(user){
-    if(user.is_local){
-        if(user && bcrypt.compareSync(password, user.hash)){
-          return done(null, user);
-        }else{
-          return done(null, false, {message: 'invalid username or password'});
+    if(user){
+      if(user.is_local){
+          if(user && bcrypt.compareSync(password, user.hash)){
+            return done(null, user);
+          }
         }
-      }return done(null, false, {message: 'please log in using facebook or google'})
-    })
-    .catch(function(error){
-    console.log(error);
-    return done(error);
-  });
+      }
+      else{
+        return done(null, false, {message: 'invalid username or password'});
+      }
+    }).catch(function(error){
+      console.log(error);
+      return done(error);
+    });
 }));
 
 //google strategy
