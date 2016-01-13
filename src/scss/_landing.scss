@@ -22,14 +22,6 @@ header {
   flex-grow: 1;
 }
 
-.banner {
-  display: flex;
-  flex-direction: column;
-  background-color: #444343;
-  align-items: center;
-  height: 300px;
-}
-
 .nameHolder {
   flex-grow: 1;
   display: flex;
@@ -54,14 +46,13 @@ header {
 
 .startAction {
   display: none;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
 .more-info {
   flex-direction: row;
   justify-content: space-around;
-  width: 800px;
 }
 
 .holders {
