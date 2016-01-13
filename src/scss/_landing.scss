@@ -1,31 +1,28 @@
 * {
-	padding: 0;
-	margin: 0;
-	border: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
-header{
+header {
   display: flex;
-  background: $white;
+  background: white;
   flex-direction: row;
 }
-.name{
-  font-family: 'Lato', sans-serif;
 
-}
-
-.slogan{
+.name, .slogan {
   font-family: 'Lato', sans-serif;
 }
-.user-icon{
+
+.user-icon {
   border-radius: 50%;
 }
 
-.logo{
+.logo {
   flex-grow: 1;
 }
 
-.banner{
+.banner {
   display: flex;
   flex-direction: column;
   background-color: #444343;
@@ -33,46 +30,46 @@ header{
   height: 300px;
 }
 
-.nameHolder{
+.nameHolder {
   flex-grow: 1;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  width: 100%
+  width: 100%;
 }
 
-.btnHolders{
+.btnHolders {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.startAction{
+.startAction {
   display: none;
   flex-direction: column;
   align-items: center;
 }
 
-.more-info{
+.more-info {
   flex-direction: row;
   justify-content: space-around;
   width: 800px;
 }
 
-.holders{
+.holders {
   display: flex;
   justify-content: center;
-  width: 100%
+  width: 100%;
 }
 
-.infoTip{
+.infoTip {
   width: 30%;
 }
 
-.active{
+.active {
   display: flex;
 }
 
-.active1{
+.active1 {
   display: inline;
 }
