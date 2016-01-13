@@ -1,3 +1,79 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+header {
+  display: flex;
+  background: white;
+  flex-direction: row;
+}
+
+.name, .slogan {
+  font-family: 'Lato', sans-serif;
+}
+
+.user-icon {
+  border-radius: 50%;
+}
+
+.logo {
+  flex-grow: 1;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  background-color: #444343;
+  align-items: center;
+  height: 300px;
+}
+
+.nameHolder {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.btnHolders {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.startAction {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.more-info {
+  flex-direction: row;
+  justify-content: space-around;
+  width: 800px;
+}
+
+.holders {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.infoTip {
+  width: 30%;
+}
+
+.active {
+  display: flex;
+}
+
+.active1 {
+  display: inline;
+}
+
 .chart, .bball{
   width:12vw;
   height:12vw;
@@ -12,6 +88,7 @@
 
 .tagline, .appName{
   color:$green
+
 }
 
 .appName{
