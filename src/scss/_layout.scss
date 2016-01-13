@@ -1,3 +1,5 @@
+
+
 * {
 	padding: 0;
 	margin: 0;
@@ -5,7 +7,7 @@
 	}
 header{
   display: flex;
-  background-color: hsla(360, .4, .4, .7);
+  background: $white;
   flex-direction: row;
 }
 
@@ -68,6 +70,9 @@ header{
 .active1{
   display: inline;
 }
+
+
+
 
 /*
 ===================
