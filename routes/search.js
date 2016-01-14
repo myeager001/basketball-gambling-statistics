@@ -38,9 +38,6 @@ router.post('/', function(req,res){
   // Promise.resolve(shotCharts(team1, team2)).then(function(results){
   //   // nothing
   // });
-  // Promise.resolve(gameScores(team1, team2)).then(function(results){
-  //   // nothing
-  // });
   // Promise.resolve(sportsVu(team1, team2)).then(function(results){
   //   // nothing
   // });
