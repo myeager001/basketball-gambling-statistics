@@ -28,7 +28,8 @@ module.exports = function(firstTeam, secondTeam){
     }
 
     var results = [{
-      team: firstTeam
+      team: firstTeam,
+      missed: 0
     }]
 
     function firstCall(){
@@ -42,25 +43,15 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                console.log(body2[0])
-                // console.log(body2);
-                // var count = 0;
-                //
-                // for (i=0;i<body2.length;i++) {
+                console.log(body2[0]);
+                // for(i=0;i<body2.length;i++){
                 //   if (body2[i].season === '2015') {
-                //     count++;
-                //     fourFactor1.fta_holder += JSON.parse(body2[i].fta_rate);
-                //     fourFactor1.efg_holder += JSON.parse(body2[i].efg_pct);
-                //     fourFactor1.oreb_holder += JSON.parse(body2[i].oreb_pct);
-                //     fourFactor1.tr_holder += JSON.parse(body2[i].tm_tov_pct);
-                //
+                //     if (body2[i].event_type == 'Missed Shot') {
+                //       results[0].missed += 1;
+                //     }
                 //   }
                 // }
-                // fourFactor1.fta_holder = fourFactor1.fta_holder / count;
-                // fourFactor1.efg_holder = fourFactor1.efg_holder / count;
-                // fourFactor1.oreb_holder = fourFactor1.oreb_holder / count;
-                // fourFactor1.tr_holder = fourFactor1.tr_holder / count;
-                // console.log(fourFactor1);
+                console.log(results);
                 resolve();
               } else {
                 reject(err);
@@ -75,7 +66,7 @@ module.exports = function(firstTeam, secondTeam){
     function secondCall(){
       return new Promise(function(resolve, reject) {
         if (secondTeam) {
-          results.push({team: secondTeam})
+          results.push({team: secondTeam, missed: 0})
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
               console.log(body);
@@ -85,25 +76,16 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  console.log(body2[0])
-                  // console.log(body2);
-                  // var count = 0;
-                  //
-                  // for (i=0;i<body2.length;i++) {
+                  console.log(body2[0]);
+                  // for(i=0;i<body2.length;i++){
                   //   if (body2[i].season === '2015') {
-                  //     count++;
-                  //     fourFactor2.fta_holder += JSON.parse(body2[i].fta_rate);
-                  //     fourFactor2.efg_holder += JSON.parse(body2[i].efg_pct);
-                  //     fourFactor2.oreb_holder += JSON.parse(body2[i].oreb_pct);
-                  //     fourFactor2.tr_holder += JSON.parse(body2[i].tm_tov_pct);
-                  //
+                  //     if (body2[i].event_type == 'Missed Shot') {
+                  //       results[1].missed += 1;
+                  //     }
                   //   }
                   // }
-                  // fourFactor2.fta_holder = fourFactor2.fta_holder / count;
-                  // fourFactor2.efg_holder = fourFactor2.efg_holder / count;
-                  // fourFactor2.oreb_holder = fourFactor2.oreb_holder / count;
-                  // fourFactor2.tr_holder = fourFactor2.tr_holder / count;
-                  // console.log(fourFactor2);
+
+                  console.log(results);
                   resolve();
                 } else {
                   reject(err);
