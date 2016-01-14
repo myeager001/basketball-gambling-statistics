@@ -9,6 +9,7 @@ var sportsVu = require('../algorithms/sportsVu');
 var playUse = require('../algorithms/playUse');
 var boxScore = require('../algorithms/boxScore');
 var teamMisc = require('../algorithms/teamMisc');
+var pointsOverTime = require('../algorithms/pointsOverTime');
 
 
 /* GET users listing. */
@@ -17,42 +18,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req,res){
-  console.log(req.body);
+  var promiseArray=[]
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
+  // promiseArray.push(efficiency(team1, team2));
+  // promiseArray.push(boxScore(team1, team2));
+  // promiseArray.push(shotCharts(team1, team2));
+  // promiseArray.push(sportsVu(team1, team2));
+  promiseArray.push(pointsOverTime(team1, team2));
 
-  // Promise.resolve(efficiency(team1, team2)).then(function(results){
-  //
-  //   var array = [];
-  //   array.push(results);
-  //   array.push(results);
-  //   //console.log(array);
-  //   toBeSent =JSON.stringify(array);
-  //   //console.log(toBeSent);
-  //   res.json(toBeSent);
-  // });
+  Promise.all(promiseArray).then(function(results){
+    toBeSent =JSON.stringify(results);
+    res.json(toBeSent);
+  });
 
-  // Promise.resolve(team4factor(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  // Promise.resolve(shotCharts(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  // Promise.resolve(gameScores(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  // Promise.resolve(sportsVu(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  // Promise.resolve(playUse(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  // Promise.resolve(boxScore(team1, team2)).then(function(results){
-  //
-  // });
-  // Promise.resolve(teamMisc(team1, team2)).then(function(results){
-  //   // nothing
-  // });
+
 
 });
 
