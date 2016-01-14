@@ -40,7 +40,7 @@ module.exports = function(firstTeam, secondTeam){
         return new Promise(function(resolve, reject) {
           request.post(options1, function(err, response, body) {
             if (!err && response.statusCode == 200) {
-              console.log(body);
+
               var options1adv = {
                 url: url_team4factor + "&team_id=" + body[0].id,
                 json: true
@@ -63,7 +63,7 @@ module.exports = function(firstTeam, secondTeam){
                   results[0].fourfact.efg_holder = results[0].fourfact.efg_holder / count;
                   results[0].fourfact.oreb_holder = results[0].fourfact.oreb_holder / count;
                   results[0].fourfact.tr_holder = results[0].fourfact.tr_holder / count;
-                  console.log(results);
+                  
                   resolve();
                 } else {
                   reject(err);
@@ -88,7 +88,7 @@ module.exports = function(firstTeam, secondTeam){
                   oreb_holder: 0}})
             request.post(options2, function(err, response, body) {
               if (!err && response.statusCode == 200) {
-                console.log(body);
+
                 var options2adv = {
                   url: url_team4factor + "&team_id=" + body[0].id,
                   json: true
@@ -111,7 +111,7 @@ module.exports = function(firstTeam, secondTeam){
                     results[1].fourfact.efg_holder = results[1].fourfact.efg_holder / count;
                     results[1].fourfact.oreb_holder = results[1].fourfact.oreb_holder / count;
                     results[1].fourfact.tr_holder = results[1].fourfact.tr_holder / count;
-                    console.log(results);
+                    //console.log(results);
                     resolve();
                   } else {
                     reject(err);
