@@ -7,11 +7,11 @@ block content
       h1 Username: #{user.username} 
     //img
     section.statPreferences
-      h1 Current Preferences
-      
-      div.currentPrefContainer
-        each preference in preferences
-          span.currentPref #{preference.name} 
+      div.prefContainer
+        h1 Current Preferences
+        div.currentPrefContainer
+          each preference in preferences
+            span.currentPref #{preference.name} 
           
       h1
       h2.title Statistical Preferences:
