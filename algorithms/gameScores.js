@@ -44,8 +44,8 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                //console.log(body2[0])
-                //
+                console.log(body2[0])
+
                 resolve();
               } else {
                 reject(err);
@@ -70,8 +70,8 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  //console.log(body2[0])
-                  //
+                  console.log(body2[0])
+
                   resolve();
                 } else {
                   reject(err);
