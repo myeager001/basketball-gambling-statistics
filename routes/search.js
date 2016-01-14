@@ -13,10 +13,22 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req,res){
+  console.log(req.body);
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
 
   Promise.resolve(efficiency(team1, team2)).then(function(results){
+
+    var array = [];
+    array.push(results);
+    toBeSent =JSON.stringify(array);
+    console.log(toBeSent);
+    res.json(toBeSent);
+  });
+  team4factor(team1, team2);
+
+
+
     // carray(results);
   });
   Promise.resolve(team4factor(team1, team2)).then(function(results){
@@ -30,6 +42,7 @@ router.post('/', function(req,res){
   });
 
   res.redirect('/results');
+
 });
 
 module.exports = router;

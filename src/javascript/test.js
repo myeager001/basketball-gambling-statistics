@@ -4,6 +4,8 @@ $(document).ready(function(){
     var tag = '.'+$(this).text();
     $('.active').toggleClass('active');
     $(tag).toggleClass('active');
-  })
+  });
+
+
 
 })
