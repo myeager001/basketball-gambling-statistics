@@ -43,15 +43,13 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                console.log(body2[0]);
+
                 for(i=0;i<body2.length;i++){
-                  if (body2[i].season === '2015') {
                     if (body2[i].event_type == 'Missed Shot') {
                       results[0].missed += 1;
-                    }
                   }
                 }
-                console.log(results);
+
                 resolve();
               } else {
                 reject(err);
@@ -69,19 +67,17 @@ module.exports = function(firstTeam, secondTeam){
           results.push({team: secondTeam, missed: 0})
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
-              
+
               var options2adv = {
                 url: url_shot + "&team_id=" + body[0].id,
                 json: true
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  console.log(body2[0]);
+                  
                   for(i=0;i<body2.length;i++){
-                    if (body2[i].season === '2015') {
                       if (body2[i].event_type == 'Missed Shot') {
                         results[1].missed += 1;
-                      }
                     }
                   }
 
