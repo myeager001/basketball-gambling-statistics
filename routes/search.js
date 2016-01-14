@@ -17,42 +17,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req,res){
-  console.log(req.body);
+  var promiseArray=[]
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
+  promiseArray.push(efficiency(team1, team2));
+  promiseArray.push(boxScore(team1, team2));
 
-  Promise.resolve(efficiency(team1, team2)).then(function(results){
-
-    var array = [];
-    array.push(results);
-    array.push(results);
-    //console.log(array);
-    toBeSent =JSON.stringify(array);
-    //console.log(toBeSent);
+  Promise.all(promiseArray).then(function(results){
+    toBeSent =JSON.stringify(results);
     res.json(toBeSent);
   });
 
-  // Promise.resolve(team4factor(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  // Promise.resolve(shotCharts(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  // Promise.resolve(gameScores(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  Promise.resolve(sportsVu(team1, team2)).then(function(results){
-    // nothing
-  });
-  // Promise.resolve(playUse(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  // Promise.resolve(boxScore(team1, team2)).then(function(results){
-  //   // nothing
-  // });
-  // Promise.resolve(teamMisc(team1, team2)).then(function(results){
-  //   // nothing
-  // });
 
 });
 
