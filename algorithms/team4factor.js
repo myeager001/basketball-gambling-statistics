@@ -76,7 +76,7 @@ module.exports = function(firstTeam, secondTeam){
                   oreb_holder = oreb_holder / count;
                   tr_holder = tr_holder / count;
 
-                  results.team1Stats = [fta_holder, efg_holder, tr_holder, oreb_holder]
+                  results.team1Stats = {data: [fta_holder, efg_holder, tr_holder, oreb_holder]};
                   resolve();
                 } else {
                   reject(err);
@@ -123,7 +123,7 @@ module.exports = function(firstTeam, secondTeam){
                     oreb_holder = oreb_holder / count;
                     tr_holder = tr_holder / count;
 
-                    results.team2Stats = [fta_holder, efg_holder, tr_holder, oreb_holder]
+                    results.team2Stats = {data: [fta_holder, efg_holder, tr_holder, oreb_holder]};
                     resolve();
                   } else {
                     reject(err);

@@ -96,7 +96,7 @@ module.exports = function(firstTeam, secondTeam){
                 blk = blk / count;
                 stl = stl / count;
 
-                results.team1Stats = [fgm, fga, ftm, fta, blk, stl]
+                results.team1Stats = {data: [fgm, fga, ftm, fta, blk, stl]};
                 //
                 resolve();
               } else {
@@ -162,7 +162,7 @@ module.exports = function(firstTeam, secondTeam){
                   blk = blk / count;
                   stl = stl / count;
 
-                  results.team2Stats = [fgm, fga, ftm, fta, blk, stl]
+                  results.team2Stats = {data:[fgm, fga, ftm, fta, blk, stl]};
                   resolve();
                 } else {
                   reject(err);
