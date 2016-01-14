@@ -1,5 +1,15 @@
 .searchTeam1, .searchTeam2 {
     margin: 2vw;
+    color: $white;
+    font-size: 2vw;
+}
+
+.searchTeam1{
+  background-color: $red;
+}
+
+.searchTeam2{
+  background-color: $blue
 }
 
 .teamChoice{
@@ -25,20 +35,20 @@
 
 .team1Display{
   flex-direction: row;
-  height: 20vw;
+  height: 30vw;
   border: 1px;
-  background-color: red;
-  width: 20vw;
-  border-radius: 10vw;
+  background-color: $red;
+  width: 30vw;
+  border-radius: 20vw;
 }
 
 .team2Display{
   flex-direction: row;
-  height: 20vw;
+  height: 30vw;
   border: 1px;
-  background-color: blue;
-  width: 20vw;
-  border-radius: 50%;
+  background-color: $blue;
+  width: 30vw;
+  border-radius: 20vw;
 }
 
 .searchButton{
