@@ -9,62 +9,62 @@ block content
     section.statPreferences
       h1 Current Preferences
       
-      div.currentPref
+      div.currentPrefContainer
         each preference in preferences
-          span #{preference.name} + ', '
+          span.currentPref #{preference.name} 
           
       h1
       h2.title Statistical Preferences:
       form(class='stats statUpdate' method='post' action='/profile')
         
-        label Category 1:
+        label.cat1 Category 1:
         radiogroup.category1 
-          label  statistic 1
+          label.1(for='stat1') statistic 1
           input.stat1(type='radio' name='stat1')
-          label  statistic 2
+          label.2(for='stat2')  statistic 2
           input.stat2(type='radio' name='stat2') 
-          label  statistic 3
+          label.3(for='stat3')  statistic 3
           input.stat3(type='radio' name='stat3')
         
-        label Category 2: 
+        label.cat2 Category 2: 
         radiogroup.category2 
-          label  statistic 4 
+          label.4(for='stat4')  statistic 4 
           input.stat4(type='radio' name='stat4') 
-          label  statistic 5
+          label.5(for='stat5')  statistic 5
           input.stat5(type='radio' name='stat5') 
-          label  statistic 6
+          label.6(for='stat6')  statistic 6
           input.stat6(type='radio' name='stat6')
         
-        label Category 3:
+        label.cat3 Category 3:
         radiogroup.category3
-          label  statistic 7
+          label.7(for='stat7') statistic 7
           input.stat7(type='radio' name='stat7') 
-          label  statistic 8
+          label.8(for='stat8') statistic 8
           input.stat8(type='radio' name='stat8') 
-          label  statistic 9
+          label.9(for='stat9')  statistic 9
           input.stat9(type='radio' name='stat9') 
         
-        label Category 4:
+        label.cat4 Category 4:
         radiogroup.category4
-          label  statistic 10
+          label.10(for='stat10')  statistic 10
           input.stat10(type='radio' name='stat10')
-          label  statistic 11
+          label.11(for='stat11')  statistic 11
           input.stat11(type='radio' name='stat11')             
-          label  statistic 12
+          label.12(for='stat12')  statistic 12
           input.stat12(type='radio' name='stat12') 
         
-        label Category 5:
+        label.cat5 Category 5:
         radiogroup.category5  
-          label  statistic 13
+          label.13(for='stat13')  statistic 13
           input.stat13(type='radio' name='stat13') 
-          label  statistic 14
+          label.14(for='stat14')  statistic 14
           input.stat14(type='radio' name='stat14')
         
-        label Category 6:
+        label.cat6 Category 6:
         radiogroup.category6
-          label  statistic 15
+          label.15(for='stat15')  statistic 15
           input.stat15(type='radio' name='stat15') 
-          label  statistic 16
+          label.16(for='stat16')  statistic 16
           input.stat16(type='radio' name='stat16') 
         
         button(type='submit' class='updateStats') Set New Preferences

@@ -82,7 +82,7 @@ NAV BAR
 */
 
 nav {
-	width:10vw;
+	width:12vw;
 	margin:2em auto;
 	margin-left: 66vw;
 	margin-right:1vw;
@@ -100,7 +100,7 @@ nav {
 
    a {
 	   font-weight: 400;
-	   line-height: 5em;
+	   line-height: 4em;
 	   padding: 0 1em;
 	   color: lighten(black,30%);
      text-decoration:none;
@@ -108,7 +108,7 @@ nav {
 }
 
 .dropdownContain {
-	width: 10vw;
+	width: 12vw;
 	position: absolute;
 	z-index: 2;
 	left: 50%;
@@ -117,7 +117,7 @@ nav {
 
 }
 .dropOut {
-	width: 10vw;
+	width: 12vw;
 	background: $lightgray;
 	float: left;
 	position: relative;
@@ -134,7 +134,7 @@ nav {
   transition: all 0.1s ease-out;
 
  ul {
-	padding: .25vw;
+	padding: .2vw;
 	margin:0
  }
 
