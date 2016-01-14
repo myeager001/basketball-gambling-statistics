@@ -40,6 +40,7 @@ module.exports = function(firstTeam, secondTeam){
       return new Promise(function(resolve, reject) {
         request.post(options1, function(err, response, body) {
           if (!err && response.statusCode == 200) {
+            var count = 9;
 
             var options1adv = {
               url: url_sport + "&team_id=" + body[0].id,
@@ -47,7 +48,26 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                console.log(body2[0])
+                for (i=0;i<body2.length;i++) {
+                  if (body2[i].season == '2015') {
+                    if (body2[i].fgm != '') {
+                      results[0].stats.tchs += JSON.parse(body2[i].tchs);
+                    }
+                    if (body2[i].fga != '') {
+                      results[0].stats.sast += JSON.parse(body2[i].sast);
+                    }
+                    if (body2[i].ftm != '') {
+                      results[0].stats.pass += JSON.parse(body2[i].pass);
+                    }
+
+                    count++;
+                  }
+                }
+
+                results[0].stats.tchs = results[0].stats.tchs / count;
+                results[0].stats.sast = results[0].stats.sast / count;
+                results[0].stats.pass = results[0].stats.pass / count;
+
 
                 resolve();
               } else {
@@ -63,9 +83,15 @@ module.exports = function(firstTeam, secondTeam){
     function secondCall(){
       return new Promise(function(resolve, reject) {
         if (secondTeam) {
-          results.push({team: secondTeam})
+          results.push({team: secondTeam,
+          stats: {
+            tchs: 0,
+            sast: 0,
+            pass: 0,
+          }})
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
+              var count = 0;
 
               var options2adv = {
                 url: url_sport + "&team_id=" + body[0].id,
@@ -73,7 +99,25 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  console.log(body2[0])
+                  for (i=0;i<body2.length;i++) {
+                    if (body2[i].season == '2015') {
+                      if (body2[i].fgm != '') {
+                        results[1].stats.tchs += JSON.parse(body2[i].tchs);
+                      }
+                      if (body2[i].fga != '') {
+                        results[1].stats.sast += JSON.parse(body2[i].sast);
+                      }
+                      if (body2[i].ftm != '') {
+                        results[1].stats.pass += JSON.parse(body2[i].pass);
+                      }
+
+                      count++;
+                    }
+                  }
+
+                  results[1].stats.tchs = results[1].stats.tchs / count;
+                  results[1].stats.sast = results[1].stats.sast / count;
+                  results[1].stats.pass = results[1].stats.pass / count;
 
                   resolve();
                 } else {
@@ -89,6 +133,7 @@ module.exports = function(firstTeam, secondTeam){
     }
 
     Promise.all([firstCall(),secondCall()]).then(function(){
+      console.log(results)
       resolve(results);
     }).catch(function(err){
       reject(err);
