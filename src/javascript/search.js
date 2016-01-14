@@ -1,5 +1,7 @@
-require('dotenv').load();
+
 $(document).ready(function(){
+
+
 
   $('#searchButton').on('click', function(e){
     e.preventDefault();
@@ -8,7 +10,7 @@ $(document).ready(function(){
     $('#team1image').css('background-image', 'url(/assets/team_icons/'+team1 + '.png)');
     $('#team2image').css('background-image', 'url(/assets/team_icons/'+team2 + '.png)');
     $.ajax({
-      url: process.env.HOST +'/search',
+      url: getAPIHost() +'/search',
       method: 'post',
       data: {firstTeam: team1, secondTeam: team2},
     }).done(function(data){
@@ -66,3 +68,11 @@ $(document).ready(function(){
     })
 
   })
+
+  function getAPIHost() {
+    if(window.location.hostname == 'localhost') {
+      return "http://localhost:3000";
+    } else {
+      return "https://basket-stats.herokuapp.com"
+    }
+  }
