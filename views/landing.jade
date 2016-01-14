@@ -26,11 +26,11 @@ html
         h2.login login
         if error
           h2 #{error}
-        input(type='text', placeholder='username', name='username')
-        input(type='password', placeholder='password', name='password')
+        input(type='text', placeholder='username', name='username' class='username')
+        input(type='password', placeholder='password', name='password' class='password')
+        button(type='submit' class='submit') submit
         a(href='/auth/google') login with google
         a(href='/auth/facebook') login with facebook
-        button(type='submit') submit
 
       form(action='auth/signup', method='post' class="signup startAction")
         h2.signUp signup
