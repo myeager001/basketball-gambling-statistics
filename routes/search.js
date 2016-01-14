@@ -50,9 +50,9 @@ router.post('/', function(req,res){
   // Promise.resolve(boxScore(team1, team2)).then(function(results){
   //
   // });
-  Promise.resolve(teamMisc(team1, team2)).then(function(results){
-    // nothing
-  });
+  // Promise.resolve(teamMisc(team1, team2)).then(function(results){
+  //   // nothing
+  // });
 
 });
 

@@ -27,9 +27,20 @@ module.exports = function(firstTeam, secondTeam){
       json: true
     }
 
-    var results = [{
-      team: firstTeam
-    }]
+    var results = {}
+    results.title = "Misc";
+    results.type = "Bar";
+    results.options = {
+      scaleBeginAtZero: false,
+    }
+    results.team1 = firstTeam;
+    results.team2 = secondTeam;
+    results.columnNames = [
+      'Points Off Turnovers',
+      'Second Chance Points',
+      'Points In The Paint',
+      'Fast Break Points'
+    ];
 
     function firstCall(){
       return new Promise(function(resolve, reject) {
@@ -42,7 +53,30 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                console.log(body2[0])
+                var pts_off_tov = 0; // Points Off Turnovers
+                var pts_2nd_chance = 0; // Second Chance Points
+                var pts_paint = 0; // Points In The Paint
+                var pts_fb = 0; // Fast Break Points
+                var count = 0;
+
+                for (i=0;i<body2.length;i++) {
+                  if (body2[i].pts_off_tov != '') {
+                    pts_off_tov += JSON.parse(body2[i].pts_off_tov);
+                  }
+                  if (body2[i].pts_2nd_chance != '') {
+                    pts_2nd_chance += JSON.parse(body2[i].pts_2nd_chance);
+                  }
+                  if (body2[i].pts_paint != '') {
+                    pts_paint += JSON.parse(body2[i].pts_paint);
+                  }
+                  if (body2[i].pts_fb != '') {
+                    pts_fb += JSON.parse(body2[i].pts_fb);
+                  }
+
+                  count++;
+                }
+
+                results.team1Stats = [pts_off_tov, pts_2nd_chance, pts_paint, pts_fb]
                 //
                 resolve();
               } else {
@@ -58,7 +92,6 @@ module.exports = function(firstTeam, secondTeam){
     function secondCall(){
       return new Promise(function(resolve, reject) {
         if (secondTeam) {
-          results.push({team: secondTeam})
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
 
@@ -68,7 +101,30 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  console.log(body2[0])
+                  var pts_off_tov = 0; // Points Off Turnovers
+                  var pts_2nd_chance = 0; // Second Chance Points
+                  var pts_paint = 0; // Points In The Paint
+                  var pts_fb = 0; // Fast Break Points
+                  var count = 0;
+
+                  for (i=0;i<body2.length;i++) {
+                    if (body2[i].pts_off_tov != '') {
+                      pts_off_tov += JSON.parse(body2[i].pts_off_tov);
+                    }
+                    if (body2[i].pts_2nd_chance != '') {
+                      pts_2nd_chance += JSON.parse(body2[i].pts_2nd_chance);
+                    }
+                    if (body2[i].pts_paint != '') {
+                      pts_paint += JSON.parse(body2[i].pts_paint);
+                    }
+                    if (body2[i].pts_fb != '') {
+                      pts_fb += JSON.parse(body2[i].pts_fb);
+                    }
+
+                    count++;
+                  }
+
+                  results.team2Stats = [pts_off_tov, pts_2nd_chance, pts_paint, pts_fb]
                   //
                   resolve();
                 } else {

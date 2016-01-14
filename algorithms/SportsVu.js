@@ -28,7 +28,7 @@ module.exports = function(firstTeam, secondTeam){
     }
 
     var results = {};
-    results.title = "Box Score";
+    results.title = "Sports VU";
     results.type = "Bar";
     results.options = {
       scaleBeginAtZero: false,
