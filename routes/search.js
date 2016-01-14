@@ -26,12 +26,7 @@ router.post('/', function(req,res){
     console.log(toBeSent);
     res.json(toBeSent);
   });
-  team4factor(team1, team2);
 
-
-
-    // carray(results);
-  });
   Promise.resolve(team4factor(team1, team2)).then(function(results){
     // nothing
   });
@@ -45,7 +40,6 @@ router.post('/', function(req,res){
     // nothing
   });
 
-  res.redirect('/results');
 
 });
 
