@@ -1,5 +1,4 @@
 
-
 * {
 	padding: 0;
 	margin: 0;
@@ -18,6 +17,7 @@ body{
 	background-color: $darkgray;
 }
 
+
 .user-icon{
   border-radius: 50%;
 }
@@ -32,30 +32,19 @@ body{
 	height: 3vw;
 }
 
-.banner{
-  display: flex;
-  flex-direction: column;
-	background-color: $black;
-  align-items: center;
-	height:30vw;
-}
-
 .nameHolder{
+	flex-grow: .5;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   width: 100%
 }
 
-.taglineContainer{
-	height:4vw;
-}
-
-.btnHolders{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-	margin:4vw;
+.appName{
+	font-size: 3vw;
+	margin-top: 2vw;
+	padding-left: 2vw;
+	color: $green;
 }
 
 .startAction{
@@ -64,22 +53,10 @@ body{
   align-items: center;
 }
 
-
-
-.more-info{
-  flex-direction: row;
-  justify-content: space-around;
-  width: 800px;
-}
-
 .holders{
   display: flex;
   justify-content: center;
   width: 100%
-}
-
-.infoTip{
-  width: 30%;
 }
 
 .active{

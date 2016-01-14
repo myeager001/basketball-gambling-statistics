@@ -1,17 +1,10 @@
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
 
-header {
+.banner{
   display: flex;
-  background: white;
-  flex-direction: row;
-}
-
-.name, .slogan {
-  font-family: 'Lato', sans-serif;
+  flex-direction: column;
+	background-color: $black;
+  align-items: center;
+	height:30vw;
 }
 
 .user-icon {
@@ -22,26 +15,11 @@ header {
   flex-grow: 1;
 }
 
-.banner {
-  display: flex;
-  flex-direction: column;
-  background-color: #444343;
-  align-items: center;
-  height: 300px;
-}
-
-.nameHolder {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.btnHolders {
+.btnHolders{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+	margin:1.5vw;
 }
 
 .action{
@@ -54,11 +32,11 @@ header {
 
 .startAction {
   display: none;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
-.more-info {
+.more-info{
   flex-direction: row;
   justify-content: space-around;
   width: 800px;
@@ -68,10 +46,6 @@ header {
   display: flex;
   justify-content: center;
   width: 100%;
-}
-
-.infoTip {
-  width: 30%;
 }
 
 .active {
@@ -94,14 +68,9 @@ header {
    margin:0;
  }
 
-.tagline, .appName{
-  color:$green
-
-}
-
-.appName{
-  margin-top: 3vw;
-  padding-left: 2vw;
+.tagline{
+  color:$green;
+  font-size: 2.5vw;
 }
 
 .iconContainer {
@@ -114,4 +83,15 @@ header {
 input {
   margin: 1vw;
   height: 1vw;
+}
+
+.more-info {
+  color: $lightgray;
+  width: 90vw;
+
+}
+
+.infoTip{
+  width: 30%;
+  margin: 1vw;
 }
