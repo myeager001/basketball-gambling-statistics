@@ -23,13 +23,14 @@
 	height: 3vw;
 	color: $white;
 	background-color: $green;
-	border-radius: 15%;
+	border-radius: 5px;
 }
 
 .startAction {
   display: none;
   flex-direction: row;
   align-items: center;
+  color: $white;
 }
 
 .more-info{
@@ -99,9 +100,10 @@ input {
   height:5vh;
   width:20vw;
   background-color: $green;
-  border-radius: 15%;
+  border-radius: 5px;
   color: $white;
   font-size: 3vh;
+  margin-bottom: 10px;
 }
 .username{
   height:5vh;
@@ -112,7 +114,25 @@ input {
   height:5vh;
   width:20vw;
 }
-input.username[type='text'], textarea {
+input[type='text, password'] textarea {
+  height:5vh;
+  width:20vw;
   font-size:3vh;
   color: $white;
+}
+.btnLogin{
+  height:5vh;
+  width:20vw;
+  background-color: $green;
+  border-radius: 5px;
+  color: $white;
+  font-size: 3vh;
+  margin-bottom: 10px;
+}
+a {
+  color: $white;
+  text-decoration: none;
+  font-size: 2vh;
+  text-align: center;
+  margin-left: 4vh;
 }
