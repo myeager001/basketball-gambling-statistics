@@ -1,4 +1,4 @@
-require('dotenv').load();
+
 $(document).ready(function(){
 
   $('#searchButton').on('click', function(e){
