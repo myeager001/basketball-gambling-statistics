@@ -4,6 +4,7 @@ var request = require('request');
 var efficiency = require('../algorithms/compareEff');
 var team4factor = require('../algorithms/team4factor');
 var shotCharts = require('../algorithms/shotCharts');
+var shotCharts = require('../algorithms/gameScores');
 
 
 /* GET users listing. */
@@ -15,7 +16,6 @@ router.post('/', function(req,res){
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
 
-
   Promise.resolve(efficiency(team1, team2)).then(function(results){
     // carray(results);
   });
@@ -25,8 +25,9 @@ router.post('/', function(req,res){
   Promise.resolve(shotCharts(team1, team2)).then(function(results){
     // nothing
   });
-
-
+  Promise.resolve(gameScores(team1, team2)).then(function(results){
+    // nothing
+  });
 
   res.redirect('/results');
 });

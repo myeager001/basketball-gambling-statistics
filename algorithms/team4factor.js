@@ -1,6 +1,11 @@
 var request = require('request');
 require('dotenv').load();
 
+/*
+The NBA four factor team stats resource includes all of the four factor statistics,
+ effective shooting percentage, free throw attempt rate, turnover ratio, and offensive rebound percentage.
+*/
+
 module.exports = function(firstTeam, secondTeam){
   return new Promise(function(resolve, reject){
 

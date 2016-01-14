@@ -1,6 +1,12 @@
 var request = require('request');
 require('dotenv').load();
 
+/*
+The NBA Shot Charts resource returns information about every shot taken in the NBA.
+ It returns the location in x,y format, the shot type (hook, jump, layup, dunk),
+  and whether or not the shot was made, as well as when the shot was taken in the game.
+*/
+
 module.exports = function(firstTeam, secondTeam){
   return new Promise(function(resolve, reject) {
 
