@@ -19,27 +19,40 @@ $(document).ready(function(){
       for(var i = 0; i < charts.length; i++){
           options = charts[i].options
           graphType = charts[i].type;
+
           data = {
           labels: charts[i].columnNames,
-          datasets: [
-            {
-              fillColor: "7f0000",
-              strokeColor: "rgba(220,220,220,0.8)",
-              highlightFill: "rgba(220,220,220,0.75)",
-              highlightStroke: "rgba(220,220,220,1)",
-              label: charts[i].team1,
-              data: charts[i].team1Stats,
-            },
-            {
-              fillColor: "00007f",
-              strokeColor: "rgba(151,187,205,0.8)",
-              highlightFill: "rgba(151,187,205,0.75)",
-              highlightStroke: "rgba(151,187,205,1)",
-              label: charts[i].team2,
-              data: charts[i].team2Stats,
-            }
-          ]
-        }
+          datasets: [],
+          }
+          for (var key in charts[i].team1Stats){
+            data.datasets.push(
+              {
+                fillColor: "7f0000",
+                strokeColor: "rgba(220,220,220,0.8)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                label: charts[i].team1,
+                data: charts[i].team1Stats[key]
+              }
+            )
+          }
+          for(var list in charts[i].team2Stats){
+            var dataArray = list
+            console.log(dataArray);
+            data.datasets.push(
+              {
+                fillColor: "7f0000",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                label: charts[i].team2,
+                data: dataArray,
+              }
+            )
+          }
+
         var canvas = document.createElement("canvas");
         canvas.width=400;
         canvas.height=400;
@@ -53,7 +66,8 @@ $(document).ready(function(){
         var ctx = tobo.getContext('2d');
         if(graphType === "Bar"){
           var myNewChart = new Chart(ctx).Bar(data, options);
-        }if(graphType === "line"){
+        }if(graphType === "Line"){
+          console.log('here')
           var myNewChart = new Chart(ctx).Line(data, options);
         }if(graphType === "Radar"){
           var myNewChart = new Chart(ctx).Radar(data, options);
