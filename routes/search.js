@@ -21,23 +21,23 @@ router.post('/', function(req,res){
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
 
-  Promise.resolve(efficiency(team1, team2)).then(function(results){
-
-    var array = [];
-    array.push(results);
-    array.push(results);
-    //console.log(array);
-    toBeSent =JSON.stringify(array);
-    //console.log(toBeSent);
-    res.json(toBeSent);
-  });
+  // Promise.resolve(efficiency(team1, team2)).then(function(results){
+  //
+  //   var array = [];
+  //   array.push(results);
+  //   array.push(results);
+  //   //console.log(array);
+  //   toBeSent =JSON.stringify(array);
+  //   //console.log(toBeSent);
+  //   res.json(toBeSent);
+  // });
 
   // Promise.resolve(team4factor(team1, team2)).then(function(results){
   //   // nothing
   // });
-  Promise.resolve(shotCharts(team1, team2)).then(function(results){
-    // nothing
-  });
+  // Promise.resolve(shotCharts(team1, team2)).then(function(results){
+  //   // nothing
+  // });
   // Promise.resolve(gameScores(team1, team2)).then(function(results){
   //   // nothing
   // });
@@ -50,9 +50,9 @@ router.post('/', function(req,res){
   // Promise.resolve(boxScore(team1, team2)).then(function(results){
   //
   // });
-  // Promise.resolve(teamMisc(team1, team2)).then(function(results){
-  //   // nothing
-  // });
+  Promise.resolve(teamMisc(team1, team2)).then(function(results){
+    // nothing
+  });
 
 });
 
