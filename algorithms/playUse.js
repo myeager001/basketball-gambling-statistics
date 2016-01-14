@@ -2,16 +2,17 @@ var request = require('request');
 require('dotenv').load();
 
 /*
-The NBA Shot Charts resource returns information about every shot taken in the NBA.
- It returns the location in x,y format, the shot type (hook, jump, layup, dunk),
-  and whether or not the shot was made, as well as when the shot was taken in the game.
+The NBA player usage stats resource includes all of the
+players usage stats while the player is on the court,
+such as percent of team rebounds, field goal attempts,
+three point attempts, free throw attempts, steals, and blocks.
 */
 
 module.exports = function(firstTeam, secondTeam){
   return new Promise(function(resolve, reject) {
 
     var apiKey = "?api_key=" + process.env.API_KEY;
-    var url_shot = "http://api.probasketballapi.com/shots" + apiKey;
+    var url_use = "http://api.probasketballapi.com/usage/player" + apiKey;
     var url_team = 'http://api.probasketballapi.com/team' + apiKey;
 
     var team1id = "";
@@ -28,8 +29,7 @@ module.exports = function(firstTeam, secondTeam){
     }
 
     var results = [{
-      team: firstTeam,
-      missed: 0
+      team: firstTeam
     }]
 
     function firstCall(){
@@ -38,18 +38,13 @@ module.exports = function(firstTeam, secondTeam){
           if (!err && response.statusCode == 200) {
 
             var options1adv = {
-              url: url_shot + "&team_id=" + body[0].id,
+              url: url_use + "&team_id=" + body[0].id,
               json: true
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-
-                // for(i=0;i<body2.length;i++){
-                //     if (body2[i].event_type == 'Missed Shot') {
-                //       results[0].missed += 1;
-                //   }
-                // }
-
+                //console.log(body2[0])
+                //
                 resolve();
               } else {
                 reject(err);
@@ -64,24 +59,18 @@ module.exports = function(firstTeam, secondTeam){
     function secondCall(){
       return new Promise(function(resolve, reject) {
         if (secondTeam) {
-          results.push({team: secondTeam, missed: 0})
+          results.push({team: secondTeam})
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
 
               var options2adv = {
-                url: url_shot + "&team_id=" + body[0].id,
+                url: url_use + "&team_id=" + body[0].id,
                 json: true
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
+                  //console.log(body2[0])
                   //
-                  // for(i=0;i<body2.length;i++){
-                  //     if (body2[i].event_type == 'Missed Shot') {
-                  //       results[1].missed += 1;
-                  //   }
-                  // }
-
-                  //console.log(results);
                   resolve();
                 } else {
                   reject(err);

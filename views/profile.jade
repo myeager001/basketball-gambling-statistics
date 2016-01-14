@@ -9,7 +9,7 @@ block content
     section.statPreferences
       h1
       h2.title Statistical Preferences:
-      form.stats
+      form(class='stats statUpdate' method='post' action='/profile')
         
         label Category 1:
         radiogroup.category1 
@@ -61,7 +61,7 @@ block content
           label  statistic 16
           input.stat16(type='radio' name='stat16') 
         
-        button(type='submit') Set New Preferences
+        button(type='submit' class='updateStats') Set New Preferences
       section.betHistory
         h1
         h2 Betting History:
