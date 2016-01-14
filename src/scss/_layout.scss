@@ -33,6 +33,11 @@ body{
 	height: 3vw;
 }
 
+.user-icon {
+  border-radius: 50%;
+	width: 10vw;
+}
+
 .nameHolder{
 	flex-grow: .5;
   display: flex;
@@ -77,11 +82,14 @@ NAV BAR
 */
 
 nav {
-	width:13em;
-  margin:2em auto;
+	width:10vw;
+	margin:2em auto;
+	margin-left: 66vw;
+	margin-right:1vw;
 	background-color: hsla(360, .4, .4, .7);
   box-shadow: 0 0 4px rgba(0,0,0,.15);
 	list-style: none;
+	font-size: 1vw;
 }
 
 
@@ -100,17 +108,17 @@ nav {
 }
 
 .dropdownContain {
-	width: 13em;
+	width: 10vw;
 	position: absolute;
 	z-index: 2;
 	left: 50%;
-	margin-left: -6.5em;
-	top: -300px;
+	margin-left: -6vw;
+	top: -30vw;
 
 }
 .dropOut {
-	width: 13em;
-	background:#f6f6f6;
+	width: 10vw;
+	background: $lightgray;
 	float: left;
 	position: relative;
 	margin-top: 0;
@@ -126,7 +134,7 @@ nav {
   transition: all 0.1s ease-out;
 
  ul {
-	padding: .3em 0;
+	padding: .25vw;
 	margin:0
  }
 
@@ -150,11 +158,11 @@ nav {
 		}
 	&:hover{
 	  border-color: lighten(#FFB135,10%);
-	  color: darken(#fff, 70%);
-	  background: darken(#f7f7f7,4%);
+	  color: $white;
+	  background: $green;
 
 	  span{
-		 color:darken(#fff, 50%)
+		 color:$white
 	  }
 	}
 }
