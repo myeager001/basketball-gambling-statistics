@@ -6,6 +6,9 @@ var team4factor = require('../algorithms/team4factor');
 var shotCharts = require('../algorithms/shotCharts');
 var gameScores = require('../algorithms/gameScores');
 var sportsVu = require('../algorithms/sportsVu');
+var playUse = require('../algorithms/playUse');
+var boxScore = require('../algorithms/boxScore');
+var teamMisc = require('../algorithms/teamMisc');
 
 
 /* GET users listing. */
@@ -23,9 +26,9 @@ router.post('/', function(req,res){
     var array = [];
     array.push(results);
     array.push(results);
-    console.log(array);
+    //console.log(array);
     toBeSent =JSON.stringify(array);
-    console.log(toBeSent);
+    //console.log(toBeSent);
     res.json(toBeSent);
   });
 
@@ -38,7 +41,16 @@ router.post('/', function(req,res){
   // Promise.resolve(gameScores(team1, team2)).then(function(results){
   //   // nothing
   // });
-  // Promise.resolve(sportsVu(team1, team2)).then(function(results){
+  Promise.resolve(sportsVu(team1, team2)).then(function(results){
+    // nothing
+  });
+  // Promise.resolve(playUse(team1, team2)).then(function(results){
+  //   // nothing
+  // });
+  // Promise.resolve(boxScore(team1, team2)).then(function(results){
+  //   // nothing
+  // });
+  // Promise.resolve(teamMisc(team1, team2)).then(function(results){
   //   // nothing
   // });
 

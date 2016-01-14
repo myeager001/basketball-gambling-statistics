@@ -42,7 +42,7 @@ module.exports = function(home_team, away_team){
 
         request.post(options1, function(err, response, body) {
           if (!err && response.statusCode == 200) {
-            console.log(body);
+            
             var options1adv = {
               url: url_teamAdv + "&team_id=" + body[0].id,
               json: true
