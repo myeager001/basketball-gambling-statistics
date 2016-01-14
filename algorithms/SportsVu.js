@@ -93,12 +93,14 @@ module.exports = function(firstTeam, secondTeam){
         })
     })
   }
+
     function secondCall(){
       return new Promise(function(resolve, reject) {
         if (secondTeam) {
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
               var count = 9;
+
 
               var options1adv = {
                 url: url_sport + "&team_id=" + body[0].id,
@@ -130,6 +132,7 @@ module.exports = function(firstTeam, secondTeam){
                   tchs = tchs / count;
                   sast = sast / count;
                   pass = pass / count;
+
 
                   results.team2Stats = [tchs, sast, pass];
 
