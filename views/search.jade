@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p.welcome Welcome to #{title}
   section.teamChoice
     div
       h1.searchMessage Choose two teams to display a comparison, choose one team to view stats only
@@ -70,13 +70,15 @@ block content
           option(label="Toronto Raptors", value="TOR")
           option(label="Utah Jazz", value="UTA")
           option(label="Washington Wizards", value="WAS")
-        button(type='submit' id="searchButton") GO
+        button(type='submit' id="searchButton") 
+            p.go GO
 
-  section.teamDisplay
-    div
+  section.teams
+    div.teamDisplay
       div.team1Display
+        div.team1Logo
       div.team2Display
-    div
+    div.team2Logo
   div(id='resultsDiv')
 
       
