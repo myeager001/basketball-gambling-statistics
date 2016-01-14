@@ -1,6 +1,12 @@
 var request = require('request');
 require('dotenv').load();
 
+/*
+The NBA advanced team stats resource includes all of the typical
+advanced box score statistics, such as Pace, Offensive and
+Defensive ratings, and true shooting percentage.
+*/
+
 module.exports = function(home_team, away_team){
   return new Promise(function(resolve, reject){
 
