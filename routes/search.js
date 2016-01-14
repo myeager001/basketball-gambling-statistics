@@ -4,7 +4,6 @@ var request = require('request');
 var efficiency = require('../algorithms/compareEff');
 var team4factor = require('../algorithms/team4factor');
 var shotCharts = require('../algorithms/shotCharts');
-var gameScores = require('../algorithms/gameScores');
 var sportsVu = require('../algorithms/sportsVu');
 var playUse = require('../algorithms/playUse');
 var boxScore = require('../algorithms/boxScore');

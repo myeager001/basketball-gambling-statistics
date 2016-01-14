@@ -8,9 +8,11 @@ block content
     //img
     section.statPreferences
       h1 Current Preferences
+      
       div.currentPref
-        
-    
+        each preference in preferences
+          span #{preference.name} + ', '
+          
       h1
       h2.title Statistical Preferences:
       form(class='stats statUpdate' method='post' action='/profile')
