@@ -27,14 +27,21 @@ module.exports = function(firstTeam, secondTeam){
       json: true
     }
 
-    var results = [{
-      team: firstTeam,
-      stats: {
-        tchs: 0,
-        sast: 0,
-        pass: 0,
-      }
-    }]
+    var results = {};
+    results.title = "Box Score";
+    results.type = "Bar";
+    results.options = {
+      scaleBeginAtZero: false,
+    }
+    results.team1 = firstTeam;
+    results.team2 = secondTeam;
+    results.columnNames = [
+      'Touches',
+      'Secondary Assists',
+      'Passes Made',
+    ];
+
+
 
     function firstCall(){
       return new Promise(function(resolve, reject) {
@@ -48,26 +55,32 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
+                var tchs = 0; // touches
+                var sast = 0; // secondary assists
+                var pass = 0; // passes made
+                var count = 0;
+
                 for (i=0;i<body2.length;i++) {
                   if (body2[i].season == '2015') {
                     if (body2[i].fgm != '') {
-                      results[0].stats.tchs += JSON.parse(body2[i].tchs);
+                      tchs += JSON.parse(body2[i].tchs);
                     }
                     if (body2[i].fga != '') {
-                      results[0].stats.sast += JSON.parse(body2[i].sast);
+                      sast += JSON.parse(body2[i].sast);
                     }
                     if (body2[i].ftm != '') {
-                      results[0].stats.pass += JSON.parse(body2[i].pass);
+                      pass += JSON.parse(body2[i].pass);
                     }
 
                     count++;
                   }
                 }
 
-                results[0].stats.tchs = results[0].stats.tchs / count;
-                results[0].stats.sast = results[0].stats.sast / count;
-                results[0].stats.pass = results[0].stats.pass / count;
+                tchs = tchs / count;
+                sast = sast / count;
+                pass = pass / count;
 
+                results.team1Stats = [tchs, sast, pass]
 
                 resolve();
               } else {
@@ -83,43 +96,37 @@ module.exports = function(firstTeam, secondTeam){
     function secondCall(){
       return new Promise(function(resolve, reject) {
         if (secondTeam) {
-          results.push({team: secondTeam,
-          stats: {
-            tchs: 0,
-            sast: 0,
-            pass: 0,
-          }})
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
-              var count = 0;
+              if (!err && response.statusCode == 200) {
+                var tchs = 0; // touches
+                var sast = 0; // secondary assists
+                var pass = 0; // passes made
+                var count = 0;
 
-              var options2adv = {
-                url: url_sport + "&team_id=" + body[0].id,
-                json: true
-              }
-              request.post(options2adv, function(err, response, body2) {
-                if (!err && response.statusCode == 200) {
-                  for (i=0;i<body2.length;i++) {
-                    if (body2[i].season == '2015') {
-                      if (body2[i].fgm != '') {
-                        results[1].stats.tchs += JSON.parse(body2[i].tchs);
-                      }
-                      if (body2[i].fga != '') {
-                        results[1].stats.sast += JSON.parse(body2[i].sast);
-                      }
-                      if (body2[i].ftm != '') {
-                        results[1].stats.pass += JSON.parse(body2[i].pass);
-                      }
-
-                      count++;
+                for (i=0;i<body2.length;i++) {
+                  if (body2[i].season == '2015') {
+                    if (body2[i].fgm != '') {
+                      tchs += JSON.parse(body2[i].tchs);
                     }
+                    if (body2[i].fga != '') {
+                      sast += JSON.parse(body2[i].sast);
+                    }
+                    if (body2[i].ftm != '') {
+                      pass += JSON.parse(body2[i].pass);
+                    }
+
+                    count++;
                   }
+                }
 
-                  results[1].stats.tchs = results[1].stats.tchs / count;
-                  results[1].stats.sast = results[1].stats.sast / count;
-                  results[1].stats.pass = results[1].stats.pass / count;
+                tchs = tchs / count;
+                sast = sast / count;
+                pass = pass / count;
 
-                  resolve();
+                results.team2Stats = [tchs, sast, pass]
+
+                resolve();
                 } else {
                   reject(err);
                 }
