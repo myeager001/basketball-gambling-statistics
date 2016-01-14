@@ -1,3 +1,4 @@
+require('dotenv').load();
 $(document).ready(function(){
 
   $('#searchButton').on('click', function(e){
@@ -7,7 +8,7 @@ $(document).ready(function(){
     $('#team1image').css('background-image', 'url(/assets/team_icons/'+team1 + '.png)');
     $('#team2image').css('background-image', 'url(/assets/team_icons/'+team2 + '.png)');
     $.ajax({
-      url: 'http://localhost:3000/search',
+      url: process.env.HOST +'/search',
       method: 'post',
       data: {firstTeam: team1, secondTeam: team2},
     }).done(function(data){
