@@ -29,17 +29,22 @@ module.exports = function(firstTeam, secondTeam){
       json: true
     }
 
-    var results = [{
-      team: firstTeam,
-      scores: {
-        fgm:0, //field goals made
-        fga:0, // field goals attempted
-        ftm:0, // free throws made
-        fta:0, // free throws attempted
-        blk:0, // blocks
-        stl:0 // steals
-      }
-    }]
+    var results = {};
+    results.title = "Box Score";
+    results.type = "Bar"
+    results.options = {
+      scaleBeginAtZero: false,
+    }
+    results.team1 = firstTeam;
+    results.team2 = secondTeam;
+    results.columnNames = [
+      'Field Goals Made',
+      'Field Goals Attempted',
+      'Free Throws Made',
+      'Free Throws Attempted',
+      'Blocks',
+      'Steals'
+    ];
 
     function firstCall(){
       return new Promise(function(resolve, reject) {
@@ -53,38 +58,46 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
+                var fgm = 0; //field goals made
+                var fga = 0; // field goals attempted
+                var ftm = 0; // free throws made
+                var fta = 0; // free throws attempted
+                var blk = 0; // blocks
+                var stl = 0; // steals
 
                 for (i=0;i<body2.length;i++) {
                   if (body2[i].season == '2015') {
                     if (body2[i].fgm != '') {
-                      results[0].scores.fgm += JSON.parse(body2[i].fgm);
+                      fgm += JSON.parse(body2[i].fgm);
                     }
                     if (body2[i].fga != '') {
-                      results[0].scores.fga += JSON.parse(body2[i].fga);
+                      fga += JSON.parse(body2[i].fga);
                     }
                     if (body2[i].ftm != '') {
-                      results[0].scores.ftm += JSON.parse(body2[i].ftm);
+                      ftm += JSON.parse(body2[i].ftm);
                     }
                     if (body2[i].fta != '') {
-                      results[0].scores.fta += JSON.parse(body2[i].fta);
+                      fta += JSON.parse(body2[i].fta);
                     }
                     if (body2[i].blk != '') {
-                      results[0].scores.blk += JSON.parse(body2[i].blk);
+                      blk += JSON.parse(body2[i].blk);
                     }
                     if (body2[i].stl != '') {
-                      results[0].scores.stl += JSON.parse(body2[i].stl);
+                      stl += JSON.parse(body2[i].stl);
                     }
 
                     count++;
                   }
                 }
 
-                results[0].scores.fgm = results[0].scores.fgm / count;
-                results[0].scores.fga = results[0].scores.fga / count;
-                results[0].scores.ftm = results[0].scores.ftm / count;
-                results[0].scores.fta = results[0].scores.fta / count;
-                results[0].scores.blk = results[0].scores.blk / count;
-                results[0].scores.stl = results[0].scores.stl / count;
+                fgm = fgm / count;
+                fga = fga / count;
+                ftm = ftm / count;
+                fta = fta / count;
+                blk = blk / count;
+                stl = stl / count;
+
+                results.team1Stats = [fgm, fga, ftm, fta, blk, stl]
                 //
                 resolve();
               } else {
@@ -101,18 +114,6 @@ module.exports = function(firstTeam, secondTeam){
     function secondCall(){
       return new Promise(function(resolve, reject) {
         if (secondTeam) {
-
-          results.push({
-            team: secondTeam,
-            scores: {
-              fgm:0,
-              fga:0,
-              ftm:0,
-              fta:0,
-              blk:0,
-              stl:0
-            }
-          })
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
               var count = 0;
@@ -123,38 +124,46 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
+                  var fgm = 0; //field goals made
+                  var fga = 0; // field goals attempted
+                  var ftm = 0; // free throws made
+                  var fta = 0; // free throws attempted
+                  var blk = 0; // blocks
+                  var stl = 0; // steals
+
                   for (i=0;i<body2.length;i++) {
                     if (body2[i].season == '2015') {
                       if (body2[i].fgm != '') {
-                        results[1].scores.fgm += JSON.parse(body2[i].fgm);
+                        fgm += JSON.parse(body2[i].fgm);
                       }
                       if (body2[i].fga != '') {
-                        results[1].scores.fga += JSON.parse(body2[i].fga);
+                        fga += JSON.parse(body2[i].fga);
                       }
                       if (body2[i].ftm != '') {
-                        results[1].scores.ftm += JSON.parse(body2[i].ftm);
+                        ftm += JSON.parse(body2[i].ftm);
                       }
                       if (body2[i].fta != '') {
-                        results[1].scores.fta += JSON.parse(body2[i].fta);
+                        fta += JSON.parse(body2[i].fta);
                       }
                       if (body2[i].blk != '') {
-                        results[1].scores.blk += JSON.parse(body2[i].blk);
+                        blk += JSON.parse(body2[i].blk);
                       }
                       if (body2[i].stl != '') {
-                        results[1].scores.stl += JSON.parse(body2[i].stl);
+                        stl += JSON.parse(body2[i].stl);
                       }
 
                       count++;
                     }
                   }
 
-                  results[1].scores.fgm = results[1].scores.fgm / count;
-                  results[1].scores.fga = results[1].scores.fga / count;
-                  results[1].scores.ftm = results[1].scores.ftm / count;
-                  results[1].scores.fta = results[1].scores.fta / count;
-                  results[1].scores.blk = results[1].scores.blk / count;
-                  results[1].scores.stl = results[1].scores.stl / count;
-                  //
+                  fgm = fgm / count;
+                  fga = fga / count;
+                  ftm = ftm / count;
+                  fta = fta / count;
+                  blk = blk / count;
+                  stl = stl / count;
+
+                  results.team2Stats = [fgm, fga, ftm, fta, blk, stl]
                   resolve();
                 } else {
                   reject(err);

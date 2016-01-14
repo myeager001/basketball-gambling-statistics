@@ -27,10 +27,21 @@ module.exports = function(firstTeam, secondTeam){
       json: true
     }
 
-    var results = [{
-      team: firstTeam,
-      missed: 0
-    }]
+    var results = {};
+    results.type = "Bar"
+    results.options = {
+      scaleBeginAtZero: false,
+    }
+    results.team1 = firstTeam;
+    results.team2 = secondTeam;
+    results.columnNames = [
+      'Field Goals Made',
+      'Field Goals Attempted',
+      'Free Throws Made',
+      'Free Throws Attempted',
+      'Blocks',
+      'Steals'
+    ];
 
     function firstCall(){
       return new Promise(function(resolve, reject) {
@@ -44,6 +55,7 @@ module.exports = function(firstTeam, secondTeam){
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
 
+                console.log(body2[0])
                 // for(i=0;i<body2.length;i++){
                 //     if (body2[i].event_type == 'Missed Shot') {
                 //       results[0].missed += 1;
@@ -74,12 +86,12 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  //
-                  // for(i=0;i<body2.length;i++){
-                  //     if (body2[i].event_type == 'Missed Shot') {
-                  //       results[1].missed += 1;
-                  //   }
-                  // }
+                  for(i=0;i<20;i++){
+                    console.log(body2[i]);
+                    //   if (body2[i].event_type == 'Missed Shot') {
+                    //     results[1].missed += 1;
+                    // }
+                  }
 
                   //console.log(results);
                   resolve();
