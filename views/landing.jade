@@ -29,8 +29,10 @@ html
         input(type='text', placeholder='username', name='username' ,class='username')
         input(type='password', placeholder='password', name='password', class='password')
         button(type='submit' class='submit') submit
-        a(href='/auth/google') login with google
-        a(href='/auth/facebook') login with facebook
+        div.btnLogin
+          a.google(href='/auth/google') login with google
+        div.btnLogin
+          a.facebook(href='/auth/facebook') login with facebook
 
       form(action='auth/signup', method='post' class="signup startAction")
         h2.signUp signup
@@ -40,8 +42,10 @@ html
         input(type='text', placeholder='username', name='username',class='username')
         input(type='password', placeholder='password', name='password',class='password')
         button(type='submit',class='submit') signup
-        a(href='/auth/google') signup with google
-        a(href='/auth/facebook') signup with facebook
+        div.btnLogin
+          a.google(href='/auth/google') signup with google
+        div.btnLogin
+          a.facebook(href='/auth/facebook') signup with facebook
       div(class='more-info startAction')
         div.infoTip
           h2 useful stat for serious gamblers
