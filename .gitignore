@@ -36,6 +36,5 @@ npm-debug.log
 
 #database
 basketball-gambling-statistics-db
-db
 migrations
 seeds

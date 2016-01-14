@@ -4,7 +4,11 @@ var request = require('request');
 var efficiency = require('../algorithms/compareEff');
 var team4factor = require('../algorithms/team4factor');
 var shotCharts = require('../algorithms/shotCharts');
+<<<<<<< HEAD
 var sportsVu = require('../algorithms/sportsVu');
+=======
+var sportsVu = require('../algorithms/SportsVu');
+>>>>>>> e27e9207db30cbd3e78c27e397e02afbc3f0616e
 var playUse = require('../algorithms/playUse');
 var boxScore = require('../algorithms/boxScore');
 var teamMisc = require('../algorithms/teamMisc');
@@ -21,20 +25,18 @@ router.post('/', function(req,res){
   var promiseArray=[]
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
-  // promiseArray.push(efficiency(team1, team2));
-  // promiseArray.push(boxScore(team1, team2));
-  // promiseArray.push(shotCharts(team1, team2));
-  // promiseArray.push(sportsVu(team1, team2));
-  // // promiseArray.push(pointsOverTime(team1, team2));
-  //
-  // Promise.all(promiseArray).then(function(results){
-  //   toBeSent =JSON.stringify(results);
-  //   res.json(toBeSent);
-  // });
+  
+  promiseArray.push(efficiency(team1, team2));
+  promiseArray.push(boxScore(team1, team2));
+  promiseArray.push(shotCharts(team1, team2));
+  promiseArray.push(sportsVu(team1, team2));
+  // promiseArray.push(pointsOverTime(team1, team2));
 
-  Promise.resolve(averageAge(team1,team2)).then(function(results){
-    console.log(results)
-  })
+  Promise.all(promiseArray).then(function(results){
+    toBeSent =JSON.stringify(results);
+    res.json(toBeSent);
+  });
+
 
 
 
