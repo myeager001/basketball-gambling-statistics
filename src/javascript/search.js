@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   $('#searchButton').on('click', function(e){
     e.preventDefault();
     var team1 = $('.searchTeam1').val();
@@ -7,8 +8,8 @@ $(document).ready(function(){
       url: 'http://localhost:3000/search',
       method: 'post',
       data: {firstTeam: team1, secondTeam: team2},
-    }).done(function(stuff){
-      charts = JSON.parse(stuff);
+    }).done(function(data){
+      charts = JSON.parse(data);
       console.log(data);
       for(var i = 0; i < charts.length; i++){
         var data = {
@@ -32,59 +33,21 @@ $(document).ready(function(){
             }
           ]
         }
-        options =
-        {
-    //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-    scaleBeginAtZero : true,
-
-    //Boolean - Whether grid lines are shown across the chart
-    scaleShowGridLines : true,
-
-    //String - Colour of the grid lines
-    scaleGridLineColor : "rgba(0,0,0,.05)",
-
-    //Number - Width of the grid lines
-    scaleGridLineWidth : 1,
-
-    //Boolean - Whether to show horizontal lines (except X axis)
-    scaleShowHorizontalLines: true,
-
-    //Boolean - Whether to show vertical lines (except Y axis)
-    scaleShowVerticalLines: true,
-
-    //Boolean - If there is a stroke on each bar
-    barShowStroke : true,
-
-    //Number - Pixel width of the bar stroke
-    barStrokeWidth : 2,
-
-    //Number - Spacing between each of the X value sets
-    barValueSpacing : 5,
-
-    //Number - Spacing between data sets within X values
-    barDatasetSpacing : 1,
-
-    //String - A legend template
-    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
-  }
         console.log('here')
         var canvas = document.createElement("canvas");
         canvas.width=400;
         canvas.height=400;
-        canvas.id='boko'
+        canvas.id='canvas'+i
         console.log(data)
         console.log(canvas);
         var div = document.getElementById('resultsDiv');
         div.appendChild(canvas);
-        var tobo = document.getElementById('boko');
+        var tobo = document.getElementById("canvas"+i);
         console.log(tobo);
         var ctx = tobo.getContext('2d');
         var myNewChart = new Chart(ctx).Bar(data, {barShowStroke: false});
-
       }
+      })
     })
+
   })
-
-
-})
