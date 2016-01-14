@@ -27,14 +27,21 @@ module.exports = function(firstTeam, secondTeam){
       json: true
     }
 
-    var results = [{
-      team: firstTeam,
-      fourfact: {
-        fta_holder: 0, //free throw attempt rate
-        efg_holder: 0, // effective shoorting percentage
-        tr_holder: 0, // turnover ratio
-        oreb_holder: 0} // offensive rebound percentage
-      }]
+    var results = {};
+    results.title = "Team Four Factor";
+    results.type = "Bar";
+    results.options = {
+      scaleBeginAtZero: false,
+    }
+    results.team1 = firstTeam;
+    results.team2 = secondTeam;
+    results.columnNames = [
+      'Free Throw Attempt Rate',
+      'Effective Shooting Percentage',
+      'Turnover Ratio',
+      'Offensive Rebound Percentage'
+    ];
+
 
       function firstCall(){
         return new Promise(function(resolve, reject) {
@@ -47,23 +54,29 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options1adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  var count = 0;
-
                   for (i=0;i<body2.length;i++) {
+                    var fta_holder = 0; //free throw attempt rate
+                    var efg_holder = 0; // effective shooting percentage
+                    var tr_holder =  0; // turnover ratio
+                    var oreb_holder = 0; // offensive rebound percentage
+                    var count = 0;
+
                     if (body2[i].season === '2015') {
+                      fta_holder += JSON.parse(body2[i].fta_rate);
+                      efg_holder += JSON.parse(body2[i].efg_pct);
+                      oreb_holder += JSON.parse(body2[i].oreb_pct);
+                      tr_holder += JSON.parse(body2[i].tm_tov_pct);
+
                       count++;
-                      results[0].fourfact.fta_holder += JSON.parse(body2[i].fta_rate);
-                      results[0].fourfact.efg_holder += JSON.parse(body2[i].efg_pct);
-                      results[0].fourfact.oreb_holder += JSON.parse(body2[i].oreb_pct);
-                      results[0].fourfact.tr_holder += JSON.parse(body2[i].tm_tov_pct);
 
                     }
                   }
-                  results[0].fourfact.fta_holder = results[0].fourfact.fta_holder / count;
-                  results[0].fourfact.efg_holder = results[0].fourfact.efg_holder / count;
-                  results[0].fourfact.oreb_holder = results[0].fourfact.oreb_holder / count;
-                  results[0].fourfact.tr_holder = results[0].fourfact.tr_holder / count;
+                  fta_holder = fta_holder / count;
+                  efg_holder = efg_holder / count;
+                  oreb_holder = oreb_holder / count;
+                  tr_holder = tr_holder / count;
 
+                  results.team1Stats = [fta_holder, efg_holder, tr_holder, oreb_holder]
                   resolve();
                 } else {
                   reject(err);
@@ -80,38 +93,37 @@ module.exports = function(firstTeam, secondTeam){
       function secondCall(){
         return new Promise(function(resolve, reject) {
           if (secondTeam) {
-            results.push({name: secondTeam,
-               fourfact: {
-                  fta_holder: 0,
-                  efg_holder: 0,
-                  tr_holder: 0,
-                  oreb_holder: 0}})
             request.post(options2, function(err, response, body) {
               if (!err && response.statusCode == 200) {
-
                 var options2adv = {
                   url: url_team4factor + "&team_id=" + body[0].id,
                   json: true
                 }
                 request.post(options2adv, function(err, response, body2) {
                   if (!err && response.statusCode == 200) {
-                    var count = 0;
-
                     for (i=0;i<body2.length;i++) {
+                      var fta_holder = 0; //free throw attempt rate
+                      var efg_holder = 0; // effective shooting percentage
+                      var tr_holder =  0; // turnover ratio
+                      var oreb_holder = 0; // offensive rebound percentage
+                      var count = 0;
+
                       if (body2[i].season === '2015') {
+                        fta_holder += JSON.parse(body2[i].fta_rate);
+                        efg_holder += JSON.parse(body2[i].efg_pct);
+                        oreb_holder += JSON.parse(body2[i].oreb_pct);
+                        tr_holder += JSON.parse(body2[i].tm_tov_pct);
+
                         count++;
-                        results[1].fourfact.fta_holder += JSON.parse(body2[i].fta_rate);
-                        results[1].fourfact.efg_holder += JSON.parse(body2[i].efg_pct);
-                        results[1].fourfact.oreb_holder += JSON.parse(body2[i].oreb_pct);
-                        results[1].fourfact.tr_holder += JSON.parse(body2[i].tm_tov_pct);
 
                       }
                     }
-                    results[1].fourfact.fta_holder = results[1].fourfact.fta_holder / count;
-                    results[1].fourfact.efg_holder = results[1].fourfact.efg_holder / count;
-                    results[1].fourfact.oreb_holder = results[1].fourfact.oreb_holder / count;
-                    results[1].fourfact.tr_holder = results[1].fourfact.tr_holder / count;
-                    //console.log(results);
+                    fta_holder = fta_holder / count;
+                    efg_holder = efg_holder / count;
+                    oreb_holder = oreb_holder / count;
+                    tr_holder = tr_holder / count;
+
+                    results.team2Stats = [fta_holder, efg_holder, tr_holder, oreb_holder]
                     resolve();
                   } else {
                     reject(err);
