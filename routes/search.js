@@ -9,6 +9,7 @@ var playUse = require('../algorithms/playUse');
 var boxScore = require('../algorithms/boxScore');
 var teamMisc = require('../algorithms/teamMisc');
 var pointsOverTime = require('../algorithms/pointsOverTime');
+var averageAge= require('../algorithms/averageAge')
 
 
 /* GET users listing. */
@@ -20,16 +21,20 @@ router.post('/', function(req,res){
   var promiseArray=[]
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
-  promiseArray.push(efficiency(team1, team2));
-  promiseArray.push(boxScore(team1, team2));
-  promiseArray.push(shotCharts(team1, team2));
-  promiseArray.push(sportsVu(team1, team2));
-  // promiseArray.push(pointsOverTime(team1, team2));
+  // promiseArray.push(efficiency(team1, team2));
+  // promiseArray.push(boxScore(team1, team2));
+  // promiseArray.push(shotCharts(team1, team2));
+  // promiseArray.push(sportsVu(team1, team2));
+  // // promiseArray.push(pointsOverTime(team1, team2));
+  //
+  // Promise.all(promiseArray).then(function(results){
+  //   toBeSent =JSON.stringify(results);
+  //   res.json(toBeSent);
+  // });
 
-  Promise.all(promiseArray).then(function(results){
-    toBeSent =JSON.stringify(results);
-    res.json(toBeSent);
-  });
+  Promise.resolve(averageAge(team1,team2)).then(function(results){
+    console.log(results)
+  })
 
 
 
