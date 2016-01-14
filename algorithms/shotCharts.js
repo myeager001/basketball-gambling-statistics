@@ -27,10 +27,18 @@ module.exports = function(firstTeam, secondTeam){
       json: true
     }
 
-    var results = [{
-      team: firstTeam,
-      missed: 0
-    }]
+    var results = {};
+    results.title = "Shot Chart";
+    results.type = "Radar";
+    results.options = {
+    }
+    results.team1 = firstTeam;
+    results.team2 = secondTeam;
+    results.columnNames = [
+      'Missed Shots',
+      'Jump Shot',
+      'Layup Shot'
+    ];
 
     function firstCall(){
       return new Promise(function(resolve, reject) {
@@ -43,12 +51,25 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
+                var missed = 0;
+                var jump = 0;
+                var layup = 0;
+                var count = 0;
 
-                // for(i=0;i<body2.length;i++){
-                //     if (body2[i].event_type == 'Missed Shot') {
-                //       results[0].missed += 1;
-                //   }
-                // }
+                for(i=0;i<body2.length;i++) {
+                  if (body2[i].event_type == 'Missed Shot') {
+                    missed++;
+                  }
+                  if (body2[i].action_type == 'Jump Shot') {
+                    jump++;
+                  }
+                  if (body2[i].action_type == 'Layup Shot') {
+                    layup++;
+                  }
+                  count++;
+                }
+
+                results.team1Stats = [missed, jump, layup]
 
                 resolve();
               } else {
@@ -64,7 +85,6 @@ module.exports = function(firstTeam, secondTeam){
     function secondCall(){
       return new Promise(function(resolve, reject) {
         if (secondTeam) {
-          results.push({team: secondTeam, missed: 0})
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
 
@@ -74,14 +94,26 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  //
-                  // for(i=0;i<body2.length;i++){
-                  //     if (body2[i].event_type == 'Missed Shot') {
-                  //       results[1].missed += 1;
-                  //   }
-                  // }
+                  var missed = 0;
+                  var jump = 0;
+                  var layup = 0;
+                  var count = 0;
 
-                  //console.log(results);
+                  for(i=0;i<body2.length;i++) {
+                    if (body2[i].event_type == 'Missed Shot') {
+                      missed++;
+                    }
+                    if (body2[i].action_type == 'Jump Shot') {
+                      jump++;
+                    }
+                    if (body2[i].action_type == 'Layup Shot') {
+                      layup++;
+                    }
+                    count++;
+                  }
+
+                  results.team2Stats = [missed, jump, layup]
+
                   resolve();
                 } else {
                   reject(err);
