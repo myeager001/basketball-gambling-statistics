@@ -26,7 +26,7 @@ router.post('/', function(req,res){
     var array = [];
     array.push(results);
     array.push(results);
-    console.log(array);
+    //console.log(array);
     toBeSent =JSON.stringify(array);
     //console.log(toBeSent);
     res.json(toBeSent);
@@ -41,9 +41,9 @@ router.post('/', function(req,res){
   // Promise.resolve(gameScores(team1, team2)).then(function(results){
   //   // nothing
   // });
-  // Promise.resolve(sportsVu(team1, team2)).then(function(results){
-  //   // nothing
-  // });
+  Promise.resolve(sportsVu(team1, team2)).then(function(results){
+    // nothing
+  });
   // Promise.resolve(playUse(team1, team2)).then(function(results){
   //   // nothing
   // });

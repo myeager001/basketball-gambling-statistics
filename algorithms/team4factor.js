@@ -30,10 +30,10 @@ module.exports = function(firstTeam, secondTeam){
     var results = [{
       team: firstTeam,
       fourfact: {
-        fta_holder: 0,
-        efg_holder: 0,
-        tr_holder: 0,
-        oreb_holder: 0}
+        fta_holder: 0, //free throw attempt rate
+        efg_holder: 0, // effective shoorting percentage
+        tr_holder: 0, // turnover ratio
+        oreb_holder: 0} // offensive rebound percentage
       }]
 
       function firstCall(){
@@ -63,7 +63,7 @@ module.exports = function(firstTeam, secondTeam){
                   results[0].fourfact.efg_holder = results[0].fourfact.efg_holder / count;
                   results[0].fourfact.oreb_holder = results[0].fourfact.oreb_holder / count;
                   results[0].fourfact.tr_holder = results[0].fourfact.tr_holder / count;
-                  
+
                   resolve();
                 } else {
                   reject(err);
