@@ -57,30 +57,25 @@
 }
 
 .team2Logo{
-
+  
 }
 
 .team1Display{
   flex-direction: row;
-  height: 30vw;
+  height: 25vw;
   border: 1px;
   background-color: $red;
-  width: 30vw;
-  border-radius: 20vw;
+  width: 25vw;
+  border-radius: 12.5vw;
   box-shadow: 0px 0px 5px $black;
 }
 
 .team2Display{
   flex-direction: row;
-  height: 30vw;
+  height: 25vw;
   border: 1px;
   background-color: $blue;
-  width: 30vw;
-  border-radius: 20vw;
+  width: 25vw;
+  border-radius: 12.5vw;
   box-shadow: 0px 0px 5px $black;;
-}
-
-.searchButton{
-  width: 8vw;
-
 }
