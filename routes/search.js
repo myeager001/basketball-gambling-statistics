@@ -40,8 +40,6 @@ router.post('/', function(req,res){
     // nothing
   });
 
-  res.redirect('/results');
-
 });
 
 module.exports = router;
