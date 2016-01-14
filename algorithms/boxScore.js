@@ -18,7 +18,6 @@ module.exports = function(firstTeam, secondTeam){
 
     var team1id = "";
     var team2id = "";
-
     var options1 = {
       url: url_team + "&team_abbrv=" + firstTeam,
       json: true

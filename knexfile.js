@@ -1,4 +1,4 @@
-// Update with your config settings.
+require('dotenv').load();
 
 module.exports = {
 
