@@ -31,11 +31,7 @@ router.post('/', function(req,res){
   });
 
   Promise.resolve(team4factor(team1, team2)).then(function(results){
-    var array = [];
-    array.push(results);
-    toBeSent =JSON.stringify(array);
-    console.log(toBeSent);
-    res.json(toBeSent);
+    // nothing
   });
   Promise.resolve(shotCharts(team1, team2)).then(function(results){
     // nothing

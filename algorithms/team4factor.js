@@ -40,7 +40,7 @@ module.exports = function(firstTeam, secondTeam){
         return new Promise(function(resolve, reject) {
           request.post(options1, function(err, response, body) {
             if (!err && response.statusCode == 200) {
-              console.log(body);
+
               var options1adv = {
                 url: url_team4factor + "&team_id=" + body[0].id,
                 json: true
@@ -88,7 +88,7 @@ module.exports = function(firstTeam, secondTeam){
                   oreb_holder: 0}})
             request.post(options2, function(err, response, body) {
               if (!err && response.statusCode == 200) {
-                console.log(body);
+                
                 var options2adv = {
                   url: url_team4factor + "&team_id=" + body[0].id,
                   json: true
