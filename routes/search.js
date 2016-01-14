@@ -10,24 +10,22 @@ router.get('/', function(req, res, next) {
   res.render('search', {user: req.user});
 });
 
-var apiKey = "?api_key=" + process.env.API_KEY;
-var url_team = 'http://api.probasketballapi.com/team' + apiKey;
-var url_teamAdv = 'http://api.probasketballapi.com/advanced/team' + apiKey;
-var url_team4factor = 'http://api.probasketballapi.com/four_factor/team' + apiKey;
-
 router.post('/', function(req,res){
+  console.log(req.body);
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
 
 
   Promise.resolve(efficiency(team1, team2)).then(function(results){
-    console.log(results);
+    var array = [];
+    array.push(results);
+    toBeSent =JSON.stringify(array);
+    console.log(toBeSent);
+    res.json(toBeSent);
   });
   team4factor(team1, team2);
 
 
-
-  res.redirect('/results');
 });
 
 module.exports = router;
