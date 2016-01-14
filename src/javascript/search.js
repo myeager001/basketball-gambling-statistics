@@ -10,8 +10,7 @@ $(document).ready(function(){
       data: {firstTeam: team1, secondTeam: team2},
     }).done(function(data){
       charts = JSON.parse(data);
-      var graphType = charts.type;
-      console.log(graphType)
+      console.log(charts);
       for(var i = 0; i < charts.length; i++){
           options = charts[i].options
           graphType = charts[i].type;
@@ -19,7 +18,7 @@ $(document).ready(function(){
           labels: charts[i].columnNames,
           datasets: [
             {
-              fillColor: "rgba(220,220,220,0.5)",
+              fillColor: "7f0000",
               strokeColor: "rgba(220,220,220,0.8)",
               highlightFill: "rgba(220,220,220,0.75)",
               highlightStroke: "rgba(220,220,220,1)",
@@ -27,7 +26,7 @@ $(document).ready(function(){
               data: charts[i].team1Stats,
             },
             {
-              fillColor: "rgba(151,187,205,0.5)",
+              fillColor: "00007f",
               strokeColor: "rgba(151,187,205,0.8)",
               highlightFill: "rgba(151,187,205,0.75)",
               highlightStroke: "rgba(151,187,205,1)",
@@ -36,7 +35,6 @@ $(document).ready(function(){
             }
           ]
         }
-        console.log('here')
         var canvas = document.createElement("canvas");
         canvas.width=400;
         canvas.height=400;

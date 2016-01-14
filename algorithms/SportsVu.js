@@ -93,11 +93,18 @@ module.exports = function(firstTeam, secondTeam){
         })
     })
   }
-    function secondCall(){
-      return new Promise(function(resolve, reject) {
-        if (secondTeam) {
-          request.post(options2, function(err, response, body) {
-            if (!err && response.statusCode == 200) {
+  function firstCall(){
+    return new Promise(function(resolve, reject) {
+      if(secondTeam){
+        request.post(options1, function(err, response, body) {
+          if (!err && response.statusCode == 200) {
+            var count = 9;
+
+            var options1adv = {
+              url: url_sport + "&team_id=" + body[0].id,
+              json: true
+            }
+            request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
                 var tchs = 0; // touches
                 var sast = 0; // secondary assists
@@ -124,20 +131,21 @@ module.exports = function(firstTeam, secondTeam){
                 sast = sast / count;
                 pass = pass / count;
 
-                results.team2Stats = [tchs, sast, pass]
+                results.team1Stats = [tchs, sast, pass]
 
                 resolve();
-                } else {
-                  reject(err);
-                }
-              })
-            } else {
-              reject(err);
-            }
-          })
-        }
-      })
-    }
+              } else {
+                reject(err);
+              }
+            })
+          } else {
+            reject(err);
+          }
+        })
+
+      }
+  })
+}
 
     Promise.all([firstCall(),secondCall()]).then(function(){
       console.log(results)

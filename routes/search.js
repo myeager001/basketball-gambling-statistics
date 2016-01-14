@@ -22,6 +22,8 @@ router.post('/', function(req,res){
   var team2 = req.body.secondTeam;
   promiseArray.push(efficiency(team1, team2));
   promiseArray.push(boxScore(team1, team2));
+  promiseArray.push(shotCharts(team1, team2));
+  // promiseArray.push(sportsVu(team1, team2));
 
   Promise.all(promiseArray).then(function(results){
     toBeSent =JSON.stringify(results);

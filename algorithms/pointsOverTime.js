@@ -20,13 +20,13 @@ module.exports = function(home_team, away_team){
     }
     var team1 = home_team;
     var team2 = away_team;
-    results.team2 = team2;
 
 
     results.team1 = team1;
-
-    results.columnNames= ['off_eff', 'def_eff'];
-
+    results.team2 = team2;
+    results.columnNames= [];
+    results.team1Stats={}
+    results.team2Stats={}
     var options1 = {
       url: url_team + "&team_abbrv=" + team1,
       json: true
@@ -48,20 +48,19 @@ module.exports = function(home_team, away_team){
               json: true
             };
             request.post(options1adv, function(err, response, body) {
-              var sum_off = 0;
-              var sum_def = 0;
-              var count = 0;
+              var sum_off = [];
+              var sum_def = [];
               if (!err && response.statusCode == 200) {
                 for(var i = 0; i < body.length; i++){
                   if(body[i].season==='2015'){
                     count++;
-                    sum_off = sum_off + parseInt(body[i].off_rating);
-                    sum_def = sum_def + parseInt(body[i].def_rating);
+                    sum_off.push(parseInt(body[i].off_rating));
+                    sum_def.push(parseInt(body[i].off_rating));
                   }
                 }
-                var avg_off = sum_off/count;
-                var avg_def = sum_def/count;
-                results['team1Stats'] = [avg_off, avg_def];
+
+                results.team1Stats.off_rating= sum_off;
+                results.team1Stats.der_rating= sum_def;
                 resolve();
 
 
@@ -88,17 +87,19 @@ module.exports = function(home_team, away_team){
               json: true
             }
             request.post(options2adv, function(err, response, body) {
+              var sum_off = [];
+              var sum_def = [];
               if (!err && response.statusCode == 200) {
                 for(var i = 0; i < body.length; i++){
                   if(body[i].season==='2015'){
                     count++;
-                    sum_off = sum_off + parseInt(body[i].off_rating);
-                    sum_def = sum_def + parseInt(body[i].def_rating);
+                    sum_off.push(parseInt(body[i].off_rating));
+                    sum_def.push(parseInt(body[i].off_rating));
                   }
                 }
-                var avg_off = sum_off/count;
-                var avg_def = sum_def/count;
-                results['team2Stats'] = [avg_off, avg_def];
+
+                results.team1Stats.off_rating= sum_off;
+                results.team1Stats.der_rating= sum_def;
                 resolve();
 
               } else {
