@@ -85,7 +85,6 @@ module.exports = function(firstTeam, secondTeam){
     function secondCall(){
       return new Promise(function(resolve, reject) {
         if (secondTeam) {
-
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
 
