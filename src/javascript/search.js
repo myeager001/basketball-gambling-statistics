@@ -10,9 +10,12 @@ $(document).ready(function(){
       data: {firstTeam: team1, secondTeam: team2},
     }).done(function(data){
       charts = JSON.parse(data);
-      console.log(data);
+      var graphType = charts.type;
+      console.log(graphType)
       for(var i = 0; i < charts.length; i++){
-        var data = {
+          options = charts[i].options
+          graphType = charts[i].type;
+          data = {
           labels: charts[i].columnNames,
           datasets: [
             {
@@ -45,7 +48,18 @@ $(document).ready(function(){
         var tobo = document.getElementById("canvas"+i);
         console.log(tobo);
         var ctx = tobo.getContext('2d');
-        var myNewChart = new Chart(ctx).Bar(data, {barShowStroke: false});
+        if(graphType === "Bar"){
+          var myNewChart = new Chart(ctx).Bar(data, options);
+        }if(graphType === "line"){
+          var myNewChart = new Chart(ctx).Line(data, options);
+        }if(graphType === "Radar"){
+          var myNewChart = new Chart(ctx).Radar(data, options);
+        }if(graphType === "Polar"){
+          var myNewChart = new Chart(ctx).PolarArea(data, options);
+        }if(graphType === "Pie"){
+          var myNewChart = new Chart(ctx).Pie(data, options);
+
+        }
       }
       })
     })
