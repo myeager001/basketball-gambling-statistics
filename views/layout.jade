@@ -20,15 +20,15 @@ html
             div(class="dropdownContain")
               div(class="dropOut")
                 ul
-                  li
-                    span
-                      a(href="search") Search
-                  li
-                    span
-                      a(href="profile") Profile
-                  li
-                    span
-                      a(href="logout") Log Out
+                  a(href="/search")
+                    li
+                      span Search
+                  a(href="/profile") 
+                    li
+                      span Profile
+                  a(href="/logout") 
+                    li
+                      span Log Out
       img(src='/assets/sample_user_pic.png', class='user-icon')         						
     block content
     footer
