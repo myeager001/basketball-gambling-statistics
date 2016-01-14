@@ -2,14 +2,22 @@
   color: $white;
 }
 
+.username{
+  margin: 2vw;
+}
+
 .userInfo{
 color: $white;
 }
 
 .statPreferences{
 color: $white;
-
 }
+
+.statContainer{
+  margin: 2vw;
+}
+
 .prefContainer{
 display: flex;
 margin: 2vw;
@@ -19,6 +27,11 @@ margin: 2vw;
   display:flex;
   flex-direction: row;
   width: 100%;
+}
+
+.preferenceListProfile{
+  display: flex;
+  flex-direction: row;
 }
 
 .currentPref{
@@ -37,9 +50,13 @@ color: $green;
 font-size: 2em;
 }
 //stat radio button labels
-label.1 {
-  color: $lightgray;
-  font-size: 5em;
+input.stat1, input.stat2, input.stat3, input.stat4, input.stat5, input.stat6, input.stat7, input.stat8, input.stat9, input.stat10 {
+  color: $green;
+  width: 2vw;
+}
+
+input.stat10{
+
 }
 
 .betHistory {
