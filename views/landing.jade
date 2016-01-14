@@ -26,8 +26,8 @@ html
         h2.login login
         if error
           h2 #{error}
-        input(type='text', placeholder='username', name='username' class='username')
-        input(type='password', placeholder='password', name='password' class='password')
+        input(type='text', placeholder='username', name='username' ,class='username')
+        input(type='password', placeholder='password', name='password', class='password')
         button(type='submit' class='submit') submit
         a(href='/auth/google') login with google
         a(href='/auth/facebook') login with facebook
@@ -37,11 +37,11 @@ html
 
         if error
           h2 #{error}
-        input(type='text', placeholder='username', name='username')
-        input(type='password', placeholder='password', name='password')
+        input(type='text', placeholder='username', name='username',class='username')
+        input(type='password', placeholder='password', name='password',class='password')
+        button(type='submit',class='submit') signup
         a(href='/auth/google') signup with google
         a(href='/auth/facebook') signup with facebook
-        button(type='submit') signup
       div(class='more-info startAction')
         div.infoTip
           h2 useful stat for serious gamblers
