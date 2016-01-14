@@ -76,7 +76,7 @@ module.exports = function(firstTeam, secondTeam){
                   count++;
                 }
 
-                results.team1Stats = [pts_off_tov, pts_2nd_chance, pts_paint, pts_fb]
+                results.team1Stats = {data: [pts_off_tov, pts_2nd_chance, pts_paint, pts_fb]};
                 //
                 resolve();
               } else {
@@ -124,7 +124,7 @@ module.exports = function(firstTeam, secondTeam){
                     count++;
                   }
 
-                  results.team2Stats = [pts_off_tov, pts_2nd_chance, pts_paint, pts_fb]
+                  results.team2Stats = {data: [pts_off_tov, pts_2nd_chance, pts_paint, pts_fb]};
                   //
                   resolve();
                 } else {

@@ -80,7 +80,7 @@ module.exports = function(firstTeam, secondTeam){
                 sast = sast / count;
                 pass = pass / count;
 
-                results.team1Stats = [tchs, sast, pass]
+                results.team1Stats = {data: [tchs, sast, pass]};
 
                 resolve();
               } else {
@@ -134,7 +134,7 @@ module.exports = function(firstTeam, secondTeam){
                   pass = pass / count;
 
 
-                  results.team2Stats = [tchs, sast, pass];
+                  results.team2Stats = {data: [tchs, sast, pass]};
 
                   resolve();
                 } else {
