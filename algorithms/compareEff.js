@@ -14,6 +14,10 @@ module.exports = function(home_team, away_team){
     var url_team = 'http://api.probasketballapi.com/team' + apiKey;
     var url_teamAdv = 'http://api.probasketballapi.com/advanced/team' + apiKey;
     var results = {};
+    results.type = "Bar"
+    results.options = {
+      scaleBeginAtZero: false,
+    }
     var team1 = home_team;
     var team2 = away_team;
     var team1id = "";
