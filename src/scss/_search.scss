@@ -1,3 +1,10 @@
+
+.searchMessage, .welcome{
+  color: white;
+  font-size: 1vw;
+  text-align: center;
+}
+
 .searchTeam1, .searchTeam2 {
     margin: 2vw;
     color: $white;
@@ -6,10 +13,12 @@
 
 .searchTeam1{
   background-color: $red;
+  box-shadow: 0px 0px 5px $black;
 }
 
 .searchTeam2{
-  background-color: $blue
+  background-color: $blue;
+  box-shadow: 0px 0px 5px $black;
 }
 
 #searchButton{
@@ -58,6 +67,7 @@
   background-color: $red;
   width: 30vw;
   border-radius: 20vw;
+  box-shadow: 0px 0px 5px $black;
 }
 
 .team2Display{
@@ -67,6 +77,7 @@
   background-color: $blue;
   width: 30vw;
   border-radius: 20vw;
+  box-shadow: 0px 0px 5px $black;;
 }
 
 .searchButton{
