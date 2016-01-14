@@ -44,7 +44,7 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                console.log(body2[0])
+                //console.log(body2[0])
                 //
                 resolve();
               } else {
@@ -63,14 +63,14 @@ module.exports = function(firstTeam, secondTeam){
           results.push({team: secondTeam})
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
-          
+
               var options2adv = {
                 url: url_game + "&team_id=" + body[0].id,
                 json: true
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  console.log(body2[0])
+                  //console.log(body2[0])
                   //
                   resolve();
                 } else {
