@@ -98,35 +98,42 @@ module.exports = function(firstTeam, secondTeam){
         if (secondTeam) {
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
-              if (!err && response.statusCode == 200) {
-                var tchs = 0; // touches
-                var sast = 0; // secondary assists
-                var pass = 0; // passes made
-                var count = 0;
+              var count = 9;
 
-                for (i=0;i<body2.length;i++) {
-                  if (body2[i].season == '2015') {
-                    if (body2[i].fgm != '') {
-                      tchs += JSON.parse(body2[i].tchs);
-                    }
-                    if (body2[i].fga != '') {
-                      sast += JSON.parse(body2[i].sast);
-                    }
-                    if (body2[i].ftm != '') {
-                      pass += JSON.parse(body2[i].pass);
-                    }
+              var options1adv = {
+                url: url_sport + "&team_id=" + body[0].id,
+                json: true
+              }
+              request.post(options1adv, function(err, response, body2) {
+                if (!err && response.statusCode == 200) {
+                  var tchs = 0; // touches
+                  var sast = 0; // secondary assists
+                  var pass = 0; // passes made
+                  var count = 0;
 
-                    count++;
+                  for (i=0;i<body2.length;i++) {
+                    if (body2[i].season == '2015') {
+                      if (body2[i].fgm != '') {
+                        tchs += JSON.parse(body2[i].tchs);
+                      }
+                      if (body2[i].fga != '') {
+                        sast += JSON.parse(body2[i].sast);
+                      }
+                      if (body2[i].ftm != '') {
+                        pass += JSON.parse(body2[i].pass);
+                      }
+
+                      count++;
+                    }
                   }
-                }
 
-                tchs = tchs / count;
-                sast = sast / count;
-                pass = pass / count;
+                  tchs = tchs / count;
+                  sast = sast / count;
+                  pass = pass / count;
 
-                results.team2Stats = [tchs, sast, pass]
+                  results.team2Stats = [tchs, sast, pass];
 
-                resolve();
+                  resolve();
                 } else {
                   reject(err);
                 }
