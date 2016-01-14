@@ -53,7 +53,6 @@ module.exports = function(home_team, away_team){
               if (!err && response.statusCode == 200) {
                 for(var i = 0; i < body.length; i++){
                   if(body[i].season==='2015'){
-                    count++;
                     sum_off.push(parseInt(body[i].off_rating));
                     sum_def.push(parseInt(body[i].off_rating));
                   }
@@ -92,7 +91,6 @@ module.exports = function(home_team, away_team){
               if (!err && response.statusCode == 200) {
                 for(var i = 0; i < body.length; i++){
                   if(body[i].season==='2015'){
-                    count++;
                     sum_off.push(parseInt(body[i].off_rating));
                     sum_def.push(parseInt(body[i].off_rating));
                   }
@@ -114,6 +112,7 @@ module.exports = function(home_team, away_team){
     }
 
    Promise.all([firstCall(), secondCall()]).then(function(){
+     console.log(results);
       resolve(results);
     }).catch(function(err){
       reject(err);
