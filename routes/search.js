@@ -25,11 +25,14 @@ router.post('/', function(req,res){
 
     var array = [];
     array.push(results);
+    array.push(results);
+    console.log(array);
     toBeSent =JSON.stringify(array);
     //console.log(toBeSent);
     res.json(toBeSent);
   });
 
+<<<<<<< HEAD
   Promise.resolve(team4factor(team1, team2)).then(function(results){
     // nothing
   });
@@ -51,6 +54,20 @@ router.post('/', function(req,res){
   Promise.resolve(teamMisc(team1, team2)).then(function(results){
     // nothing
   });
+=======
+  // Promise.resolve(team4factor(team1, team2)).then(function(results){
+  //   // nothing
+  // });
+  // Promise.resolve(shotCharts(team1, team2)).then(function(results){
+  //   // nothing
+  // });
+  // Promise.resolve(gameScores(team1, team2)).then(function(results){
+  //   // nothing
+  // });
+  // Promise.resolve(sportsVu(team1, team2)).then(function(results){
+  //   // nothing
+  // });
+>>>>>>> 4ffd1d48390724fac22caff071090bcc012db3ac
 
 });
 
