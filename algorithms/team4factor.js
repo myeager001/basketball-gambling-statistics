@@ -63,7 +63,7 @@ module.exports = function(firstTeam, secondTeam){
                   results[0].fourfact.efg_holder = results[0].fourfact.efg_holder / count;
                   results[0].fourfact.oreb_holder = results[0].fourfact.oreb_holder / count;
                   results[0].fourfact.tr_holder = results[0].fourfact.tr_holder / count;
-                  console.log(results);
+                  
                   resolve();
                 } else {
                   reject(err);

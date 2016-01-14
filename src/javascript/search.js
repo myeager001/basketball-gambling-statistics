@@ -9,7 +9,7 @@ $(document).ready(function(){
       data: {firstTeam: team1, secondTeam: team2},
     }).done(function(stuff){
       charts = JSON.parse(stuff);
-      console.log(data);
+      //console.log(data);
       for(var i = 0; i < charts.length; i++){
         var data = {
           labels: charts[i].columnNames,

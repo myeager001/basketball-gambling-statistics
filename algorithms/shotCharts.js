@@ -44,11 +44,11 @@ module.exports = function(firstTeam, secondTeam){
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
 
-                for(i=0;i<body2.length;i++){
-                    if (body2[i].event_type == 'Missed Shot') {
-                      results[0].missed += 1;
-                  }
-                }
+                // for(i=0;i<body2.length;i++){
+                //     if (body2[i].event_type == 'Missed Shot') {
+                //       results[0].missed += 1;
+                //   }
+                // }
 
                 resolve();
               } else {
@@ -74,12 +74,12 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-
-                  for(i=0;i<body2.length;i++){
-                      if (body2[i].event_type == 'Missed Shot') {
-                        results[1].missed += 1;
-                    }
-                  }
+                  //
+                  // for(i=0;i<body2.length;i++){
+                  //     if (body2[i].event_type == 'Missed Shot') {
+                  //       results[1].missed += 1;
+                  //   }
+                  // }
 
                   //console.log(results);
                   resolve();

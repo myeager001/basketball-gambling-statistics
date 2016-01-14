@@ -26,7 +26,7 @@ router.post('/', function(req,res){
     var array = [];
     array.push(results);
     toBeSent =JSON.stringify(array);
-    console.log(toBeSent);
+    //console.log(toBeSent);
     res.json(toBeSent);
   });
 
