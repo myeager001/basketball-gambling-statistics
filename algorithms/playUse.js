@@ -28,9 +28,16 @@ module.exports = function(firstTeam, secondTeam){
       json: true
     }
 
-    var results = [{
-      team: firstTeam
-    }]
+    var results = {};
+    results.type = "Bar"
+    results.options = {
+      scaleBeginAtZero: false,
+    }
+    results.team1 = firstTeam;
+    results.team2 = secondTeam;
+    results.columnNames = [
+      
+    ];
 
     function firstCall(){
       return new Promise(function(resolve, reject) {
