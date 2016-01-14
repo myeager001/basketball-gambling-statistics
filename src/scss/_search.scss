@@ -12,6 +12,23 @@
   background-color: $blue
 }
 
+#searchButton{
+  width:0;
+  height:0;
+  border-top: 3vw solid transparent;
+  border-bottom: 3vw solid transparent;
+  border-left: 3vw solid $green;
+  background-color: $darkgray;
+  color: white;
+  font-size: 1.7vw;
+}
+
+.go{
+  margin: -1vw;
+  float: right;
+  margin-right: .55vw;
+}
+
 .teamChoice{
   display:flex;
   flex-direction: column;
@@ -20,6 +37,7 @@
 
 
 .teamDisplay{
+ margin-top:3vw;
  display: flex;
  flex-direction: row;
  justify-content: space-around;
