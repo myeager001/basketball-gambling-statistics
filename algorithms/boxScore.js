@@ -18,7 +18,6 @@ module.exports = function(firstTeam, secondTeam){
 
     var team1id = "";
     var team2id = "";
-    console.log(process.env.API_KEY + 'Api key')
     var options1 = {
       url: url_team + "&team_abbrv=" + firstTeam,
       json: true
