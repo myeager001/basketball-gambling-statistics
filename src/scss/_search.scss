@@ -1,11 +1,83 @@
+
+.searchMessage, .welcome{
+  color: white;
+  font-size: 1vw;
+  text-align: center;
+}
+
 .searchTeam1, .searchTeam2 {
     margin: 2vw;
+    color: $white;
+    font-size: 2vw;
+}
+
+.searchTeam1{
+  background-color: $red;
+  box-shadow: 0px 0px 5px $black;
+}
+
+.searchTeam2{
+  background-color: $blue;
+  box-shadow: 0px 0px 5px $black;
+}
+
+#searchButton{
+  width:0;
+  height:0;
+  border-top: 3vw solid transparent;
+  border-bottom: 3vw solid transparent;
+  border-left: 3vw solid $green;
+  background-color: $darkgray;
+  color: white;
+  font-size: 1.7vw;
+}
+
+.go{
+  margin: -1vw;
+  float: right;
+  margin-right: .55vw;
 }
 
 .teamChoice{
   display:flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+.teamDisplay{
+ margin-top:3vw;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+}
+
+.team1Logo{
+
+}
+
+.team2Logo{
+
+}
+
+.team1Display{
+  flex-direction: row;
+  height: 30vw;
+  border: 1px;
+  background-color: $red;
+  width: 30vw;
+  border-radius: 20vw;
+  box-shadow: 0px 0px 5px $black;
+}
+
+.team2Display{
+  flex-direction: row;
+  height: 30vw;
+  border: 1px;
+  background-color: $blue;
+  width: 30vw;
+  border-radius: 20vw;
+  box-shadow: 0px 0px 5px $black;;
 }
 
 .searchButton{
