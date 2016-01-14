@@ -82,7 +82,7 @@ NAV BAR
 */
 
 nav {
-	width:10vw;
+	width:12vw;
 	margin:2em auto;
 	margin-left: 66vw;
 	margin-right:1vw;
@@ -100,15 +100,15 @@ nav {
 
    a {
 	   font-weight: 400;
-	   line-height: 5em;
+	   line-height: 4em;
 	   padding: 0 1em;
-	   color: lighten(black,30%);
+	   color: $green;
      text-decoration:none;
   }
 }
 
 .dropdownContain {
-	width: 10vw;
+	width: 12vw;
 	position: absolute;
 	z-index: 2;
 	left: 50%;
@@ -117,7 +117,7 @@ nav {
 
 }
 .dropOut {
-	width: 10vw;
+	width: 12vw;
 	background: $lightgray;
 	float: left;
 	position: relative;
@@ -134,7 +134,7 @@ nav {
   transition: all 0.1s ease-out;
 
  ul {
-	padding: .25vw;
+	padding: .2vw;
 	margin:0
  }
 
@@ -144,7 +144,7 @@ nav {
 	text-align: left;
 	width: 100%;
 	padding: .6em 0 ;
-	color: darken(#fff, 50%);
+	color: $red;
 	border-left:3px solid #f7f7f7;
 
   -webkit-transition: all 0.1s ease-out;
@@ -153,7 +153,6 @@ nav {
   -o-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
 		span{
-		 color: darken(#fff, 20%);
 		 margin: 0 1.5em 0 .8em;
 		}
 	&:hover{
