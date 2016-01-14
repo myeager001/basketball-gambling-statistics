@@ -32,12 +32,12 @@ module.exports = function(firstTeam, secondTeam){
     var results = [{
       team: firstTeam,
       scores: {
-        fgm:0,
-        fga:0,
-        ftm:0,
-        fta:0,
-        blk:0,
-        stl:0
+        fgm:0, //field goals made
+        fga:0, // field goals attempted
+        ftm:0, // free throws made
+        fta:0, // free throws attempted
+        blk:0, // blocks
+        stl:0 // steals
       }
     }]
 
