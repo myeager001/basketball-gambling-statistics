@@ -95,3 +95,24 @@ input {
   height:3vw;
   width: 3vw;
 }
+.submit{
+  height:5vh;
+  width:20vw;
+  background-color: $green;
+  border-radius: 15%;
+  color: $white;
+  font-size: 3vh;
+}
+.username{
+  height:5vh;
+  width:20vw;
+
+}
+.password{
+  height:5vh;
+  width:20vw;
+}
+input.username[type='text'], textarea {
+  font-size:3vh;
+  color: $white;
+}
