@@ -53,7 +53,6 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                console.log(body2)
                 var pts_off_tov = 0; // Points Off Turnovers
                 var pts_2nd_chance = 0; // Second Chance Points
                 var pts_paint = 0; // Points In The Paint
