@@ -11,6 +11,7 @@ var teamMisc = require('../algorithms/teamMisc');
 var pointsOverTime = require('../algorithms/pointsOverTime');
 
 
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.render('search', {user: req.user});
@@ -20,6 +21,7 @@ router.post('/', function(req,res){
   var promiseArray=[]
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
+
   promiseArray.push(efficiency(team1, team2));
   promiseArray.push(boxScore(team1, team2));
   promiseArray.push(shotCharts(team1, team2));
@@ -30,6 +32,7 @@ router.post('/', function(req,res){
     toBeSent =JSON.stringify(results);
     res.json(toBeSent);
   });
+
 
 
 
