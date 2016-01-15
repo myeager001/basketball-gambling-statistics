@@ -33,7 +33,6 @@ router.post('/', function(req,res){
 
   promiseArray.push(offEffOverTime(team1, team2));
   promiseArray.push(defEffOverTime(team1, team2));
-
   promiseArray.push(missHit(team1, team2));
   promiseArray.push(team4factor(team1, team2));
   promiseArray.push(teamMisc(team1, team2));
