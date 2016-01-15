@@ -22,7 +22,7 @@ module.exports = function(home_team, away_team){
     var team1 = home_team;
     var team2 = away_team;
 
-
+    results.title = "Yr long Off Eff";
     results.team1 = team1;
     results.team2 = team2;
     results.columnNames= [];
@@ -55,13 +55,13 @@ module.exports = function(home_team, away_team){
                 for(var i = 0; i < body.length; i++){
                   if(body[i].season==='2015'){
                     sum_off.push(parseInt(body[i].off_rating));
-                    sum_def.push(parseInt(body[i].off_rating));
-                    results.columnNames.push(body[i].game_id)
+                    sum_def.push(parseInt(body[i].def_rating));
+                    results.columnNames.push('')
                   }
                 }
 
                 results.team1Stats.off_rating= sum_off;
-                results.team1Stats.der_rating= sum_def;
+                // results.team1Stats.der_rating= sum_def;
                 resolve();
 
 
@@ -95,12 +95,12 @@ module.exports = function(home_team, away_team){
                   for(var i = 0; i < body.length; i++){
                     if(body[i].season==='2015'){
                       sum_off.push(parseInt(body[i].off_rating));
-                      sum_def.push(parseInt(body[i].off_rating));
+                      sum_def.push(parseInt(body[i].def_rating));
                     }
                   }
 
-                  results.team1Stats.off_rating= sum_off;
-                  results.team1Stats.der_rating= sum_def;
+                  results.team2Stats.off_rating= sum_off;
+                  // results.team2Stats.der_rating= sum_def;
                   resolve();
 
                 } else {
@@ -116,7 +116,6 @@ module.exports = function(home_team, away_team){
     }
 
    Promise.all([firstCall(), secondCall()]).then(function(){
-     console.log(results);
       resolve(results);
     }).catch(function(err){
       reject(err);
