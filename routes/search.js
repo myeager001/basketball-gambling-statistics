@@ -9,11 +9,8 @@ var shotCharts = require('../algorithms/shotCharts');
 var sportsVu = require('../algorithms/SportsVu');
 var boxScore = require('../algorithms/boxScore');
 var teamMisc = require('../algorithms/teamMisc');
-
 var offEffOverTime = require('../algorithms/offEffOverTime');
 var defEffOverTime = require('../algorithms/deffEffOverTime');
-
-var pointsOverTime = require('../algorithms/pointsOverTime');
 var missHit = require('../algorithms/missHit');
 
 
@@ -37,7 +34,6 @@ router.post('/', function(req,res){
   promiseArray.push(offEffOverTime(team1, team2));
   promiseArray.push(defEffOverTime(team1, team2));
 
-  promiseArray.push(pointsOverTime(team1, team2));
   promiseArray.push(missHit(team1, team2));
   promiseArray.push(team4factor(team1, team2));
   promiseArray.push(teamMisc(team1, team2));
