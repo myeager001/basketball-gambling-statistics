@@ -19,36 +19,42 @@ block content
         form(class='stats statUpdate' method='post' action='/profile')
           label Change your stat preferences
           checkboxes.preferencesListProfile 
+              //- box score
+            label  Box Score Statistics 
+            input.stat1(type='checkbox', name='stat', value="1")
             br
-            label.1 statistic 1
-            input.stat1(type='checkbox', name='stat1')
-            br
-            label.2  statistic 2
-            input.stat2(type='checkbox', name='stat2')
-            br
-            label.3  statistic 3
-            input.stat3(type='checkbox', name='stat3')
-            br
-            label.4  statistic 4 
-            input.stat4(type='checkbox', name='stat4')
+              //- compareEff
+            label  Average Offense and Defense Efficiency 
+            input.stat2(type='checkbox', name='stat' value="2")
             br 
-            label.5  statistic 5
-            input.stat5(type='checkbox', name='stat5')
+              //- pointsOverTime
+            label  Average Offense and Defense Efficiency Season View
+            input.stat3(type='checkbox', name='stat', value="3")
+            br
+              //- shotCharts
+            label  Missed, Jump, and Layup Shots
+            input.stat4(type='checkbox', name='stat', value="4")
             br 
-            label.6  statistic 6
-            input.stat6(type='checkbox', name='stat6')
-            br
-            label.7  statistic 7
-            input.stat7(type='checkbox', name='stat7')
+              //- SportsVu
+            label  SportVU Stats
+            input.stat5(type='checkbox', name='stat', value="5")
             br 
-            label.8  statistic 8
-            input.stat8(type='checkbox', name='stat8')
+              //- team4factor
+            label  Four Factor Stats
+            input.stat6(type='checkbox', name='stat', value="6")
             br
-            label.9  statistic 9
-            input.stat9(type='checkbox', name='stat9')
-            br
-            label.10 statistic 10
-            input.stat10(type='checkbox', name='stat10')
+              //- teamMisc
+            label  Points Breakdown
+            input.stat7(type='checkbox', name='stat', value="7")
+            br 
+            label  statistic 8
+            input.stat8(type='checkbox', name='stat', value="8")
+            br 
+            label  statistic 9
+            input.stat9(type='checkbox', name='stat', value="9")
+            br 
+            label statistic 10
+            input.stat10(type='checkbox', name='stat', value="10")
             br
             button(type='submit') Set Stat Preferences
             
