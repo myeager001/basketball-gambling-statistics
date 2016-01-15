@@ -25,8 +25,14 @@
 	background-color: $green;
 	border-radius: 5px;
 }
+//
+// .startAction {
+//   display: none;
+//   flex-direction: column;
+//   align-items: center;
+//   color: $white;
 
-.startAction {
+.paragraphs {
   display: none;
   flex-direction: row;
   align-items: center;
@@ -89,7 +95,7 @@ input {
 }
 
 .infoTip{
-  width: 30%;
+  width: 34vw;
   margin: 1vw;
 }
 .iconBig{
