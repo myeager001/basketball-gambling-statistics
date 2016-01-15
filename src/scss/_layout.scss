@@ -18,19 +18,13 @@ body{
 	background-color: $darkgray;
 }
 
-
 .user-icon{
   border-radius: 50%;
 }
 
 .iconBig{
-	width: 4vw;
-	height: 4vw;
-}
-
-.iconSmall{
-	width: 3vw;
-	height: 3vw;
+	width: 10%;
+	height: auto;
 }
 
 .user-icon {
@@ -47,7 +41,6 @@ body{
 }
 
 .appName{
-	font-size: 3vw;
 	margin-top: 2vw;
 	padding-left: 2vw;
 	color: $green;
@@ -73,6 +66,10 @@ body{
   display: inline;
 }
 
+.disclaimer{
+	text-align: center;
+	bottom: 0;
+}
 
 
 /*
