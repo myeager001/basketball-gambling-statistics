@@ -61,7 +61,7 @@ module.exports = function(home_team, away_team){
                 }
                 var avg_off = sum_off/count;
                 var avg_def = sum_def/count;
-                results['team1Stats'] = [avg_off, avg_def];
+                results.team1Stats ={data: [avg_off, avg_def]};
                 resolve();
 
 
@@ -97,10 +97,10 @@ module.exports = function(home_team, away_team){
                       sum_def = sum_def + parseInt(body[i].def_rating);
                     }
                   }
-                  var avg_off = sum_off/count;
-                  var avg_def = sum_def/count;
-                  results['team2Stats'] = [avg_off, avg_def];
-                  resolve();
+                var avg_off = sum_off/count;
+                var avg_def = sum_def/count;
+                results.team2Stats ={data: [avg_off, avg_def]};
+                resolve();
 
                 } else {
                   reject(err);
