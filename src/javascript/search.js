@@ -8,7 +8,9 @@ $(document).ready(function(){
     var team1 = $('.searchTeam1').val();
     var team2 = $('.searchTeam2').val();
     $('#team1image').css('background-image', 'url(/assets/team_icons/'+team1 + '.png)');
-    $('#team2image').css('background-image', 'url(/assets/team_icons/'+team2 + '.png)');
+    if (team2) {
+      $('#team2image').css('background-image', 'url(/assets/team_icons/'+team2 + '.png)');
+    }
     $.ajax({
       url: getAPIHost() +'/search',
       method: 'post',
