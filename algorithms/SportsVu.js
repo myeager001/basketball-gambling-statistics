@@ -47,7 +47,6 @@ module.exports = function(firstTeam, secondTeam){
       return new Promise(function(resolve, reject) {
         request.post(options1, function(err, response, body) {
           if (!err && response.statusCode == 200) {
-            var count = 9;
 
             var options1adv = {
               url: url_sport + "&team_id=" + body[0].id,
@@ -99,14 +98,13 @@ module.exports = function(firstTeam, secondTeam){
         if (secondTeam) {
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
-              var count = 9;
 
 
-              var options1adv = {
+              var options2adv = {
                 url: url_sport + "&team_id=" + body[0].id,
                 json: true
               }
-              request.post(options1adv, function(err, response, body2) {
+              request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
                   var tchs = 0; // touches
                   var sast = 0; // secondary assists
