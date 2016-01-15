@@ -64,18 +64,21 @@ $(document).ready(function(){
         var text=document.createTextNode(charts[i].title)
 
         var canvas = document.createElement("canvas");
-        canvas.width=400;
-        canvas.height=400;
+        var span = document.createElement('span');
+        span.setAttribute('class', 'graphSpan');
+        canvas.setAttribute('width','400px');
+        canvas.setAttribute('height', '400px');
+        canvas.setAttribute('class', 'drawCanvas')
         canvas.id='canvas'+i
         label.for = 'canvas'+i
         console.log(data);
         console.log(canvas);
-        var div = document.getElementById('resultsDiv');
-        div.appendChild(label);
+        span.appendChild(label);
         label.appendChild(text);
-        label.appendChild(canvas);
+        span.appendChild(canvas)
+        var div = document.getElementById('resultsDiv');
+        div.appendChild(span);
         var tobo = document.getElementById("canvas"+i);
-        console.log(tobo);
         var ctx = tobo.getContext('2d');
         if(graphType === "Bar"){
           var myNewChart = new Chart(ctx).Bar(data, options);
@@ -90,6 +93,7 @@ $(document).ready(function(){
           var myNewChart = new Chart(ctx).Pie(data, options);
 
         }
+
       }
       })
     })
