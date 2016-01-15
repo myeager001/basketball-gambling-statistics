@@ -2,9 +2,9 @@ doctype html
 html
   head
     title= basketstats
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
   body
-    h1 please set you preferences
+    h1.pleaseSet please set you preferences
     form(method='post', action='/preferences')
       br
       label Choose a Stat
@@ -40,4 +40,4 @@ html
         label Location of Shots History
         input.stat10(type='checkbox', name='shooting', value="10")
         br
-        button(type='submit') Set Stat Preferences
+        button.initialPref(type='submit') Set Stat Preferences

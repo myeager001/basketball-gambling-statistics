@@ -1,3 +1,16 @@
 body{
 	background-color: $darkgray;
 }
+
+pleaseSet{
+  color: $green;
+}
+
+.initialPref{
+  width: 10vw;
+  font-size: 1vw;
+  border: solid .2vw $white;
+  background-color: $green;
+  box-shadow: 0px 5px 0px $black;
+  border-radius: 5%;
+}
