@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var knex = require('../db/knex');
 
 // algorithms
 var efficiency = require('../algorithms/compareEff');
@@ -26,24 +27,51 @@ router.post('/', function(req,res){
   var promiseArray=[]
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
+  knex('user_stats_preferences').select().where('user', req.user.id).innerJoin('stats', 'stats.id', 'user_stats_preferences.stat')
+  .then(function(preferences){
+    for(var i =0; i<preferences.length; i++){
+      console.log(preferences[i].name);
+      switch(preferences[i].name){
+        case 'missHit':
+            promiseArray.push(missHit(team1, team2));
+            break;
+        case 'boxScore':
+            promiseArray.push(boxScore(team1, team2));
+            break;
+        case 'offEffOverTime':
+            promiseArray.push(offEffOverTime(team1, team2));
+            break;
+        case 'defEffOverTime':
+            promiseArray.push(defEffOverTime(team1, team2));
+            break;
+        case 'teamMisc':
+            promiseArray.push(teamMisc(team1, team2));
+            break;
+        case 'efficiency':
+            promiseArray.push(efficiency(team1, team2));
+            break;
+        case 'shotCharts':
+            promiseArray.push(shotCharts(team1, team2));
+            break;
+        case 'sportsVu':
+            promiseArray.push(boxScore(team1, team2));
+            break;
+        case 'team4factor':
+            promiseArray.push(team4factor(team1, team2));
+            break;
+      }
+    }
 
-  promiseArray.push(efficiency(team1, team2));
-  promiseArray.push(boxScore(team1, team2));
-  promiseArray.push(shotCharts(team1, team2));
-  promiseArray.push(sportsVu(team1, team2));
-  promiseArray.push(offEffOverTime(team1, team2));
-  promiseArray.push(defEffOverTime(team1, team2));
-  promiseArray.push(missHit(team1, team2));
-  promiseArray.push(team4factor(team1, team2));
-  promiseArray.push(teamMisc(team1, team2));
-  promiseArray.push(shooting(team1, team2));
-
-  Promise.all(promiseArray).then(function(results){
-    toBeSent =JSON.stringify(results);
-    res.json(toBeSent);
-  });
+    console.log(promiseArray);
+    Promise.all(promiseArray).then(function(results){
+      toBeSent =JSON.stringify(results);
+      res.json(toBeSent);
+    });
 
 
+  }).catch(function(err){
+    console.log(err);
+  })
 
 
 });
