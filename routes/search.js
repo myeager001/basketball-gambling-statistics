@@ -26,7 +26,7 @@ router.post('/', function(req,res){
   promiseArray.push(boxScore(team1, team2));
   promiseArray.push(shotCharts(team1, team2));
   promiseArray.push(sportsVu(team1, team2));
-  // promiseArray.push(pointsOverTime(team1, team2));
+  promiseArray.push(pointsOverTime(team1, team2));
 
   Promise.all(promiseArray).then(function(results){
     toBeSent =JSON.stringify(results);
