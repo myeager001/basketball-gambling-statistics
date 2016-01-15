@@ -77,7 +77,6 @@ module.exports = function(home_team, away_team){
     }
 
     function secondCall(){
-      if (team2) {
         return new Promise(function(resolve, reject){
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
@@ -111,7 +110,6 @@ module.exports = function(home_team, away_team){
             }
           });
         });
-      }
     }
 
    Promise.all([firstCall(), secondCall()]).then(function(){

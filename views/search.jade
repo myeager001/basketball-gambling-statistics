@@ -2,10 +2,9 @@ extends layout
 
 block content
   h1= basketstats
-  p.welcome Welcome to #{title}
   section.teamChoice
     div
-      h1.searchMessage Choose two teams to display a comparison, choose one team to view stats only
+      h1.searchMessage Choose two teams to display a comparison
       form(method='post', action='/search')    
         select.searchTeam1(name="firstTeam")
           option(label="Atlanta Hawks", value="ATL") 
@@ -39,7 +38,6 @@ block content
           option(label="Utah Jazz", value="UTA")
           option(label="Washington Wizards", value="WAS")
         select.searchTeam2(name="secondTeam")
-          option(label="--CHOOSE A TEAM--")
           option(label="Atlanta Hawks", value="ATL") 
           option(label="Boston Celtics", value="BOS")
           option(label="Brooklyn Nets", value="BKN")
