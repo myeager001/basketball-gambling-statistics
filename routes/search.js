@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+
+// algorithms
 var efficiency = require('../algorithms/compareEff');
 var team4factor = require('../algorithms/team4factor');
 var shotCharts = require('../algorithms/shotCharts');
@@ -8,6 +10,7 @@ var sportsVu = require('../algorithms/SportsVu');
 var boxScore = require('../algorithms/boxScore');
 var teamMisc = require('../algorithms/teamMisc');
 var pointsOverTime = require('../algorithms/pointsOverTime');
+var missHit = require('../algorithms/missHit');
 
 
 
@@ -26,6 +29,9 @@ router.post('/', function(req,res){
   promiseArray.push(shotCharts(team1, team2));
   promiseArray.push(sportsVu(team1, team2));
   promiseArray.push(pointsOverTime(team1, team2));
+  promiseArray.push(missHit(team1, team2));
+  promiseArray.push(team4factor(team1, team2));
+  promiseArray.push(teamMisc(team1, team2));
 
   Promise.all(promiseArray).then(function(results){
     toBeSent =JSON.stringify(results);
