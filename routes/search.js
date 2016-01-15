@@ -7,7 +7,8 @@ var shotCharts = require('../algorithms/shotCharts');
 var sportsVu = require('../algorithms/SportsVu');
 var boxScore = require('../algorithms/boxScore');
 var teamMisc = require('../algorithms/teamMisc');
-var pointsOverTime = require('../algorithms/pointsOverTime');
+var offEffOverTime = require('../algorithms/offEffOverTime');
+var defEffOverTime = require('../algorithms/deffEffOverTime');
 
 
 
@@ -25,7 +26,8 @@ router.post('/', function(req,res){
   promiseArray.push(boxScore(team1, team2));
   promiseArray.push(shotCharts(team1, team2));
   promiseArray.push(sportsVu(team1, team2));
-  promiseArray.push(pointsOverTime(team1, team2));
+  promiseArray.push(offEffOverTime(team1, team2));
+  promiseArray.push(defEffOverTime(team1, team2));
 
   Promise.all(promiseArray).then(function(results){
     toBeSent =JSON.stringify(results);

@@ -8,9 +8,7 @@ $(document).ready(function(){
     var team1 = $('.searchTeam1').val();
     var team2 = $('.searchTeam2').val();
     $('#team1image').css('background-image', 'url(/assets/team_icons/'+team1 + '.png)');
-    if (team2) {
-      $('#team2image').css('background-image', 'url(/assets/team_icons/'+team2 + '.png)');
-    }
+    $('#team2image').css('background-image', 'url(/assets/team_icons/'+team2 + '.png)');
     $('.loadingImg').toggleClass('displayImgLoad');
     $.ajax({
       url: getAPIHost() +'/search',
@@ -60,7 +58,9 @@ $(document).ready(function(){
               }
             )
           }
-
+        var label=document.createElement("label")
+        var text=document.createTextNode(charts[i].title)
+        label.for = charts[i].title
         var canvas = document.createElement("canvas");
         canvas.width=400;
         canvas.height=400;
@@ -68,7 +68,8 @@ $(document).ready(function(){
         console.log(data);
         console.log(canvas);
         var div = document.getElementById('resultsDiv');
-        div.appendChild(canvas);
+        div.appendChild(label);
+        label.appendChild(canvas);
         var tobo = document.getElementById("canvas"+i);
         console.log(tobo);
         var ctx = tobo.getContext('2d');
