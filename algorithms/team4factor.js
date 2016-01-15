@@ -92,7 +92,6 @@ module.exports = function(firstTeam, secondTeam){
 
       function secondCall(){
         return new Promise(function(resolve, reject) {
-          if (secondTeam) {
             request.post(options2, function(err, response, body) {
               if (!err && response.statusCode == 200) {
                 var options2adv = {
@@ -133,7 +132,6 @@ module.exports = function(firstTeam, secondTeam){
                 reject(err);
               }
             }); //ends post
-          } // ends if
         }); // ends return
       } //ends secondCall
 
