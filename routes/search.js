@@ -22,10 +22,10 @@ router.post('/', function(req,res){
   var team1 = req.body.firstTeam;
   var team2 = req.body.secondTeam;
 
-  // promiseArray.push(efficiency(team1, team2));
-  // promiseArray.push(boxScore(team1, team2));
-  // promiseArray.push(shotCharts(team1, team2));
-  // promiseArray.push(sportsVu(team1, team2));
+  promiseArray.push(efficiency(team1, team2));
+  promiseArray.push(boxScore(team1, team2));
+  promiseArray.push(shotCharts(team1, team2));
+  promiseArray.push(sportsVu(team1, team2));
   promiseArray.push(pointsOverTime(team1, team2));
 
   Promise.all(promiseArray).then(function(results){

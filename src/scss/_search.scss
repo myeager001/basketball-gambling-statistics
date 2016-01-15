@@ -78,3 +78,17 @@
   border-radius: 10vw;
   box-shadow: 0px 0px 5px $black;;
 }
+
+.loadingHolder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingImg{
+  display: none;
+}
+
+.displayImgLoad{
+  display: flex;
+}

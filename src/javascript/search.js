@@ -9,11 +9,13 @@ $(document).ready(function(){
     var team2 = $('.searchTeam2').val();
     $('#team1image').css('background-image', 'url(/assets/team_icons/'+team1 + '.png)');
     $('#team2image').css('background-image', 'url(/assets/team_icons/'+team2 + '.png)');
+    $('.loadingImg').toggleClass('displayImgLoad');
     $.ajax({
       url: getAPIHost() +'/search',
       method: 'post',
       data: {firstTeam: team1, secondTeam: team2},
     }).done(function(data){
+      $('.loadingImg').toggleClass('displayImgLoad');
       charts = JSON.parse(data);
       console.log(charts);
       for(var i = 0; i < charts.length; i++){
@@ -27,8 +29,10 @@ $(document).ready(function(){
           for (var key in charts[i].team1Stats){
             data.datasets.push(
               {
-                fillColor: "7f0000",
+                fillColor: "rgba(220,0,0,0.2)",
                 strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
                 pointColor: "rgba(220,220,220,1)",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
@@ -38,17 +42,19 @@ $(document).ready(function(){
               }
             )
           }
-          for(var list in charts[i].team2Stats){
-            var dataArray = list
-            console.log(dataArray);
+          for(var key in charts[i].team2Stats){
             data.datasets.push(
               {
-                fillColor: "7f0000",
+                fillColor: "rgba(0,0,220,0.2)",
                 strokeColor: "rgba(220,220,220,0.8)",
                 highlightFill: "rgba(220,220,220,0.75)",
                 highlightStroke: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,.2)",
                 label: charts[i].team2,
-                data: dataArray,
+                data: charts[i].team2Stats[key]
               }
             )
           }
