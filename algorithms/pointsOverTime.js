@@ -75,40 +75,42 @@ module.exports = function(home_team, away_team){
     }
 
     function secondCall(){
-      return new Promise(function(resolve, reject){
-        request.post(options2, function(err, response, body) {
-          if (!err && response.statusCode == 200) {
-            var sum_off = 0;
-            var sum_def = 0;
-            var count = 0;
-            var options2adv = {
-              url: url_teamAdv + "&team_id=" + body[0].id,
-              json: true
-            }
-            request.post(options2adv, function(err, response, body) {
-              var sum_off = [];
-              var sum_def = [];
-              if (!err && response.statusCode == 200) {
-                for(var i = 0; i < body.length; i++){
-                  if(body[i].season==='2015'){
-                    sum_off.push(parseInt(body[i].off_rating));
-                    sum_def.push(parseInt(body[i].off_rating));
-                  }
-                }
-
-                results.team1Stats.off_rating= sum_off;
-                results.team1Stats.der_rating= sum_def;
-                resolve();
-
-              } else {
-                reject(err);
+      if (secondTeam) {
+        return new Promise(function(resolve, reject){
+          request.post(options2, function(err, response, body) {
+            if (!err && response.statusCode == 200) {
+              var sum_off = 0;
+              var sum_def = 0;
+              var count = 0;
+              var options2adv = {
+                url: url_teamAdv + "&team_id=" + body[0].id,
+                json: true
               }
-            });
-          } else {
-            reject(err);
-          }
+              request.post(options2adv, function(err, response, body) {
+                var sum_off = [];
+                var sum_def = [];
+                if (!err && response.statusCode == 200) {
+                  for(var i = 0; i < body.length; i++){
+                    if(body[i].season==='2015'){
+                      sum_off.push(parseInt(body[i].off_rating));
+                      sum_def.push(parseInt(body[i].off_rating));
+                    }
+                  }
+
+                  results.team1Stats.off_rating= sum_off;
+                  results.team1Stats.der_rating= sum_def;
+                  resolve();
+
+                } else {
+                  reject(err);
+                }
+              });
+            } else {
+              reject(err);
+            }
+          });
         });
-      });
+      }
     }
 
    Promise.all([firstCall(), secondCall()]).then(function(){
