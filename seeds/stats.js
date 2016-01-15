@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
     knex('stats').insert({id: 3, name: 'missHit', catagory: 'catagory1'}),
     knex('stats').insert({id: 4, name: 'shotCharts', catagory: 'catagory1'}),
     knex('stats').insert({id: 5, name: 'sportsVu', catagory: 'catagory2'}),
-    knex('stats').insert({id: 6, name: 'teamFourFactor', catagory: 'catagory2'}),
+    knex('stats').insert({id: 6, name: 'team4factor', catagory: 'catagory2'}),
     knex('stats').insert({id: 7, name: 'teamMisc', catagory: 'catagory2'}),
     knex('stats').insert({id: 8, name: 'offEffOverTime', catagory: 'catagory2'}),
     knex('stats').insert({id: 9, name: 'defEffOverTime', catagory: 'catagory3'}),

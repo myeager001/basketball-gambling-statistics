@@ -7,12 +7,12 @@ var Promise = require('bluebird');
 router.get('/', function(req, res, next) {
   knex('user_stats_preferences').select().where('user', req.user.id).innerJoin('stats', 'stats.id', 'user_stats_preferences.stat')
   .then(function(preferences){
-    console.log(preferences);
     res.render('profile', {user: req.user, preferences: preferences});
   })
 });
 
 router.post('/', function(req, res, next){
+  console.log(req.body);
   knex('user_stats_preferences').select().where('user', req.user.id).del().then(function(){
     knex.transaction(function(trx){
       var keys=[];

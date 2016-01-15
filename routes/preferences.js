@@ -15,6 +15,7 @@ router.post('/', function(req, res, next){
       for(var stat in req.body){
         keys.push(stat);
       }
+      console.log(keys)
       return Promise.map(keys, function(key){
         return knex('stats').select('id').where('name', key).first().then(function(object){
           id = object.id;

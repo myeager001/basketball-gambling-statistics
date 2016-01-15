@@ -33,36 +33,49 @@ router.post('/', function(req,res){
       console.log(preferences[i].name);
       switch(preferences[i].name){
         case 'missHit':
+            console.log('adding MH')
             promiseArray.push(missHit(team1, team2));
             break;
         case 'boxScore':
+          console.log('adding BS')
             promiseArray.push(boxScore(team1, team2));
             break;
         case 'offEffOverTime':
+          console.log('adding OEOT')
             promiseArray.push(offEffOverTime(team1, team2));
             break;
         case 'defEffOverTime':
+          console.log('adding DEOT')
             promiseArray.push(defEffOverTime(team1, team2));
             break;
         case 'teamMisc':
+          console.log('adding TM')
             promiseArray.push(teamMisc(team1, team2));
             break;
-        case 'efficiency':
+        case 'compareEff':
+            console.log('adding E')
             promiseArray.push(efficiency(team1, team2));
             break;
         case 'shotCharts':
+          console.log('adding SC')
             promiseArray.push(shotCharts(team1, team2));
             break;
         case 'sportsVu':
-            promiseArray.push(boxScore(team1, team2));
+            console.log('adding SV')
+            promiseArray.push(sportsVu(team1, team2));
             break;
         case 'team4factor':
+            console.log('adding T4F')
             promiseArray.push(team4factor(team1, team2));
+            break;
+        case 'shooting':
+            console.log('adding S')
+            promiseArray.push(shooting(team1, team2));
             break;
       }
     }
 
-    console.log(promiseArray);
+
     Promise.all(promiseArray).then(function(results){
       toBeSent =JSON.stringify(results);
       res.json(toBeSent);
