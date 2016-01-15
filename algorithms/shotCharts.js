@@ -60,9 +60,7 @@ module.exports = function(firstTeam, secondTeam){
                 var fjs = 0;
                 var count = 0;
 
-                for (i=0;i<50;i++) {
-                  console.log(body2[i]);
-                }
+  
 
                 for(i=0;i<body2.length;i++) {
                   if (body2[i].action_type == 'Jump Hook Shot') {
@@ -115,9 +113,7 @@ module.exports = function(firstTeam, secondTeam){
                   var fjs = 0;
                   var count = 0;
 
-                  for (i=0;i<50;i++) {
-                    console.log(body2[i]);
-                  }
+
 
                   for(i=0;i<body2.length;i++) {
                     if (body2[i].action_type == 'Jump Hook Shot') {
