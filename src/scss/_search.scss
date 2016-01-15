@@ -86,4 +86,10 @@
 
 .displayImgLoad{
   display: flex;
+  flex-direction: row;
+}
+
+.graphSpan{
+  display: flex;
+  flex-direction: column;
 }
