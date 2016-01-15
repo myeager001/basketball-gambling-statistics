@@ -9,37 +9,56 @@ $(document).ready(function(){
     var team2 = $('.searchTeam2').val();
     $('#team1image').css('background-image', 'url(/assets/team_icons/'+team1 + '.png)');
     $('#team2image').css('background-image', 'url(/assets/team_icons/'+team2 + '.png)');
+    $('.loadingImg').toggleClass('displayImgLoad');
     $.ajax({
       url: getAPIHost() +'/search',
       method: 'post',
       data: {firstTeam: team1, secondTeam: team2},
     }).done(function(data){
+      $('.loadingImg').toggleClass('displayImgLoad');
       charts = JSON.parse(data);
       console.log(charts);
       for(var i = 0; i < charts.length; i++){
           options = charts[i].options
           graphType = charts[i].type;
+
           data = {
           labels: charts[i].columnNames,
-          datasets: [
-            {
-              fillColor: "7f0000",
-              strokeColor: "rgba(220,220,220,0.8)",
-              highlightFill: "rgba(220,220,220,0.75)",
-              highlightStroke: "rgba(220,220,220,1)",
-              label: charts[i].team1,
-              data: charts[i].team1Stats,
-            },
-            {
-              fillColor: "00007f",
-              strokeColor: "rgba(151,187,205,0.8)",
-              highlightFill: "rgba(151,187,205,0.75)",
-              highlightStroke: "rgba(151,187,205,1)",
-              label: charts[i].team2,
-              data: charts[i].team2Stats,
-            }
-          ]
-        }
+          datasets: [],
+          }
+          for (var key in charts[i].team1Stats){
+            data.datasets.push(
+              {
+                fillColor: "rgba(220,0,0,0.2)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                label: charts[i].team1,
+                data: charts[i].team1Stats[key]
+              }
+            )
+          }
+          for(var key in charts[i].team2Stats){
+            data.datasets.push(
+              {
+                fillColor: "rgba(0,0,220,0.2)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,.2)",
+                label: charts[i].team2,
+                data: charts[i].team2Stats[key]
+              }
+            )
+          }
+
         var canvas = document.createElement("canvas");
         canvas.width=400;
         canvas.height=400;
@@ -53,7 +72,8 @@ $(document).ready(function(){
         var ctx = tobo.getContext('2d');
         if(graphType === "Bar"){
           var myNewChart = new Chart(ctx).Bar(data, options);
-        }if(graphType === "line"){
+        }if(graphType === "Line"){
+          console.log('here')
           var myNewChart = new Chart(ctx).Line(data, options);
         }if(graphType === "Radar"){
           var myNewChart = new Chart(ctx).Radar(data, options);

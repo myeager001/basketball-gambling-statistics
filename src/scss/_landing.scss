@@ -26,6 +26,13 @@
 	border-radius: 5px;
 }
 
+.paragraphs {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  color: $white;
+}
+
 .more-info{
   flex-direction: row;
   justify-content: space-around;
@@ -82,7 +89,7 @@ input {
 }
 
 .infoTip{
-  width: 30%;
+  width: 34vw;
   margin: 1vw;
 }
 .iconBig{

@@ -14,9 +14,10 @@ module.exports = function(home_team, away_team){
     var url_team = 'http://api.probasketballapi.com/team' + apiKey;
     var url_teamAdv = 'http://api.probasketballapi.com/advanced/team' + apiKey;
     var results = {};
-    results.type = "Bar"
+    results.type = "Line"
     results.options = {
       scaleBeginAtZero: false,
+      pointDot : false,
     }
     var team1 = home_team;
     var team2 = away_team;
@@ -55,6 +56,7 @@ module.exports = function(home_team, away_team){
                   if(body[i].season==='2015'){
                     sum_off.push(parseInt(body[i].off_rating));
                     sum_def.push(parseInt(body[i].off_rating));
+                    results.columnNames.push(body[i].game_id)
                   }
                 }
 
