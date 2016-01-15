@@ -36,8 +36,10 @@ module.exports = function(firstTeam, secondTeam){
     results.team2 = secondTeam;
     results.columnNames = [
       'Jump Hook Shot',
-      'Jump Shot',
-      'Layup Shot'
+      'Driving Jump Shot',
+      'Driving Layup Shot',
+      'Reverse Layup Shot',
+      'Floating Jump Shot'
     ];
 
     function firstCall(){
@@ -51,9 +53,11 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                var hook = 0;
-                var jump = 0;
-                var layup = 0;
+                var jhs = 0;
+                var djs = 0;
+                var dls = 0;
+                var rls = 0;
+                var fjs = 0;
                 var count = 0;
 
                 for (i=0;i<50;i++) {
@@ -62,18 +66,24 @@ module.exports = function(firstTeam, secondTeam){
 
                 for(i=0;i<body2.length;i++) {
                   if (body2[i].action_type == 'Jump Hook Shot') {
-                    hook++;
+                    jhs++;
                   }
-                  if (body2[i].action_type == 'Jump Shot') {
-                    jump++;
+                  if (body2[i].action_type == 'Driving Jump Shot') {
+                    djs++;
                   }
-                  if (body2[i].action_type == 'Layup Shot') {
-                    layup++;
+                  if (body2[i].action_type == 'Driving Layup Shot') {
+                    dls++;
+                  }
+                  if (body2[i].action_type == 'Reverse Layup Shot') {
+                    rls++;
+                  }
+                  if (body2[i].action_type == 'Floating Jump Shot') {
+                    fjs++;
                   }
                   count++;
                 }
 
-                results.team1Stats = { data: [hook, jump, layup]};
+                results.team1Stats = { data: [jhs, djs, dls, rls, fjs]};
 
                 resolve();
               } else {
@@ -98,25 +108,37 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  var hook = 0;
-                  var jump = 0;
-                  var layup = 0;
+                  var jhs = 0;
+                  var djs = 0;
+                  var dls = 0;
+                  var rls = 0;
+                  var fjs = 0;
                   var count = 0;
 
+                  for (i=0;i<50;i++) {
+                    console.log(body2[i]);
+                  }
+
                   for(i=0;i<body2.length;i++) {
-                    if (body2[i].event_type == 'Jump Hook Shot') {
-                      hook++;
+                    if (body2[i].action_type == 'Jump Hook Shot') {
+                      jhs++;
                     }
-                    if (body2[i].action_type == 'Jump Shot') {
-                      jump++;
+                    if (body2[i].action_type == 'Driving Jump Shot') {
+                      djs++;
                     }
-                    if (body2[i].action_type == 'Layup Shot') {
-                      layup++;
+                    if (body2[i].action_type == 'Driving Layup Shot') {
+                      dls++;
+                    }
+                    if (body2[i].action_type == 'Reverse Layup Shot') {
+                      rls++;
+                    }
+                    if (body2[i].action_type == 'Floating Jump Shot') {
+                      fjs++;
                     }
                     count++;
                   }
 
-                  results.team2Stats = {data: [hook, jump, layup]};
+                  results.team2Stats = { data: [jhs, djs, dls, rls, fjs]};
 
                   resolve();
                 } else {

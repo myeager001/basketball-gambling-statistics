@@ -9,11 +9,8 @@ var shotCharts = require('../algorithms/shotCharts');
 var sportsVu = require('../algorithms/SportsVu');
 var boxScore = require('../algorithms/boxScore');
 var teamMisc = require('../algorithms/teamMisc');
-
 var offEffOverTime = require('../algorithms/offEffOverTime');
 var defEffOverTime = require('../algorithms/deffEffOverTime');
-
-
 var missHit = require('../algorithms/missHit');
 
 
