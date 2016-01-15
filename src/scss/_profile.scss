@@ -2,6 +2,10 @@
   color: $white;
 }
 
+.username{
+  margin: 2vw;
+}
+
 .userInfo{
 color: $white;
 }
@@ -10,14 +14,49 @@ color: $white;
 color: $white;
 }
 
+.statContainer{
+  margin: 2vw;
+}
+
+.prefContainer{
+display: flex;
+margin: 2vw;
+}
+
+.currentPrefContainer{
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.preferenceListProfile{
+  display: flex;
+  flex-direction: row;
+}
+
+.currentPref{
+  margin: 2vw;
+  display:relative;
+}
+//current stat preferences
 .stats{
   display:flex;
   flex-direction: column;
-  align-items: flex-start;
+  font-size: 4em;
+}
+//catagory labels
+.cat1, .cat2, .cat3, .cat4, .cat5, .cat6 {
+color: $green;
+font-size: 2em;
+}
+//stat radio button labels
+input.stat1, input.stat2, input.stat3, input.stat4, input.stat5, input.stat6, input.stat7, input.stat8, input.stat9, input.stat10 {
+  color: $green;
+  width: 2vw;
 }
 
-.category1, .category2, .category3, .category4, .category5, .category6 {
-color: $white;
+input.stat10{
+
 }
 
 .betHistory {

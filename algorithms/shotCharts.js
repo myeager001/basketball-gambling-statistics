@@ -69,7 +69,7 @@ module.exports = function(firstTeam, secondTeam){
                   count++;
                 }
 
-                results.team1Stats = [missed, jump, layup]
+                results.team1Stats = { data: [missed, jump, layup]};
 
                 resolve();
               } else {
@@ -112,7 +112,7 @@ module.exports = function(firstTeam, secondTeam){
                     count++;
                   }
 
-                  results.team2Stats = [missed, jump, layup]
+                  results.team2Stats = {data: [missed, jump, layup]};
 
                   resolve();
                 } else {

@@ -4,68 +4,54 @@ block content
     //img application icon
     //h1 application name
     section.userInfo
-      h1 Username: #{user.username} 
+      h1.username Username: #{user.username} 
     //img
     section.statPreferences
-      h1 Current Preferences
-      div.currentPref
-        
+      div.prefContainer
+        h1 Current Preferences
+        div.currentPrefContainer
+          each preference in preferences
+            span.currentPref #{preference.name} 
+          
     
-      h1
-      h2.title Statistical Preferences:
-      form(class='stats statUpdate' method='post' action='/profile')
-        
-        label Category 1:
-        radiogroup.category1 
-          label  statistic 1
-          input.stat1(type='radio' name='stat1')
-          label  statistic 2
-          input.stat2(type='radio' name='stat2') 
-          label  statistic 3
-          input.stat3(type='radio' name='stat3')
-        
-        label Category 2: 
-        radiogroup.category2 
-          label  statistic 4 
-          input.stat4(type='radio' name='stat4') 
-          label  statistic 5
-          input.stat5(type='radio' name='stat5') 
-          label  statistic 6
-          input.stat6(type='radio' name='stat6')
-        
-        label Category 3:
-        radiogroup.category3
-          label  statistic 7
-          input.stat7(type='radio' name='stat7') 
-          label  statistic 8
-          input.stat8(type='radio' name='stat8') 
-          label  statistic 9
-          input.stat9(type='radio' name='stat9') 
-        
-        label Category 4:
-        radiogroup.category4
-          label  statistic 10
-          input.stat10(type='radio' name='stat10')
-          label  statistic 11
-          input.stat11(type='radio' name='stat11')             
-          label  statistic 12
-          input.stat12(type='radio' name='stat12') 
-        
-        label Category 5:
-        radiogroup.category5  
-          label  statistic 13
-          input.stat13(type='radio' name='stat13') 
-          label  statistic 14
-          input.stat14(type='radio' name='stat14')
-        
-        label Category 6:
-        radiogroup.category6
-          label  statistic 15
-          input.stat15(type='radio' name='stat15') 
-          label  statistic 16
-          input.stat16(type='radio' name='stat16') 
-        
-        button(type='submit' class='updateStats') Set New Preferences
+      div.statContainer
+        h2.title Statistical Preferences:
+        form(class='stats statUpdate' method='post' action='/profile')
+          label Change your stat preferences
+          checkboxes.preferencesListProfile 
+            br
+            label.1 statistic 1
+            input.stat1(type='checkbox', name='stat1')
+            br
+            label.2  statistic 2
+            input.stat2(type='checkbox', name='stat2')
+            br
+            label.3  statistic 3
+            input.stat3(type='checkbox', name='stat3')
+            br
+            label.4  statistic 4 
+            input.stat4(type='checkbox', name='stat4')
+            br 
+            label.5  statistic 5
+            input.stat5(type='checkbox', name='stat5')
+            br 
+            label.6  statistic 6
+            input.stat6(type='checkbox', name='stat6')
+            br
+            label.7  statistic 7
+            input.stat7(type='checkbox', name='stat7')
+            br 
+            label.8  statistic 8
+            input.stat8(type='checkbox', name='stat8')
+            br
+            label.9  statistic 9
+            input.stat9(type='checkbox', name='stat9')
+            br
+            label.10 statistic 10
+            input.stat10(type='checkbox', name='stat10')
+            br
+            button(type='submit') Set Stat Preferences
+            
       section.betHistory
         h1
         h2 Betting History:
