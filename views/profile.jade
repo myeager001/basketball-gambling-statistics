@@ -4,18 +4,21 @@ block content
     //img application icon
     //h1 application name
     section.userInfo
-      h1.username Username: #{user.username} 
+      h1.noshow Username
+      p.username Username: 
+        span.usernameDisplay #{user.username} 
     //img
     section.statPreferences
+      h1.noshow Current Stat Preferences
       div.prefContainer
-        h1 Current Preferences
+        p.currentPref Your Current Preferences
         div.currentPrefContainer
           each preference in preferences
             span.currentPref #{preference.name} 
           
     
       div.statContainer
-        h2.title Change Your Preferences
+        p.changePref Change Your Preferences
         form(class='stats statUpdate' method='post' action='/profile')
           checkboxes.preferencesListProfile 
             
@@ -55,23 +58,7 @@ block content
             label statistic 10
             input.stat10(type='checkbox', name='stat10')
             
-            button(type='submit') Set New Preferences
+            br
+            button.setPref(type='submit') Set New Preferences
             
-      section.betHistory
-        h1
-        h2 Betting History:
-        //unordered list with li for individual bets,
-        ul.betHistory
-          li.bet1 date MM/DD/YYYY |  bet amount: $ |  resulting balance: $
-          li.bet2 date MM/DD/YYYY |  bet amount: $ |  resulting balance: $
-          li.bet3 date MM/DD/YYYY |  bet amount: $ |  resulting balance: $
-          li.bet4 date MM/DD/YYYY |  bet amount: $ |  resulting balance: $
-          li.bet5 date MM/DD/YYYY |  bet amount: $ |  resulting balance: $
-          li.bet6 date MM/DD/YYYY |  bet amount: $ |  resulting balance: $
-          li.bet7 date MM/DD/YYYY |  bet amount: $ |  resulting balance: $
-          li.bet8 date MM/DD/YYYY |  bet amount: $ |  resulting balance: $
-      section.accountBalance
-        h1
-        h2 Current Account Balance:
-          p.userBalance $ Currently...you are totally broke
-          //user balance object could go here #{user.balance}
+      
