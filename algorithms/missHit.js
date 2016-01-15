@@ -28,16 +28,15 @@ module.exports = function(firstTeam, secondTeam){
     }
 
     var results = {};
-    results.title = "Shot Chart";
-    results.type = "Radar";
+    results.title = "Made vs Missed Shots";
+    results.type = "Bar";
     results.options = {
     }
     results.team1 = firstTeam;
     results.team2 = secondTeam;
     results.columnNames = [
-      'Jump Hook Shot',
-      'Jump Shot',
-      'Layup Shot'
+      'Missed Shots',
+      'Made Shot'
     ];
 
     function firstCall(){
@@ -51,29 +50,21 @@ module.exports = function(firstTeam, secondTeam){
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                var hook = 0;
-                var jump = 0;
-                var layup = 0;
+                var missed = 0;
+                var made = 0;
                 var count = 0;
 
-                for (i=0;i<50;i++) {
-                  console.log(body2[i]);
-                }
-
                 for(i=0;i<body2.length;i++) {
-                  if (body2[i].action_type == 'Jump Hook Shot') {
-                    hook++;
+                  if (body2[i].event_type == 'Missed Shot') {
+                    missed++;
                   }
-                  if (body2[i].action_type == 'Jump Shot') {
-                    jump++;
-                  }
-                  if (body2[i].action_type == 'Layup Shot') {
-                    layup++;
+                  if (body2[i].event_type == 'Made Shot') {
+                    made++;
                   }
                   count++;
                 }
 
-                results.team1Stats = { data: [hook, jump, layup]};
+                results.team1Stats = { data: [missed, made]};
 
                 resolve();
               } else {
@@ -98,25 +89,21 @@ module.exports = function(firstTeam, secondTeam){
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                  var hook = 0;
-                  var jump = 0;
-                  var layup = 0;
+                  var missed = 0;
+                  var made = 0;
                   var count = 0;
 
                   for(i=0;i<body2.length;i++) {
-                    if (body2[i].event_type == 'Jump Hook Shot') {
-                      hook++;
+                    if (body2[i].event_type == 'Missed Shot') {
+                      missed++;
                     }
-                    if (body2[i].action_type == 'Jump Shot') {
-                      jump++;
-                    }
-                    if (body2[i].action_type == 'Layup Shot') {
-                      layup++;
+                    if (body2[i].event_type == 'Made Shot') {
+                      made++;
                     }
                     count++;
                   }
 
-                  results.team2Stats = {data: [hook, jump, layup]};
+                  results.team2Stats = { data: [missed, made]};
 
                   resolve();
                 } else {

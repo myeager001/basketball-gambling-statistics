@@ -7,8 +7,10 @@ $(document).ready(function(){
     e.preventDefault();
     var team1 = $('.searchTeam1').val();
     var team2 = $('.searchTeam2').val();
-    $('#team1image').css('background-image', 'url(/assets/team_icons/'+team1 + '.png)');
-    $('#team2image').css('background-image', 'url(/assets/team_icons/'+team2 + '.png)');
+    $('#team1image').attr('src', '/assets/team_icons/'+team1 + '.png');
+    if (team2) {
+      $('#team2image').attr('src', '/assets/team_icons/'+team2 + '.png');
+    }
     $('.loadingImg').toggleClass('displayImgLoad');
     $.ajax({
       url: getAPIHost() +'/search',
