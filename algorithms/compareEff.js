@@ -77,39 +77,41 @@ module.exports = function(home_team, away_team){
     }
 
     function secondCall(){
-      return new Promise(function(resolve, reject){
-        request.post(options2, function(err, response, body) {
-          if (!err && response.statusCode == 200) {
-            var sum_off = 0;
-            var sum_def = 0;
-            var count = 0;
-            var options2adv = {
-              url: url_teamAdv + "&team_id=" + body[0].id,
-              json: true
-            }
-            request.post(options2adv, function(err, response, body) {
-              if (!err && response.statusCode == 200) {
-                for(var i = 0; i < body.length; i++){
-                  if(body[i].season==='2015'){
-                    count++;
-                    sum_off = sum_off + parseInt(body[i].off_rating);
-                    sum_def = sum_def + parseInt(body[i].def_rating);
+      if (secondTeam) {
+        return new Promise(function(resolve, reject){
+          request.post(options2, function(err, response, body) {
+            if (!err && response.statusCode == 200) {
+              var sum_off = 0;
+              var sum_def = 0;
+              var count = 0;
+              var options2adv = {
+                url: url_teamAdv + "&team_id=" + body[0].id,
+                json: true
+              }
+              request.post(options2adv, function(err, response, body) {
+                if (!err && response.statusCode == 200) {
+                  for(var i = 0; i < body.length; i++){
+                    if(body[i].season==='2015'){
+                      count++;
+                      sum_off = sum_off + parseInt(body[i].off_rating);
+                      sum_def = sum_def + parseInt(body[i].def_rating);
+                    }
                   }
-                }
                 var avg_off = sum_off/count;
                 var avg_def = sum_def/count;
                 results.team2Stats ={data: [avg_off, avg_def]};
                 resolve();
 
-              } else {
-                reject(err);
-              }
-            });
-          } else {
-            reject(err);
-          }
+                } else {
+                  reject(err);
+                }
+              });
+            } else {
+              reject(err);
+            }
+          });
         });
-      });
+      }
     }
 
    Promise.all([firstCall(), secondCall()]).then(function(){
