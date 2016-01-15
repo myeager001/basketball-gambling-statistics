@@ -5,7 +5,6 @@ var efficiency = require('../algorithms/compareEff');
 var team4factor = require('../algorithms/team4factor');
 var shotCharts = require('../algorithms/shotCharts');
 var sportsVu = require('../algorithms/SportsVu');
-var playUse = require('../algorithms/playUse');
 var boxScore = require('../algorithms/boxScore');
 var teamMisc = require('../algorithms/teamMisc');
 var pointsOverTime = require('../algorithms/pointsOverTime');
