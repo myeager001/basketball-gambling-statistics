@@ -62,15 +62,17 @@ $(document).ready(function(){
           }
         var label=document.createElement("label")
         var text=document.createTextNode(charts[i].title)
-        label.for = charts[i].title
+
         var canvas = document.createElement("canvas");
         canvas.width=400;
         canvas.height=400;
         canvas.id='canvas'+i
+        label.for = 'canvas'+i
         console.log(data);
         console.log(canvas);
         var div = document.getElementById('resultsDiv');
         div.appendChild(label);
+        label.appendChild(text);
         label.appendChild(canvas);
         var tobo = document.getElementById("canvas"+i);
         console.log(tobo);
