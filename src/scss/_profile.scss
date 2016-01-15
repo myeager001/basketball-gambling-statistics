@@ -1,4 +1,4 @@
-.title{
+nodemon.title{
   color: $white;
 }
 
@@ -42,12 +42,13 @@ margin: 2vw;
 .stats{
   display:flex;
   flex-direction: column;
-  font-size: 4em;
+  font-size: 2vw;
+  color: $green;
 }
 //catagory labels
 .cat1, .cat2, .cat3, .cat4, .cat5, .cat6 {
 color: $green;
-font-size: 2em;
+font-size: 3vw;
 }
 //stat radio button labels
 input.stat1, input.stat2, input.stat3, input.stat4, input.stat5, input.stat6, input.stat7, input.stat8, input.stat9, input.stat10 {
