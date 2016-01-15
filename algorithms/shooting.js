@@ -14,7 +14,7 @@ module.exports = function(firstTeam, secondTeam){
 
     var apiKey = "?api_key=" + process.env.API_KEY;
     var url_team = 'http://api.probasketballapi.com/team' + apiKey;
-    var url_teamAdv = 'http://api.probasketballapi.com/advanced/team' + apiKey;
+    var url_shot = "http://api.probasketballapi.com/shots" + apiKey;
 
 
     var team1id = "";
@@ -30,20 +30,17 @@ module.exports = function(firstTeam, secondTeam){
     }
 
     var results = {};
-    results.title = "Box Score";
-    results.type = "Bar";
+    results.title = "Shot Zone Breakdown";
+    results.type = "Line";
     results.options = {
-      scaleBeginAtZero: false,
     }
     results.team1 = firstTeam;
     results.team2 = secondTeam;
     results.columnNames = [
-      'Field Goals Made',
-      'Field Goals Attempted',
-      'Free Throws Made',
-      'Free Throws Attempted',
-      'Blocks',
-      'Steals'
+      'In The Paint (Non-RA)',
+      'Restricted Area',
+      'Mid-Range',
+      'Above the Break 3'
     ];
 
     function firstCall(){
@@ -53,53 +50,35 @@ module.exports = function(firstTeam, secondTeam){
             var count = 0;
 
             var options1adv = {
-              url: url_teamAdv + "&team_id=" + body[0].id,
+              url: url_shot + "&team_id=" + body[0].id,
               json: true
             }
             request.post(options1adv, function(err, response, body2) {
               if (!err && response.statusCode == 200) {
-                console.log(body2[0]);
-                // var fgm = 0; //field goals made
-                // var fga = 0; // field goals attempted
-                // var ftm = 0; // free throws made
-                // var fta = 0; // free throws attempted
-                // var blk = 0; // blocks
-                // var stl = 0; // steals
+                var inThePaint = 0;
+                var resArea = 0;
+                var midRange = 0;
+                var above = 0;
+
+                for (i=0;i<body2.length;i++) {
+                  if (body2[i].shot_zone_basic == "In The Paint (Non-RA)") {
+                    inThePaint++;
+                  }
+                  if (body2[i].shot_zone_basic == "Restricted Area") {
+                    resArea++;
+                  }
+                  if (body2[i].shot_zone_basic == "Mid-Range") {
+                    midRange++;
+                  }
+                  if (body2[i].shot_zone_basic == "Above the Break 3") {
+                    above++;
+                  }
+
+                  count++;
+                }
+
+                results.team1Stats = {data: [inThePaint, resArea, midRange, above]};
                 //
-                // for (i=0;i<body2.length;i++) {
-                //   if (body2[i].season == '2015') {
-                //     if (body2[i].fgm != '') {
-                //       fgm += JSON.parse(body2[i].fgm);
-                //     }
-                //     if (body2[i].fga != '') {
-                //       fga += JSON.parse(body2[i].fga);
-                //     }
-                //     if (body2[i].ftm != '') {
-                //       ftm += JSON.parse(body2[i].ftm);
-                //     }
-                //     if (body2[i].fta != '') {
-                //       fta += JSON.parse(body2[i].fta);
-                //     }
-                //     if (body2[i].blk != '') {
-                //       blk += JSON.parse(body2[i].blk);
-                //     }
-                //     if (body2[i].stl != '') {
-                //       stl += JSON.parse(body2[i].stl);
-                //     }
-                //
-                //     count++;
-                //   }
-                // }
-                //
-                // fgm = fgm / count;
-                // fga = fga / count;
-                // ftm = ftm / count;
-                // fta = fta / count;
-                // blk = blk / count;
-                // stl = stl / count;
-                //
-                // results.team1Stats = {data: [fgm, fga, ftm, fta, blk, stl]};
-                // //
                 resolve();
               } else {
                 reject(err);
@@ -120,51 +99,35 @@ module.exports = function(firstTeam, secondTeam){
               var count = 0;
 
               var options2adv = {
-                url: url_teamAdv + "&team_id=" + body[0].id,
+                url: url_shot + "&team_id=" + body[0].id,
                 json: true
               }
               request.post(options2adv, function(err, response, body2) {
                 if (!err && response.statusCode == 200) {
-                //   var fgm = 0; //field goals made
-                //   var fga = 0; // field goals attempted
-                //   var ftm = 0; // free throws made
-                //   var fta = 0; // free throws attempted
-                //   var blk = 0; // blocks
-                //   var stl = 0; // steals
-                //
-                //   for (i=0;i<body2.length;i++) {
-                //     if (body2[i].season == '2015') {
-                //       if (body2[i].fgm != '') {
-                //         fgm += JSON.parse(body2[i].fgm);
-                //       }
-                //       if (body2[i].fga != '') {
-                //         fga += JSON.parse(body2[i].fga);
-                //       }
-                //       if (body2[i].ftm != '') {
-                //         ftm += JSON.parse(body2[i].ftm);
-                //       }
-                //       if (body2[i].fta != '') {
-                //         fta += JSON.parse(body2[i].fta);
-                //       }
-                //       if (body2[i].blk != '') {
-                //         blk += JSON.parse(body2[i].blk);
-                //       }
-                //       if (body2[i].stl != '') {
-                //         stl += JSON.parse(body2[i].stl);
-                //       }
-                //
-                //       count++;
-                //     }
-                //   }
-                //
-                //   fgm = fgm / count;
-                //   fga = fga / count;
-                //   ftm = ftm / count;
-                //   fta = fta / count;
-                //   blk = blk / count;
-                //   stl = stl / count;
-                //
-                //   results.team2Stats = {data:[fgm, fga, ftm, fta, blk, stl]};
+                  var inThePaint = 0;
+                  var resArea = 0;
+                  var midRange = 0;
+                  var above = 0;
+
+                  for (i=0;i<body2.length;i++) {
+                    if (body2[i].shot_zone_basic == "In The Paint (Non-RA)") {
+                      inThePaint++;
+                    }
+                    if (body2[i].shot_zone_basic == "Restricted Area") {
+                      resArea++;
+                    }
+                    if (body2[i].shot_zone_basic == "Mid-Range") {
+                      midRange++;
+                    }
+                    if (body2[i].shot_zone_basic == "Above the Break 3") {
+                      above++;
+                    }
+
+                    count++;
+                  }
+
+                  results.team2Stats = {data: [inThePaint, resArea, midRange, above]};
+                  //
                   resolve();
                 } else {
                   reject(err);
