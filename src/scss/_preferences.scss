@@ -3,6 +3,7 @@ body{
 }
 
 .pleaseSet{
+  padding-left: 5vw;
   color: $green;
 }
 
@@ -25,5 +26,9 @@ body{
   display: flex;
   flex-direction: column;
   padding-left: 5vw;
-  padding-top: 3vw;
+  padding-top: 1vw;
+}
+
+label{
+  color: $lightgray;
 }
