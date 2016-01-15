@@ -1,13 +1,22 @@
 .title{
   color: $white;
 }
+//h1 for section that will not be displayed
+.noshow{
+  display: none
+}
 
-.username{
-  margin: 2vw;
+.usernameDisplay{
+  color: $green;
+}
+
+.actualUser{
+  color: $green;
 }
 
 .userInfo{
 color: $white;
+margin-bottom: 3vw;
 }
 
 .statPreferences{
@@ -18,36 +27,49 @@ color: $white;
   margin: 2vw;
 }
 
+span.currentPref{
+  color: $green;
+}
+
 .prefContainer{
 display: flex;
-margin: 2vw;
+margin-top: 1vw;
 }
 
 .currentPrefContainer{
-  display:flex;
-  flex-direction: row;
-  width: 100%;
+
 }
 
 .preferenceListProfile{
   display: flex;
   flex-direction: row;
+  color: green;
+  margin: 3vw;
 }
 
 .currentPref{
-  margin: 2vw;
-  display:relative;
+  margin-left: 2vw;
+  color: $white;
+}
+
+.currentPrefp{
+  margin-left: 2vw;
+}
+
+.changePref{
+
 }
 //current stat preferences
 .stats{
   display:flex;
   flex-direction: column;
-  font-size: 4em;
+  font-size: 1vw;
+  color: $green;
 }
 //catagory labels
 .cat1, .cat2, .cat3, .cat4, .cat5, .cat6 {
 color: $green;
-font-size: 2em;
+font-size: 3vw;
 }
 //stat radio button labels
 input.stat1, input.stat2, input.stat3, input.stat4, input.stat5, input.stat6, input.stat7, input.stat8, input.stat9, input.stat10 {
@@ -55,9 +77,11 @@ input.stat1, input.stat2, input.stat3, input.stat4, input.stat5, input.stat6, in
   width: 2vw;
 }
 
-input.stat10{
-
-}
-
-.betHistory {
+.setPref{
+  width: 10vw;
+  font-size: 1vw;
+  border: solid .2vw $white;
+  background-color: $green;
+  box-shadow: 0px 5px 0px $black;
+  border-radius: 5%;
 }

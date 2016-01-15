@@ -13,6 +13,7 @@ var teamMisc = require('../algorithms/teamMisc');
 var offEffOverTime = require('../algorithms/offEffOverTime');
 var defEffOverTime = require('../algorithms/deffEffOverTime');
 var missHit = require('../algorithms/missHit');
+var shooting = require('../algorithms/shooting');
 
 
 
@@ -28,7 +29,6 @@ router.post('/', function(req,res){
   var team2 = req.body.secondTeam;
   knex('user_stats_preferences').select().where('user', req.user.id).innerJoin('stats', 'stats.id', 'user_stats_preferences.stat')
   .then(function(preferences){
-
     for(var i =0; i<preferences.length; i++){
       console.log(preferences[i].name);
       switch(preferences[i].name){
