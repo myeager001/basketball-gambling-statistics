@@ -63,7 +63,7 @@ $(document).ready(function(){
         canvas.width=400;
         canvas.height=400;
         canvas.id='canvas'+i
-        console.log(data)
+        console.log(data);
         console.log(canvas);
         var div = document.getElementById('resultsDiv');
         div.appendChild(canvas);
