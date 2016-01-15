@@ -12,6 +12,7 @@ var teamMisc = require('../algorithms/teamMisc');
 var offEffOverTime = require('../algorithms/offEffOverTime');
 var defEffOverTime = require('../algorithms/deffEffOverTime');
 var missHit = require('../algorithms/missHit');
+var shooting = require('../algorithms/shooting');
 
 
 
@@ -36,6 +37,7 @@ router.post('/', function(req,res){
   promiseArray.push(missHit(team1, team2));
   promiseArray.push(team4factor(team1, team2));
   promiseArray.push(teamMisc(team1, team2));
+  promiseArray.push(shooting(team1, team2));
 
   Promise.all(promiseArray).then(function(results){
     toBeSent =JSON.stringify(results);
