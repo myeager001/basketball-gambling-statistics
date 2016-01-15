@@ -77,7 +77,7 @@ module.exports = function(home_team, away_team){
     }
 
     function secondCall(){
-      if (secondTeam) {
+      if (team2) {
         return new Promise(function(resolve, reject){
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
