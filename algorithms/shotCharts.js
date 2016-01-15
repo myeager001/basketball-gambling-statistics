@@ -60,7 +60,7 @@ module.exports = function(firstTeam, secondTeam){
                 var fjs = 0;
                 var count = 0;
 
-  
+
 
                 for(i=0;i<body2.length;i++) {
                   if (body2[i].action_type == 'Jump Hook Shot') {
@@ -96,7 +96,6 @@ module.exports = function(firstTeam, secondTeam){
   }
     function secondCall(){
       return new Promise(function(resolve, reject) {
-        if (secondTeam) {
           request.post(options2, function(err, response, body) {
             if (!err && response.statusCode == 200) {
 
@@ -145,7 +144,6 @@ module.exports = function(firstTeam, secondTeam){
               reject(err);
             }
           })
-        }
       })
     }
 
