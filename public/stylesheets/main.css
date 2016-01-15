@@ -50,6 +50,8 @@ images
   background-color: #2AC65B;
   border-radius: 5px; }
 
+<<<<<<< HEAD
+=======
 .paragraphs {
   display: none;
   -webkit-flex-direction: row;
@@ -60,6 +62,7 @@ images
           align-items: center;
   color: #fff; }
 
+>>>>>>> 837cadc49a92af9b6da1aa73f6aab4ff8a3a6cc9
 .more-info {
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
